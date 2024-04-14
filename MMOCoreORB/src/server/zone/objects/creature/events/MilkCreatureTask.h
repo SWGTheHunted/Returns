@@ -129,7 +129,7 @@ public:
 		}
 
 		TransactionLog trx(TrxCode::HARVESTED, player, resourceSpawn);
-		resourceManager->harvestResourceToPlayer(trx, player, resourceSpawn, quantityExtracted * 2);
+		resourceManager->harvestResourceToPlayer(trx, player, resourceSpawn, quantityExtracted);
 
 		updateMilkState(CreatureManager::ALREADYMILKED);
 	}

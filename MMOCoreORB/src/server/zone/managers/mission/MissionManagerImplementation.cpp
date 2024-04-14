@@ -194,20 +194,20 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	if (missionBag == nullptr)
 		return;
 
-	int maximumNumberOfItemsInMissionBag = 12;
+	int maximumNumberOfItemsInMissionBag = 24;
 
 
-	if (enableFactionalCraftingMissions) {
-		maximumNumberOfItemsInMissionBag += 6;
-	}
-
-	if (enableFactionalReconMissions) {
-		maximumNumberOfItemsInMissionBag += 6;
-	}
-
-	if (enableFactionalEntertainerMissions) {
-		maximumNumberOfItemsInMissionBag += 12; //Both musician and dancer.
-	}
+//	if (enableFactionalCraftingMissions) {
+//		maximumNumberOfItemsInMissionBag += 6;
+//	}
+//
+//	if (enableFactionalReconMissions) {
+//		maximumNumberOfItemsInMissionBag += 6;
+//	}
+//
+//	if (enableFactionalEntertainerMissions) {
+//		maximumNumberOfItemsInMissionBag += 12; //Both musician and dancer.
+//	}
 
 	while (missionBag->getContainerObjectsSize() < maximumNumberOfItemsInMissionBag) {
 		ManagedReference<SceneObject*> mission = server->createObject(0x18e19914, 1); // empty mission
@@ -256,7 +256,7 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 	}
 
 	//Limit to two missions (only one of them can be a bounty mission)
-	if (missionCount >= 2 || (hasBountyMission && mission->getTypeCRC() == MissionTypes::BOUNTY)) {
+	if (missionCount >= 4 || (hasBountyMission && mission->getTypeCRC() == MissionTypes::BOUNTY)) {
 		StringIdChatParameter stringId("mission/mission_generic", "too_many_missions");
 		player->sendSystemMessage(stringId);
 		return;
@@ -557,9 +557,9 @@ void MissionManagerImplementation::randomizeGeneralTerminalMissions(CreatureObje
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
-		if (i < 6) {
+		if (i < 12) {
 			randomizeGenericDestroyMission(player, mission, Factions::FACTIONNEUTRAL);
-		} else if (i < 12) {
+		} else if (i < 24) {
 			randomizeGenericDeliverMission(player, mission, Factions::FACTIONNEUTRAL);
 		}
 
@@ -586,9 +586,9 @@ void MissionManagerImplementation::randomizeArtisanTerminalMissions(CreatureObje
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
-		if (i < 6) {
+		if (i < 12) {
 			randomizeGenericSurveyMission(player, mission, Factions::FACTIONNEUTRAL);
-		} else if (i < 12) {
+		} else if (i < 24) {
 			randomizeGenericCraftingMission(player, mission, Factions::FACTIONNEUTRAL);
 		}
 
@@ -615,9 +615,9 @@ void MissionManagerImplementation::randomizeEntertainerTerminalMissions(Creature
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
-		if (i < 6) {
+		if (i < 12) {
 			randomizeGenericEntertainerMission(player, mission, Factions::FACTIONNEUTRAL, MissionTypes::DANCER);
-		} else if (i < 12) {
+		} else if (i < 24) {
 			randomizeGenericEntertainerMission(player, mission, Factions::FACTIONNEUTRAL, MissionTypes::MUSICIAN);
 		}
 
@@ -644,9 +644,9 @@ void MissionManagerImplementation::randomizeScoutTerminalMissions(CreatureObject
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
-		if (i < 6) {
+		if (i < 12) {
 			randomizeGenericReconMission(player, mission, Factions::FACTIONNEUTRAL);
-		} else if (i < 12) {
+		} else if (i < 24) {
 			randomizeGenericHuntingMission(player, mission, Factions::FACTIONNEUTRAL);
 		}
 
@@ -703,21 +703,21 @@ void MissionManagerImplementation::randomizeFactionTerminalMissions(CreatureObje
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
-		if (i < 6) {
+		if (i < 12) {
 			randomizeGenericDestroyMission(player, mission, faction);
-		} else if (i < 12) {
+		} else if (i < 24) {
 			randomizeGenericDeliverMission(player, mission, faction);
 		} else {
-			if (enableFactionalCraftingMissions && numberOfCraftingMissions < 6) {
+			if (enableFactionalCraftingMissions && numberOfCraftingMissions < 12) {
 				randomizeGenericCraftingMission(player, mission, faction);
 				numberOfCraftingMissions++;
-			} else if (enableFactionalReconMissions && numberOfReconMissions < 6) {
+			} else if (enableFactionalReconMissions && numberOfReconMissions < 12) {
 				randomizeGenericReconMission(player, mission, faction);
 				numberOfReconMissions++;
-			} else if (enableFactionalEntertainerMissions && numberOfDancerMissions < 6) {
+			} else if (enableFactionalEntertainerMissions && numberOfDancerMissions < 12) {
 				randomizeGenericEntertainerMission(player, mission, faction, MissionTypes::DANCER);
 				numberOfDancerMissions++;
-			} else if (enableFactionalEntertainerMissions && numberOfMusicianMissions < 6) {
+			} else if (enableFactionalEntertainerMissions && numberOfMusicianMissions < 12) {
 				randomizeGenericEntertainerMission(player, mission, faction, MissionTypes::MUSICIAN);
 				numberOfMusicianMissions++;
 			}
@@ -1965,6 +1965,10 @@ bool MissionManagerImplementation::isBountyValidForPlayer(CreatureObject* player
 	ManagedReference<CreatureObject*> creature = server->getObject(targetId).castTo<CreatureObject*>();
 
 	if (creature == nullptr)
+		return false;
+
+
+	if (creature->getFactionStatus() != FactionStatus::OVERT)//if jedi not overt then dont add to terminal
 		return false;
 
 	auto targetGhost = creature->getPlayerObject();

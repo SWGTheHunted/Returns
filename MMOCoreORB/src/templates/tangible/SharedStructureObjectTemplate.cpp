@@ -12,26 +12,40 @@
 void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 	SharedTangibleObjectTemplate::readObject(templateData);
 
-	lotSize = templateData->getByteField("lotSize");
+	//lotSize = templateData->getByteField("lotSize");
+
+	int newlotsize = templateData->getByteField("lotSize");
+
+	if (newlotsize >= 1) newlotsize = 1;
+
+	lotSize = newlotsize;
 
 	baseMaintenanceRate = templateData->getIntField("baseMaintenanceRate");
 
 	basePowerRate = templateData->getIntField("basePowerRate");
 
-	LuaObject allowzones = templateData->getObjectField("allowedZones");
-	allowedZones.removeAll(); //Make sure it's empty...
+//	LuaObject allowzones = templateData->getObjectField("allowedZones");
+//	allowedZones.removeAll(); //Make sure it's empty...
+//
+//	for (int i = 1; i <= allowzones.getTableSize(); ++i) {
+//		allowedZones.put(allowzones.getStringAt(i));
+//	}
+//
+//	allowzones.pop();
 
-	for (int i = 1; i <= allowzones.getTableSize(); ++i) {
-		allowedZones.put(allowzones.getStringAt(i));
-	}
+	allowedZones = {"corellia", "talus", "dathomir", "endor", "lok", "naboo", "rori", "tatooine", "yavin4", "dantooine"};
 
-	allowzones.pop();
+	//cityRankRequired = templateData->getByteField("cityRankRequired");
 
-	cityRankRequired = templateData->getByteField("cityRankRequired");
+	int newcityrankreq = templateData->getByteField("cityRankRequired");
+
+	if (newcityrankreq >= 1) newcityrankreq = 1;
+
+	cityRankRequired = newcityrankreq;
 
 	constructionMarkerTemplate = templateData->getStringField("constructionMarker");
 
-	abilityRequired = templateData->getStringField("abilityRequired");
+	abilityRequired = "";//templateData->getStringField("abilityRequired");
 
 	uniqueStructure = templateData->getBooleanField("uniqueStructure");
 

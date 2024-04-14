@@ -650,8 +650,15 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 
 		int roll = System::random(10000000);
 
-		if (roll > lootChance)
-			continue;
+//		if (roll > lootChance)
+//			continue;
+
+		//random holocron creation (only drops on mobs that have loot lists)
+		int holochance = 5000;
+		if (System::random(holochance) >= holochance) {
+			createLoot(trx, container, "jedi_holocron_light", level);
+		}
+
 
 		int tempChance = 0; //Start at 0.
 

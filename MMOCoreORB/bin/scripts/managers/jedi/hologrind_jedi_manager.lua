@@ -148,10 +148,13 @@ end
 -- Check if the player has mastered all hologrind professions and send sui window and award skills.
 -- @param pCreatureObject pointer to the creature object of the player to check the jedi progression on.
 function HologrindJediManager:checkIfProgressedToJedi(pCreatureObject)
-	if self:getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER and not self:isJedi(pCreatureObject) then
+	if self:getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER and not CreatureObject(pCreatureObject):hasSkill("force_title_jedi_rank_02") then --self:isJedi(pCreatureObject)
 		self:sendSuiWindow(pCreatureObject)
+		
 		self:awardJediStatusAndSkill(pCreatureObject)
+		
 		CreatureObject(pCreatureObject):playEffect("clienteffect/trap_electric_01.cef", "")
+		
 	end
 	
 end

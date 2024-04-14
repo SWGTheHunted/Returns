@@ -385,6 +385,15 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 	SkillModManager::instance()->verifySkillBoxSkillMods(creature);
 
+
+	if (skill->getSkillName() == "social_politician_novice") {
+		awardSkill("social_politician_master", creature, true, true, true);
+	}
+
+	if (skill->getSkillName() == "crafting_merchant_novice") {
+		awardSkill("crafting_merchant_master", creature, true, true, true);
+	}
+
 	return true;
 }
 
@@ -631,6 +640,8 @@ void SkillManager::awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool 
 }
 
 void SkillManager::updateXpLimits(PlayerObject* ghost) {
+	return;//xp cap located in playerobjectimplementation under addexperience
+
 	if (ghost == nullptr || !ghost->isPlayerObject()) {
 		return;
 	}

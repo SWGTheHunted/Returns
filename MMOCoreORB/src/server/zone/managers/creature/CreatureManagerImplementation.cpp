@@ -728,8 +728,8 @@ void CreatureManagerImplementation::droidHarvest(Creature* creature, CreatureObj
 		quantityExtracted = (int)(quantityExtracted * modifier);
 	}
 
-	if (creature->getParent().get() != nullptr)
-		quantityExtracted = 1;
+//	if (creature->getParent().get() != nullptr)
+//		quantityExtracted = 1;
 
 	int droidBonus = DroidMechanics::determineDroidSkillBonus(ownerSkill,harvestBonus,quantityExtracted);
 
@@ -899,11 +899,11 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 		quantityExtracted = (int)(quantityExtracted * modifier);
 	}
 
-	if (creature->getParent().get() != nullptr)
-		quantityExtracted = 1;
+//	if (creature->getParent().get() != nullptr)
+//		quantityExtracted = 1;
 
 	TransactionLog trx(TrxCode::HARVESTED, player, resourceSpawn);
-	resourceManager->harvestResourceToPlayer(trx, player, resourceSpawn, quantityExtracted * 2);
+	resourceManager->harvestResourceToPlayer(trx, player, resourceSpawn, quantityExtracted);
 	trx.commit();
 
 	/// Send System Messages
