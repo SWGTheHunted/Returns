@@ -424,14 +424,14 @@ public:
 		//Applies battle fatigue
 		uint32 buffPower = getEnhancePackStrength(enhancePack, enhancer, patient);
 
-		if (buffPower < currentBuff) {
-			if (patient == enhancer)
-				enhancer->sendSystemMessage("Your current enhancements are of greater power and cannot be re-applied.");
-			else
-				enhancer->sendSystemMessage("Your target's current enhancements are of greater power and cannot be re-applied.");
-
-			return 0;
-		}
+//		if (buffPower < currentBuff) {
+//			if (patient == enhancer)
+//				enhancer->sendSystemMessage("Your current enhancements are of greater power and cannot be re-applied.");
+//			else
+//				enhancer->sendSystemMessage("Your target's current enhancements are of greater power and cannot be re-applied.");
+//
+//			return 0;
+//		}
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
@@ -452,7 +452,7 @@ public:
 			enhancePack->decreaseUseCount();
 		}
 
-		if (patient != enhancer)
+//		if (patient != enhancer)
 			awardXp(enhancer, "medical", amountEnhanced); //No experience for healing yourself.
 
 		doAnimations(enhancer, patient);

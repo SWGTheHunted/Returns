@@ -795,11 +795,11 @@ yavin4_world = {
 		},
 		{
 			lairTemplateName = "yavin4_stintaril_prowler_neutral_none",
-			spawnLimit = 5,
+			spawnLimit = -1,
 			minDifficulty = 83,
 			maxDifficulty = 87,
 			numberToSpawn = 0,
-			weighting = 3,
+			weighting = 15,
 			size = 25
 		},
 		{
@@ -808,7 +808,16 @@ yavin4_world = {
 			minDifficulty = 76,
 			maxDifficulty = 107,
 			numberToSpawn = 0,
-			weighting = 3,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "yavin4_acklay_pack_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 275,
+			maxDifficulty = 304,
+			numberToSpawn = 0,
+			weighting = 15,
 			size = 25
 		},
 	}

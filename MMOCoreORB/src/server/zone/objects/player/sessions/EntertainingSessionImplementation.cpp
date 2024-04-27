@@ -283,6 +283,8 @@ void EntertainingSessionImplementation::doPerformanceAction() {
 
 	int actionDrain = performance->getActionPointsPerLoop() - (int)(entertainer->getHAM(CreatureAttribute::QUICKNESS)/35.f);
 
+	actionDrain /= 2;
+
 	if (entertainer->getHAM(CreatureAttribute::ACTION) <= actionDrain) {
 		if (isDancing()) {
 			stopDancing();
@@ -596,6 +598,8 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber, bool gran
 
 	int actionDrain = (int)round((flourishActionDrain * 10 + 0.5) / 10.0); // Round to nearest dec for actual int cost
 
+	actionDrain /= 2;
+
 	if (entertainer->getHAM(CreatureAttribute::ACTION) <= actionDrain) {
 		entertainer->sendSystemMessage("@performance:flourish_too_tired");
 	} else {
@@ -632,8 +636,8 @@ void EntertainingSessionImplementation::addEntertainerBuffDuration(CreatureObjec
 
 	buffDuration += duration;
 
-	if (buffDuration > (120.0f + (10.0f / 60.0f)) ) // 2 hrs 10 seconds
-		buffDuration = (120.0f + (10.0f / 60.0f)); // 2hrs 10 seconds
+	if (buffDuration > (120.0f + (10.0f / 60.0f)) * 2) // 2 hrs 10 seconds
+		buffDuration = (120.0f + (10.0f / 60.0f)) * 2; // 2hrs 10 seconds
 
 	setEntertainerBuffDuration(creature, performanceType, buffDuration);
 }

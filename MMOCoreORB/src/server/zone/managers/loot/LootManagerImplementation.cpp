@@ -379,8 +379,31 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 			continue;
 		}
 
-		float minMod = (max > min) ? 2000.f : -2000.f;
-		float maxMod = (max > min) ? 500.f : -500.f;
+		if (prototype->isComponent()) {
+			min *= 1.25;
+			max *= 1.75;
+		}
+
+		if (prototype->isArmorObject()) {
+
+			if (subtitle == "armor_health_encumbrance" || subtitle == "armor_action_encumbrance" || subtitle == "armor_mind_encumbrance") {
+				continue;
+//				craftingValues->setMinValue(subtitle, min * 10);
+//				craftingValues->setMaxValue(subtitle, max * 10);
+			}
+
+//			if (subtitle == "armor_effectiveness") {
+//				craftingValues->setMinValue(subtitle, min * 1.5);
+//				craftingValues->setMaxValue(subtitle, max * 1.5);
+//			}
+
+			min *= 1.75;
+			max *= 1.0;
+
+		}
+
+		float minMod = (max > min) ? 300.f : -300.f;
+		float maxMod = (max > min) ? 300.f : -300.f;
 
 		if (max > min && min >= 0) { // Both max and min non-negative, max is higher
 			min = ((min * level / minMod) + min) * excMod;
@@ -667,13 +690,13 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 		const LootGroups* lootGroups = entry->getLootGroups();
 
 		//Now we do the second roll to determine loot group.
-		roll = System::random(10000000);
+		roll = System::random(lootGroups->count());//10000000);
 
 		//Select the loot group to use.
 		for (int i = 0; i < lootGroups->count(); ++i) {
 			const LootGroupEntry* entry = lootGroups->get(i);
 
-			tempChance += entry->getLootChance();
+			tempChance += 1;//entry->getLootChance();
 
 			//Is this entry lower than the roll? If yes, then we want to try the next entry.
 			if (tempChance < roll)
@@ -709,7 +732,7 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 	Reference<const LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate(selection);
 
 	if (itemTemplate == nullptr) {
-		warning("Loot item template requested does not exist: " + group->getLootGroupEntryForRoll(roll) + " for templateName: " + group->getTemplateName());
+		warning("Loot item template requested does not exist: " + selection + " for templateName: " + group->getTemplateName());
 		return false;
 	}
 

@@ -51,6 +51,8 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_armor_kashyyykian_black_mt
 
 	-- Damage types in WeaponObject
 	vulnerability = HEAT + COLD + STUN + LIGHTSABER,
+	
+	specialResists = KINETIC,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 1,

@@ -1281,38 +1281,38 @@ tatooine_world = {
 		},
 		{
 			lairTemplateName = "tatooine_canyon_krayt_dragon_pack_neutral_none",
-			spawnLimit = 10,
+			spawnLimit = -1,
 			minDifficulty = 122,
 			maxDifficulty = 276,
 			numberToSpawn = 0,
-			weighting = 4,
+			weighting = 15,
 			size = 35
 		},
 		{
 			lairTemplateName = "tatooine_canyon_krayt_dragon_lair_neutral_large",
-			spawnLimit = 10,
+			spawnLimit = -1,
 			minDifficulty = 122,
 			maxDifficulty = 276,
 			numberToSpawn = 0,
-			weighting = 4,
+			weighting = 15,
 			size = 35
 		},
 		{
 			lairTemplateName = "tatooine_giant_canyon_krayt_dragon_pack_neutral_none",
-			spawnLimit = 5,
+			spawnLimit = -1,
 			minDifficulty = 275,
 			maxDifficulty = 304,
 			numberToSpawn = 0,
-			weighting = 2,
+			weighting = 15,
 			size = 35
 		},
 		{
 			lairTemplateName = "tatooine_giant_canyon_krayt_dragon_lair_neutral_large",
-			spawnLimit = 5,
+			spawnLimit = -1,
 			minDifficulty = 275,
 			maxDifficulty = 304,
 			numberToSpawn = 0,
-			weighting = 2,
+			weighting = 15,
 			size = 35
 		},
 	}

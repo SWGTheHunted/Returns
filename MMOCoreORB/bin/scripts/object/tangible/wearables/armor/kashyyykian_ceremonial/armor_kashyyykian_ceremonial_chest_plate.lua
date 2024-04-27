@@ -51,6 +51,8 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_armor_kashyyykian_ceremon
 
 	-- Damage types in WeaponObject
 	vulnerability = ACID + STUN + LIGHTSABER,
+	
+	specialResists = KINETIC,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
