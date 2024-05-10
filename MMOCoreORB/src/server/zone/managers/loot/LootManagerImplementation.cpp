@@ -290,8 +290,10 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 	float fJunkValue = junkMinValue+System::random(junkMaxValue-junkMinValue);
 
 	if (level>0 && templateObject->getJunkDealerTypeNeeded()>1){
-		fJunkValue=fJunkValue + (fJunkValue * ((float)level / 100)); // This is the loot value calculation if the item has a level
+		fJunkValue = fJunkValue + (fJunkValue * ((float)level / 100)) * 2; // This is the loot value calculation if the item has a level
 	}
+
+	prototype->setJunkValue((int)(fJunkValue));
 
 	ValuesMap valuesMap = templateObject->getValuesMapCopy();
 	CraftingValues* craftingValues = new CraftingValues(valuesMap);
@@ -407,8 +409,10 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 		}
 
 		if (subtitle == "useCount" || subtitle == "quantity" || subtitle == "charges" || subtitle == "uses" || subtitle == "charge") {
-			craftingValues->setMinValue(subtitle, min * 3);
-			craftingValues->setMaxValue(subtitle, max * 3);
+			int newvalue = max + System::random(max * 2);
+
+			craftingValues->setMinValue(subtitle, newvalue);
+			craftingValues->setMaxValue(subtitle, newvalue);
 			continue;
 		}
 
