@@ -67,6 +67,11 @@ randomDotUses = {250, 9999}
 junkValueModifier = 5;
 
 lootableArmorAttachmentStatMods = {
+	"heavy_flame_thrower_accuracy",
+	"heavy_flame_thrower_speed",
+	"heavy_rifle_acid_accuracy",
+	"heavy_rifle_acid_speed",
+	"unarmed_passive_defense",
 	"aim",
 	"alert",
 	"berserk",
@@ -140,6 +145,29 @@ lootableArmorAttachmentStatMods = {
 }
 
 lootableClothingAttachmentStatMods = {
+--"force_experimentation",
+--"force_assembly",
+--"force_repair_bonus",
+--"force_failure_reduction",
+
+  "jedi_force_power_regen",
+  "jedi_force_power_max",
+
+	"heavy_flame_thrower_accuracy",
+	"heavy_flame_thrower_speed",
+	"heavy_rifle_acid_accuracy",
+	"heavy_rifle_acid_speed",
+	"unarmed_passive_defense",
+	"bio_engineer_assembly",
+	"bio_engineer_experimentation",
+	"jedi_saber_assembly",
+	"jedi_saber_experimentation",
+	"twohandlightsaber_accuracy",
+	"twohandlightsaber_speed",
+	"polearmlightsaber_accuracy",
+	"polearmlightsaber_speed",
+	"onehandlightsaber_accuracy",
+	"onehandlightsaber_speed",
 	"aim",
 	"alert",
 	"armor_assembly",
@@ -256,6 +284,13 @@ lootableClothingAttachmentStatMods = {
 }
 
 lootableArmorStatMods = {
+	"heavy_flame_thrower_accuracy",
+	"heavy_flame_thrower_speed",
+	"heavy_rifle_acid_accuracy",
+	"heavy_rifle_acid_speed",
+	"unarmed_passive_defense",
+	"bio_engineer_assembly",
+	"bio_engineer_experimentation",
 	"aim",
 	"alert",
 	"armor_assembly",
@@ -367,6 +402,24 @@ lootableArmorStatMods = {
 }
 
 lootableClothingStatMods = {
+
+  "jedi_force_power_regen",
+  "jedi_force_power_max",
+	"heavy_flame_thrower_accuracy",
+	"heavy_flame_thrower_speed",
+	"heavy_rifle_acid_accuracy",
+	"heavy_rifle_acid_speed",
+	"unarmed_passive_defense",
+	"bio_engineer_assembly",
+	"bio_engineer_experimentation",
+	"jedi_saber_assembly",
+	"jedi_saber_experimentation",
+	"twohandlightsaber_accuracy",
+	"twohandlightsaber_speed",
+	"polearmlightsaber_accuracy",
+	"polearmlightsaber_speed",
+	"onehandlightsaber_accuracy",
+	"onehandlightsaber_speed",
 	"aim",
 	"alert",
 	"armor_assembly",

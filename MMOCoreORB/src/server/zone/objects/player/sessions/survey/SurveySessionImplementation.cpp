@@ -357,7 +357,7 @@ void SurveySessionImplementation::surveyGnodeMinigame(int value) {
 		}
 
 		surveyer->inflictDamage(surveyer, CreatureAttribute::ACTION, 300, false, true);
-		doGamble = true;
+		doGamble = false;//true;
 	}
 
 	rescheduleSample();

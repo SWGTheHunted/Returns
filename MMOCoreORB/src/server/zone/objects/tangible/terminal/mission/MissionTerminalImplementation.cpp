@@ -12,6 +12,9 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/city/CityRemoveAmenityTask.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TerminalImplementation::fillObjectMenuResponse(menuResponse, player);
@@ -28,6 +31,22 @@ void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 		menuResponse->addRadialMenuItemToRadialID(73, 76, 3, "@city/city:south"); // South
 		menuResponse->addRadialMenuItemToRadialID(73, 77, 3, "@city/city:west"); // West
 	}
+
+	menuResponse->addRadialMenuItem(94, 3, "set mission level"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 82, 3, "reset"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 78, 3, "5"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 79, 3, "10"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 80, 3, "15"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 81, 3, "25"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 83, 3, "35"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 84, 3, "45"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 85, 3, "55"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 86, 3, "75"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 87, 3, "95"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 88, 3, "145"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 89, 3, "195"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 90, 3, "245"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 91, 3, "295"); //
 }
 
 int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -76,6 +95,46 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 		CityManager* cityManager = getZoneServer()->getCityManager();
 		cityManager->alignAmenity(city, player, _this.getReferenceUnsafeStaticCast(), selectedID - 74);
+
+		return 0;
+	}
+
+	if (selectedID >= 78) {
+		int selectedLevel = 0;//server->getPlayerManager()->calculatePlayerLevel(player);
+
+		if (selectedID == 78) selectedLevel = 5;
+		if (selectedID == 79) selectedLevel = 10;
+		if (selectedID == 80) selectedLevel = 15;
+		if (selectedID == 81) selectedLevel = 25;
+		if (selectedID == 82) selectedLevel = 0;//server->getPlayerManager()->calculatePlayerLevel(player);
+		if (selectedID == 83) selectedLevel = 35;
+		if (selectedID == 84) selectedLevel = 45;
+		if (selectedID == 85) selectedLevel = 55;
+		if (selectedID == 86) selectedLevel = 75;
+		if (selectedID == 87) selectedLevel = 95;
+		if (selectedID == 88) selectedLevel = 145;
+		if (selectedID == 89) selectedLevel = 195;
+		if (selectedID == 90) selectedLevel = 245;
+		if (selectedID == 91) selectedLevel = 295;
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		ManagedReference<PlayerObject* > ghost = player->getPlayerObject();
+		//PlayerObject* ghost = player->getPlayerObject();
+
+		int currentlevel = ghost->getExperience("mission_level_choice");
+
+		playerManager->awardExperience(player, "mission_level_choice", currentlevel * -1, false, false, false);
+
+		playerManager->awardExperience(player, "mission_level_choice", selectedLevel, false, false, false);
+
+		//PlayerManagerImplementation::awardExperience(player, "mission_level_choice", selectedLevel, false, false, false);
+
+		//DirectorManager::instance()->writeScreenPlayData(player, "mission_level_choice", "levelChoice", selectedLevel);
+
+		//Vector<Reference<ScreenPlayTask*> > levelData = DirectorManager::instance()->writeScreenPlayData(player, "mission_level_choice", "levelChoice", selectedLevel);
+
+		//Vector<Reference<ScreenPlayTask*> > eventList = DirectorManager::instance()->getObjectEvents(obj);
 
 		return 0;
 	}

@@ -763,11 +763,19 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	if (difficulty == 5)
 		difficulty = 4;
 
+	ManagedReference<PlayerObject* > ghost = player->getPlayerObject();
+
 	int diffDisplay = difficultyLevel + 7;
 	if (player->isGrouped())
 		diffDisplay += player->getGroup()->getGroupLevel();
 	else
 		diffDisplay += playerLevel;
+
+	int levelselect = ghost->getExperience("mission_level_choice");
+
+	if (levelselect > 0) {
+		diffDisplay = levelselect;
+	}
 
 	String building = lairTemplateObject->getMissionBuilding(difficulty);
 
@@ -798,7 +806,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 		distance /= 2;
 
-		startPos = player->getWorldCoordinate((float)distance, (float)System::random(360), false);
+		startPos = player->getWorldCoordinate((float)distance, 360, false);
 
 		if (zone->isWithinBoundaries(startPos)) {
 			float height = zone->getHeight(startPos.getX(), startPos.getY());
@@ -1749,6 +1757,14 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	int playerLevel = server->getPlayerManager()->calculatePlayerLevel(player);
 	if (player->isGrouped())
 		playerLevel = player->getGroup()->getGroupLevel();
+
+	ManagedReference<PlayerObject* > ghost = player->getPlayerObject();
+
+	int levelselect = ghost->getExperience("mission_level_choice");
+
+	if (levelselect > 0) {
+		playerLevel = levelselect;
+	}
 
 	LairSpawn* lairSpawn = nullptr;
 
