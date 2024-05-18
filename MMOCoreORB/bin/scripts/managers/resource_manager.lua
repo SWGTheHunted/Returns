@@ -52,7 +52,7 @@ averageShiftTime = 1000 * 60 * 60 * 6 --14400000 -- In milliseconds 4hrs
   --  *** Default is 2 hours (7200000) ***
   --  *** Good testing time is (15000) ***
 
-aveduration = 60 * 60 --3600=1hr --this is the time multiplier in seconds vanilla is 60x60x24=86400 or 24hrs
+aveduration = 60 * 60 * 24-- vanilla is 24hr --3600=1hr --this is the time multiplier in seconds vanilla is 60x60x24=86400 or 24hrs
 -- In seconds 3972 = 6-24hrs, 14400 = 24hrs-88hrs or 3.67days -- vanilla 86400 or 21.75 days max
 
   -- This is the modifier for how long spawns are in shift
