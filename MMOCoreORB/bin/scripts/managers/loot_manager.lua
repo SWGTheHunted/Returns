@@ -152,6 +152,13 @@ lootableClothingAttachmentStatMods = {
 
   "jedi_force_power_regen",
   "jedi_force_power_max",
+  "saber_block",
+  "jedi_toughness",
+  "lightsaber_toughness",
+  "unarmed_toughness",
+  "onehandmelee_toughness",
+  "twohandmelee_toughness",
+  "polearm_toughness",
 
 	"heavy_flame_thrower_accuracy",
 	"heavy_flame_thrower_speed",
@@ -405,6 +412,15 @@ lootableClothingStatMods = {
 
   "jedi_force_power_regen",
   "jedi_force_power_max",
+  "saber_block",
+  "jedi_toughness",
+  "lightsaber_toughness",
+  "unarmed_toughness",
+  "onehandmelee_toughness",
+  "twohandmelee_toughness",
+  "polearm_toughness",
+  
+  
 	"heavy_flame_thrower_accuracy",
 	"heavy_flame_thrower_speed",
 	"heavy_rifle_acid_accuracy",

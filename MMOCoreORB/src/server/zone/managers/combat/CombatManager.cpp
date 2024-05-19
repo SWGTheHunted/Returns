@@ -1472,6 +1472,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	if (diff > 0)
 		damage += System::random(diff);
 
+	if (data.isForceAttack()) //force powers damage bonus cuz it sucks
+		damage *= 3;
+
 	damage = applyDamageModifiers(attacker, weapon, damage, data);
 
 	damage += defender->getSkillMod("private_damage_susceptibility");
@@ -1515,7 +1518,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	//PvE dmg
 	if (attacker->isPlayerCreature() && !defender->isPlayerCreature())
-		damage *= 1.5;
+		damage *= 1.25;
 
 	//EvP dmg
 	if (!attacker->isPlayerCreature() && defender->isPlayerCreature())
@@ -1635,7 +1638,9 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 
 		// saber block is special because it's just a % chance to block based on the skillmod
 		if (def == "saber_block") {
-			if (!(attacker->isTurret() || weapon->isThrownWeapon()) && ((weapon->isHeavyWeapon() || weapon->isSpecialHeavyWeapon() || (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK)) && ((System::random(100)) < targetCreature->getSkillMod(def))))
+			int newsb = targetCreature->getSkillMod(def);
+			if (newsb > 99) newsb = 99;
+			if (!(attacker->isTurret() || weapon->isThrownWeapon()) && ((weapon->isHeavyWeapon() || weapon->isSpecialHeavyWeapon() || (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK)) && ((System::random(100)) < newsb)))
 				return RICOCHET;
 			else return HIT;
 		}
