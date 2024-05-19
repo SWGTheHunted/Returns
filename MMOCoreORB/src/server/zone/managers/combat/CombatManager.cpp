@@ -1472,7 +1472,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	if (diff > 0)
 		damage += System::random(diff);
 
-	if (data.isForceAttack()) //force powers damage bonus cuz it sucks
+	if (attacker->isPlayerCreature() && data.isForceAttack()) //force powers damage bonus cuz it sucks
 		damage *= 3;
 
 	damage = applyDamageModifiers(attacker, weapon, damage, data);
