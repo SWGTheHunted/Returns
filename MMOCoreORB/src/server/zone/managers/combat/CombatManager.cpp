@@ -791,8 +791,8 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 	debug() << "Base target defense is " << targetDefense;
 
 	// defense hardcap
-//	if (targetDefense > 125)
-//		targetDefense = 125;
+	if (!defender->isPlayerCreature() && targetDefense > 125)
+		targetDefense = 125;
 
 	if (attacker->isPlayerCreature())
 		targetDefense += defender->getSkillMod("private_defense");
@@ -826,8 +826,8 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 		targetDefense += defender->getSkillMod("private_" + mod);
 	}
 
-//	if (targetDefense > 125)
-//		targetDefense = 125;
+	if (!defender->isPlayerCreature() && targetDefense > 125)
+		targetDefense = 125;
 
 	return targetDefense;
 }
@@ -1474,6 +1474,10 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	if (attacker->isPlayerCreature() && data.isForceAttack()) //force powers damage bonus cuz it sucks
 		damage *= 3;
+
+	if (!attacker->isPlayerCreature() && data.isForceAttack()) {	//cap npc max force pwoer dmg.
+		damage /= 3;						//this prevents npc from doing 3k dmg force lightning
+	}
 
 	damage = applyDamageModifiers(attacker, weapon, damage, data);
 
