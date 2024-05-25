@@ -115,7 +115,13 @@ void BountyMissionObjectiveImplementation::complete() {
 
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 	//Award bountyhunter xp.
-	owner->getZoneServer()->getPlayerManager()->awardExperience(owner, "bountyhunter", mission->getRewardCredits() / 50, true, 1);
+
+	if (owner->hasSkill("combat_bountyhunter_investigation_01")) {
+		owner->getZoneServer()->getPlayerManager()->awardExperience(owner, "bountyhunter", mission->getRewardCredits() / 50, true, 1);
+	}
+	if (owner->hasSkill("force_title_jedi_rank_03"))	{
+		owner->getZoneServer()->getPlayerManager()->awardExperience(owner, "force_rank_xp", mission->getDifficultyDisplay() * 10, true, 1, false);
+	}
 
 	owner->getZoneServer()->getMissionManager()->completePlayerBounty(mission->getTargetObjectId(), owner->getObjectID());
 
@@ -584,11 +590,11 @@ void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg
 			ZoneServer* zoneServer = owner->getZoneServer();
 			if (zoneServer != nullptr) {
 				ManagedReference<CreatureObject*> target = zoneServer->getObject(mission->getTargetObjectId()).castTo<CreatureObject*>();
-//				if (target != nullptr) {
+				if (target != nullptr) {
 //					int minXpLoss = -50000;
 //					int maxXpLoss = -500000;
-//
-//					VisibilityManager::instance()->clearVisibility(target);
+
+					VisibilityManager::instance()->clearVisibility(target);
 //					int xpLoss = mission->getRewardCredits() * -2;
 //
 //					if (xpLoss > minXpLoss)
@@ -601,7 +607,7 @@ void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg
 //					message.setDI(xpLoss * -1);
 //					message.setTO("exp_n", "jedi_general");
 //					target->sendSystemMessage(message);
-//				}
+				}
 			}
 
 			complete();

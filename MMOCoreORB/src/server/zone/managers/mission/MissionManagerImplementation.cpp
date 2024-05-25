@@ -174,10 +174,17 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	}
 
 	if (missionTerminal->isBountyTerminal()) {
-		if (!player->hasSkill("combat_bountyhunter_novice")) {
+		if (player->hasSkill("combat_bountyhunter_novice") || player->hasSkill("force_title_jedi_rank_03")) {
+
+		}
+		else {
 			player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
 			return;
 		}
+//		if (!player->hasSkill("combat_bountyhunter_novice") |! player->hasSkill("force_title_jedi_rank_03")) { //	!player->getPlayerObject()->getJediState() >= 4
+//			player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
+//			return;
+//		}
 	}
 
 	ManagedReference<CityRegion*> terminalCity = missionTerminal->getCityRegion().get();
@@ -973,10 +980,10 @@ void MissionManagerImplementation::randomizeGenericSurveyMission(CreatureObject*
 }
 
 void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject* player, MissionObject* mission, const uint32 faction, Vector<ManagedReference<PlayerBounty*>>* potentialTargets) {
-	if (!player->hasSkill("combat_bountyhunter_novice")) {
-		player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
-		return;
-	}
+//	if (!player->hasSkill("combat_bountyhunter_novice")) {
+//		player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
+//		return;
+//	}
 
 	Zone* playerZone = player->getZone();
 
@@ -991,6 +998,9 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	} else if (player->hasSkill("combat_bountyhunter_investigation_01")) {
 		level = 2;
 		randomTexts = 50;
+	}
+	if (player->hasSkill("force_title_jedi_rank_03")) {
+		level = 3;
 	}
 
 	NameManager* nm = processor->getNameManager();
@@ -1026,11 +1036,12 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 			mission->setTargetOptionalTemplate("");
 
 			ManagedReference<CreatureObject*> creature = server->getObject(target->getTargetPlayerID()).castTo<CreatureObject*>();
-			String name = "";
+			String name = "unknown";	//String name = "";
 
 			if (creature != nullptr) {
-				name = creature->getFirstName() + " " + creature->getLastName();
-				name = name.trim();
+//				name = creature->getFirstName() + " " + creature->getLastName();
+//				name = name.trim();
+				name = "unknown";
 			}
 
 			mission->setMissionTargetName(name);
@@ -1068,6 +1079,20 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 			mission->setMissionDescription(stfFile, "m" + String::valueOf(randTexts) + "d");
 		}
 	} else {
+
+//		LairSpawn* randomLairSpawn = getRandomLairSpawn(player, faction, MissionTypes::BOUNTY);//using destroy causes bugs, using bounty causes crash when opening term
+//		String lairTemplate = randomLairSpawn->getLairTemplateName();
+//		LairTemplate* lairTemplateObject = CreatureTemplateManager::instance()->getLairTemplate(lairTemplate.hashCode());
+//
+//	 	const VectorMap<String, int>* mobiles = lairTemplateObject->getMobiles();
+//	 	String mobileName = "unknown";
+//
+//	 	if (mobiles->size() > 0) {
+//	 		mobileName = mobiles->elementAt(0).getKey();
+//	 	}
+//
+//	 	mission->setMissionTargetName(mobileName.replaceAll("_", " "));
+
 		mission->setMissionTargetName(nm->makeCreatureName());
 
 		String planet = playerZone->getZoneName();
@@ -1289,7 +1314,9 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	return true;
 }
 
-NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType) {
+NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(
+		const unsigned int planetCRC, const float x, const float y,
+		const int spawnType) {
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 
 	Vector3 pos(x, y, 0);
@@ -1961,8 +1988,8 @@ bool MissionManagerImplementation::isBountyValidForPlayer(CreatureObject* player
 	if (!bounty->isOnline())
 		return false;
 
-	if (bounty->numberOfActiveMissions() >= 5)
-		return false;
+//	if (bounty->numberOfActiveMissions() >= 5)
+//		return false;
 
 	uint64 targetId = bounty->getTargetPlayerID();
 	uint64 playerId = player->getObjectID();
@@ -1976,7 +2003,7 @@ bool MissionManagerImplementation::isBountyValidForPlayer(CreatureObject* player
 		Time currentTime;
 		uint64 curTime = currentTime.getMiliTime();
 
-		if (lastBountyKill > 0 && (curTime - lastBountyKill) < playerBountyKillBuffer)
+		if (lastBountyKill > 0 && (curTime - lastBountyKill) < playerBountyKillBuffer)//3hr
 			return false;
 
 	}

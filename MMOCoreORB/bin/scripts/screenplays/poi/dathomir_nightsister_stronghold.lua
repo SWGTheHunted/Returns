@@ -278,7 +278,7 @@ function NightSisterStrongholdScreenPlay:respawnAxkvaMin()
 end
 
 function NightSisterStrongholdScreenPlay:axkvaKilled(pAxkvaMin)
-	createEvent(14400 * 1000, "NightSisterStrongholdScreenPlay", "respawnAxkvaMin", nil, "")--4hr 14400
+	createEvent(2 * 60 * 60 * 1000, "NightSisterStrongholdScreenPlay", "respawnAxkvaMin", nil, "")--4hr 14400
 
 	return 1
 end

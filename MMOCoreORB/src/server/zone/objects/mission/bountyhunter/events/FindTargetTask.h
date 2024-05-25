@@ -143,51 +143,64 @@ class FindTargetTask : public Task, public Logger {
 
 	bool getSuccess(CreatureObject* player, BountyMissionObjective* objective) {
 		String skillToUse = "droid_find_chance";
-		int maximumSkillMod = 155;
+		//int maximumSkillMod = 155;
 		if (track) {
 			skillToUse = "droid_track_chance";
-			maximumSkillMod = 125;
+			//maximumSkillMod = 125;
 		}
 
 		long long successChance = player->getSkillMod(skillToUse) + player->getSkillModFromBuffs(skillToUse);
 
-		if (successChance < 0) {
-			successChance = 0;
-		} else if (successChance > maximumSkillMod) {
-			successChance = maximumSkillMod;
-		}
+//		if (successChance < 0) {
+//			successChance = 0;
+//		} else if (successChance > maximumSkillMod) {
+//			successChance = maximumSkillMod;
+//		}
+//
+//		successChance -= ((getTargetLevel(player, objective)) / 3);
+//
+//		if (successChance < 5) {
+//			successChance = 5;
+//		} else if (successChance > 95) {
+//			successChance = 95;
+//		}
 
-		successChance -= ((getTargetLevel(player, objective)) / 3);
+		//int randomValue = System::random(100);
 
-		if (successChance < 5) {
-			successChance = 5;
-		} else if (successChance > 95) {
-			successChance = 95;
-		}
-
-		int randomValue = System::random(100);
-
-		return randomValue < successChance;
+		return System::random(successChance + 100) > System::random(25);	//randomValue < successChance;
 	}
 
 	int calculateTime(CreatureObject* player) {
 		String skillToUse = "droid_find_speed";
-		int maximumSkillMod = 115;
+		//int maximumSkillMod = 115;
 		if (track) {
 			skillToUse = "droid_track_speed";
-			maximumSkillMod = 105;
+			//maximumSkillMod = 105;
 		}
 
 		long long skillMod = player->getSkillMod(skillToUse) + player->getSkillModFromBuffs(skillToUse);
 
-		int checkedSkillMod = skillMod;
-		if (checkedSkillMod < 0) {
-			checkedSkillMod = 0;
-		} else if (checkedSkillMod > maximumSkillMod) {
-			checkedSkillMod = maximumSkillMod;
-		}
+//		int checkedSkillMod = skillMod;
+//		if (checkedSkillMod < 0) {
+//			checkedSkillMod = 0;
+//		}
+//		else if (checkedSkillMod > maximumSkillMod) {
+//			checkedSkillMod = maximumSkillMod;
+//		}
 
-		int time = 150 - checkedSkillMod;
+		skillMod = System::random(skillMod + 150);
+//			if (skillMod < 1) {
+//				skillMod = 1;
+//			}
+//			if (skillMod > 135) {
+//				skillMod = 135;
+//			}
+
+		int time = 150 - skillMod;	//150 - checkedSkillMod;
+
+		if (time < 1) {
+			time = 1;
+		}
 
 		return time + System::random(time / 2);
 	}
