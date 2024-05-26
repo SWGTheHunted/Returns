@@ -78,8 +78,8 @@ public:
 		);
 		departureVector = arrivalVector;
 
-		interplanetaryTravelAllowed = (bool) luaObject->getByteField("interplanetaryTravelAllowed");
-		incomingTravelAllowed = (bool) luaObject->getByteField("incomingTravelAllowed");
+		interplanetaryTravelAllowed = true;//(bool) luaObject->getByteField("interplanetaryTravelAllowed");
+		incomingTravelAllowed = true;//(bool) luaObject->getByteField("incomingTravelAllowed");
 	}
 
 	// Called by the shuttles and transports to set the shuttle object for the nearest travel point
@@ -163,7 +163,7 @@ public:
 		if (arrivalPoint->getPointZone() == pointZone && arrivalPoint->isIncomingAllowed())
 			return true;
 
-		return (interplanetaryTravelAllowed && arrivalPoint->isIncomingAllowed());
+		return true;//(interplanetaryTravelAllowed && arrivalPoint->isIncomingAllowed());
 	}
 
 	ManagedReference<CreatureObject*> getShuttle() {

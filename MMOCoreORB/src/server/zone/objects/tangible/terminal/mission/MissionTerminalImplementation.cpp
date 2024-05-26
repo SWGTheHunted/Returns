@@ -39,14 +39,14 @@ void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 	menuResponse->addRadialMenuItemToRadialID(94, 80, 3, "15"); //
 	menuResponse->addRadialMenuItemToRadialID(94, 81, 3, "25"); //
 	menuResponse->addRadialMenuItemToRadialID(94, 83, 3, "35"); //
-	menuResponse->addRadialMenuItemToRadialID(94, 84, 3, "45"); //
-	menuResponse->addRadialMenuItemToRadialID(94, 85, 3, "55"); //
-	menuResponse->addRadialMenuItemToRadialID(94, 86, 3, "75"); //
-	menuResponse->addRadialMenuItemToRadialID(94, 87, 3, "95"); //
-	menuResponse->addRadialMenuItemToRadialID(94, 88, 3, "145"); //
-	menuResponse->addRadialMenuItemToRadialID(94, 89, 3, "195"); //
-	menuResponse->addRadialMenuItemToRadialID(94, 90, 3, "245"); //
-	menuResponse->addRadialMenuItemToRadialID(94, 91, 3, "295"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 84, 3, "50"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 85, 3, "75"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 86, 3, "100"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 87, 3, "150"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 88, 3, "200"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 89, 3, "300"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 90, 3, "400"); //
+	menuResponse->addRadialMenuItemToRadialID(94, 91, 3, "500"); //
 }
 
 int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -108,14 +108,14 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 		if (selectedID == 81) selectedLevel = 25;
 		if (selectedID == 82) selectedLevel = 0;//server->getPlayerManager()->calculatePlayerLevel(player);
 		if (selectedID == 83) selectedLevel = 35;
-		if (selectedID == 84) selectedLevel = 45;
-		if (selectedID == 85) selectedLevel = 55;
-		if (selectedID == 86) selectedLevel = 75;
-		if (selectedID == 87) selectedLevel = 95;
-		if (selectedID == 88) selectedLevel = 145;
-		if (selectedID == 89) selectedLevel = 195;
-		if (selectedID == 90) selectedLevel = 245;
-		if (selectedID == 91) selectedLevel = 295;
+		if (selectedID == 84) selectedLevel = 50;
+		if (selectedID == 85) selectedLevel = 75;
+		if (selectedID == 86) selectedLevel = 100;
+		if (selectedID == 87) selectedLevel = 150;
+		if (selectedID == 88) selectedLevel = 200;
+		if (selectedID == 89) selectedLevel = 300;
+		if (selectedID == 90) selectedLevel = 400;
+		if (selectedID == 91) selectedLevel = 500;
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 

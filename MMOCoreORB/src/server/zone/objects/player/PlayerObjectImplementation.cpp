@@ -1862,6 +1862,17 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 		}
 	}
 
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+
 	creature->activateHAMRegeneration(latency);
 	creature->activateStateRecovery();
 
@@ -1873,11 +1884,24 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 		int timeDelta = currentTime.getMiliTime() - lastDigestion.getMiliTime();
 		int fillingReduction = timeDelta / 18000;
 
+		fillingReduction *= 2;
+
 		doDigest(fillingReduction);
 
 		lastDigestion.updateToCurrentTime();
 		cooldownTimerMap->updateToCurrentAndAddMili("digestEvent", 18000);
 	}
+
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
 
 	if (isOnline()) {
 		const CommandQueueActionVector* commandQueue = creature->getCommandQueue();
@@ -1919,10 +1943,21 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 			logSessionStats(false);
 	}
 
-	if (cooldownTimerMap->isPast("spawnCheckTimer")) {
-		checkForNewSpawns();
-		cooldownTimerMap->updateToCurrentAndAddMili("spawnCheckTimer", 3000);
-	}
+//	if (cooldownTimerMap->isPast("spawnCheckTimer")) {
+//		checkForNewSpawns();//more spawns with this?
+//		cooldownTimerMap->updateToCurrentAndAddMili("spawnCheckTimer", 3000);
+//	}
+
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
+	checkForNewSpawns();
 
 	activateRecovery();
 }

@@ -13,6 +13,10 @@ function Yavin4StaticSpawnsScreenPlay:start()
 end
 
 function Yavin4StaticSpawnsScreenPlay:spawnMobiles()
+--	spawnMobile("yavin4", "trainer_dark_sentinel", 300, 5074.2, 78.8, 313.9, 90, 0)
+--	spawnMobile("yavin4", "trainer_light_sentinel", 300, -5579.0, 87.7, 4908.5, -179, 0)
+
+
 	-- Light Jedi Enclave (-5575, 4910)
 	local pSentinel = spawnMobile("yavin4", "light_jedi_sentinel", 0, -5579.0, 87.7, 4908.5, -179, 0)
 
@@ -98,9 +102,9 @@ function Yavin4StaticSpawnsScreenPlay:notifySentinelDead(pSentinel, pKiller)
 	deleteData(objID .. ":sentinelID")
 
 	if (objName == "light_jedi_sentinel") then
-		createEvent(300 * 1000, "Yavin4StaticSpawnsScreenPlay", "respawnLightSentinel", pSentinel, sentinelID)
+		createEvent(3 * 60 * 60 * 1000, "Yavin4StaticSpawnsScreenPlay", "respawnLightSentinel", pSentinel, sentinelID)
 	elseif (objName == "dark_jedi_sentinel") then
-		createEvent(300 * 1000, "Yavin4StaticSpawnsScreenPlay", "respawnDarkSentinel", pSentinel, sentinelID)
+		createEvent(3 * 60 * 60 * 1000, "Yavin4StaticSpawnsScreenPlay", "respawnDarkSentinel", pSentinel, sentinelID)
 	end
 
 	return 1

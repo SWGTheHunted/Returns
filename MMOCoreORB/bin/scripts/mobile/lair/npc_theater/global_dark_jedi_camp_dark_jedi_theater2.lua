@@ -1,10 +1,6 @@
-global_death_watch_neutral_none = Lair:new {
-	mobiles = {
-		{"death_watch_bloodguard",2},
-		{"death_watch_ghost",2},
-		{"death_watch_wraith",1},
-	},
-	spawnLimit = 3,
+global_dark_jedi_camp_dark_jedi_theater2 = Lair:new {
+	mobiles = {{"dark_jedi_knight",2}, {"dark_jedi_master",1}},
+	spawnLimit = 2,
 	buildingsVeryEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsMedium = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
@@ -15,4 +11,4 @@ global_death_watch_neutral_none = Lair:new {
 	buildingType = "theater"
 }
 
-addLairTemplate("global_death_watch_neutral_none", global_death_watch_neutral_none)
+addLairTemplate("global_dark_jedi_camp_dark_jedi_theater2", global_dark_jedi_camp_dark_jedi_theater2)

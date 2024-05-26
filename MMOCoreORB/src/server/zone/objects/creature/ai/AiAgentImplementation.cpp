@@ -520,6 +520,29 @@ void AiAgentImplementation::runStartAwarenessInterrupt(SceneObject* pObject) {
 
 	if (isInCombat()) return;
 
+	//PlayerObjectImplementation::checkForNewSpawns(); //cant call member function without object
+
+//	if (cooldownTimerMap->isPast("spawnCheckTimer")) {
+//
+//		//ChatManager* chatManager = zoneServer->getChatManager();
+//		//ManagedReference<AiAgent*> ai = pObject->asPlayerObject();
+//		//PlayerObject* defenderGhost = pObject->getPlayerObject();
+//
+////		PlayerObject* checkForNewSpawns = getPlayerObject()->checkForNewSpawns();
+////
+////		PlayerObject* PlayerObject = thisAgent->getZoneServer()->getPlayerManager();
+////		PlayerObject->checkForNewSpawns();
+//
+////		PlayerObject* ghost = getPlayerObject();
+////		ghost->checkForNewSpawns();
+//
+//		PlayerObjectImplementation::checkForNewSpawns();
+//
+//		//zoneServer->getPlayerObject()->checkForNewSpawns();//more spawns with this?
+//		//cooldownTimerMap->updateToCurrentAndAddMili("spawnCheckTimer", 3000);
+//
+//	}
+
 	float levelDiff = creoObject->getLevel() - getLevel();
 	float mod = Math::max(0.04f, Math::min((1.f - (levelDiff / 20.f)), 1.2f));
 
@@ -1203,7 +1226,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 		}
 
 		if (!despawnEvent->isScheduled())
-			despawnEvent->schedule(30000);
+			despawnEvent->schedule(1000 * 60 * 15);//15min?	//30000 vanilla
 	}
 }
 
@@ -1223,7 +1246,7 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	CombatManager::instance()->attemptPeace(asAiAgent());
 	clearPatrolPoints();
 
-	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
+	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);//fix this fly text and others?
 	notifyObservers(ObserverEventType::FLEEING, target);
 	sendReactionChat(ReactionManager::FLEE);
 

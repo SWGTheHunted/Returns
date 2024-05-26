@@ -115,6 +115,7 @@ includeFile("lair/npc_dynamic/global_wilder_trailblazer_squad_neutral_none.lua")
 includeFile("lair/npc_dynamic/global_wilder_traveller_squad_neutral_none.lua")
 includeFile("lair/npc_dynamic/global_wilder_warder_squad_neutral_none.lua")
 includeFile("lair/npc_dynamic/global_wookiee_brawler_neutral_none.lua")
+includeFile("lair/npc_dynamic/global_death_watch_neutral_none.lua")
 
 includeFile("lair/npc_dynamic/lok_blood_razor_pack2_neutral_none.lua")
 includeFile("lair/npc_dynamic/lok_blood_razor_pack3_neutral_none.lua")
