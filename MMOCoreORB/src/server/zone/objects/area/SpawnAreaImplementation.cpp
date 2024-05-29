@@ -38,7 +38,7 @@ void SpawnAreaImplementation::buildSpawnList(Vector<uint32>* groupCRCs) {
 Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 	Vector3 position;
 	bool positionFound = false;
-	int retries = 20;//decrease this and use multiple spawn attempts instead
+	int retries = 10;//decrease this and use multiple spawn attempts instead
 
 	const auto worldPosition = player->getWorldPosition();
 
@@ -166,7 +166,7 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	//	return;
 
 	// Check the spot to see if spawning is allowed
-	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize())) {	//finalSpawn->getSize() + 64.f
+	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 32)) {	//finalSpawn->getSize() + 64.f
 		return;
 	}
 
