@@ -116,7 +116,7 @@ void BountyMissionObjectiveImplementation::complete() {
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 	//Award bountyhunter xp.
 
-	if (owner->hasSkill("combat_bountyhunter_investigation_01")) {
+	if (owner->hasSkill("combat_bountyhunter_novice")) {
 		owner->getZoneServer()->getPlayerManager()->awardExperience(owner, "bountyhunter", mission->getRewardCredits() / 50, true, 1);
 	}
 	if (owner->hasSkill("force_title_jedi_rank_03"))	{

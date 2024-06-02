@@ -257,6 +257,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				ham = System::random(getHamMaximum() - getHamBase()) + getHamBase();
 				if (isDroidObject() && isPet())
 					ham = getHamMaximum();
+				if (ham > 125000) ham = 125000;
 				baseHAM.add(ham);
 			} else
 				baseHAM.add(ham/10);

@@ -27,13 +27,13 @@ void WeaponObjectImplementation::initializeTransientMembers() {
 
 	setLoggingName("WeaponObject");
 
-	if(damageSlice > 1.5 || damageSlice < 1) {
-		damageSlice = 1;
-	}
-
-	if(speedSlice > 1.0 || speedSlice < .5) {
-		speedSlice = 1;
-	}
+//	if(damageSlice > 1.5 || damageSlice < 1) {
+//		damageSlice = 1;
+//	}
+//
+//	if(speedSlice > 1.0 || speedSlice < .5) {
+//		speedSlice = 1;
+//	}
 }
 
 void WeaponObjectImplementation::notifyLoadFromDatabase() {
@@ -90,11 +90,13 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	if (templateAttackSpeed > 1)
 		attackSpeed = templateAttackSpeed;
 
-	if (!isJediWeapon()) {
-		setSliceable(true);
-	} else if (isJediWeapon()) {
-		setSliceable(false);
-	}
+	setSliceable(true);
+
+//	if (!isJediWeapon()) {
+//		setSliceable(true);
+//	} else if (isJediWeapon()) {
+//		setSliceable(false);
+//	}
 }
 
 void WeaponObjectImplementation::sendContainerTo(CreatureObject* player) {

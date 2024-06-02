@@ -1572,6 +1572,36 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 			damage *= 1.f / (1.f + ((float)forceDefense / 100.f));
 	}
 
+
+	//	ZoneServer* server = attacker->getZoneServer();
+	//
+	//
+	//	int attackerLvl = 0;
+	//	int defenderLvl = 0;
+	//
+	//	if (attacker->isPlayerCreature()){
+	//		PlayerManager* pManagera = server->getPlayerManager();
+	//		attackerLvl = pManagera->calculatePlayerLevel(attacker) * 14;//25x14=350
+	//	} else {
+	//		attackerLvl = attacker->getLevel();
+	//	}
+	//
+	//	if (defender->isPlayerCreature()){
+	//		PlayerManager* pManagerd = server->getPlayerManager();
+	//		defenderLvl = pManagerd->calculatePlayerLevel(defender) * 14;
+	//	} else {
+	//		defenderLvl = defender->getLevel();
+	//	}
+	//
+	//	if (attackerLvl > 350)
+	//		attackerLvl = 350;
+	//	if (defenderLvl > 350)
+	//		defenderLvl = 350;
+	//
+	//	float leveledmulti = 0.0f;
+	//
+	//	leveledmulti = attackerLvl / defenderLvl;
+
 	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature() && !data.isForceAttack())
 		damage *= 0.25;

@@ -59,8 +59,8 @@ public:
 		if (creature->getSlottedObject("default_weapon") == weapon)
 			return GENERALERROR;
 
-		if (weapon->isJediWeapon())
-			return GENERALERROR;			
+//		if (weapon->isJediWeapon())
+//			return GENERALERROR;
 
 		if((weapon->isRangedWeapon() && pup->isRanged()) ||
 				(weapon->isMeleeWeapon() && pup->isMelee()) ||
