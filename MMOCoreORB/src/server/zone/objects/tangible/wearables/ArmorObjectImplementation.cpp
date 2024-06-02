@@ -45,7 +45,7 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	lightSaber = armorTemplate->getLightSaber();
 
 	hitLocation = armorTemplate->getHitLocation();
-	if (hitLocation == ArmorObjectTemplate::NOLOCATION) {
+	if (hitLocation == ArmorObjectTemplate::NOLOCATION) {//mini suits
 		if (hasArrangementDescriptor("chest2"))
 			hitLocation |= ArmorObjectTemplate::CHEST;
 		if (hasArrangementDescriptor("bicep_r") || hasArrangementDescriptor("bicep_l") || hasArrangementDescriptor("bracer_upper_r") || hasArrangementDescriptor("bracer_upper_l") || hasArrangementDescriptor("gloves"))
