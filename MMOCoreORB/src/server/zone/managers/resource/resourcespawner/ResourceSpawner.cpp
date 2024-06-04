@@ -174,10 +174,10 @@ void ResourceSpawner::loadResourceSpawns() {
 
 		resourceMap->add(resourceSpawn->getName(), resourceSpawn);
 
-		if (!resourceSpawn->inShift()) { //bingo bango, remove the if to force despawn of all mats? // works
-			despawn(resourceSpawn);
-			continue;
-		}
+//		if (!resourceSpawn->inShift()) { //bingo bango, remove the if to force despawn of all mats? // works
+//			despawn(resourceSpawn);
+//			continue;
+//		}
 
 		if (resourceSpawn->getSpawnPool() != 0) {
 			Locker locker(resourceSpawn);
@@ -365,13 +365,14 @@ bool ResourceSpawner::writeAllSpawnsToScript() {
 }
 
 void ResourceSpawner::shiftResources() {
-	randomPool->update();
-	fixedPool->update();
-	nativePool->update();
-	minimumPool->update();
-	manualPool->update();
-
-	dumpResources();
+	//disable shifting?
+//	randomPool->update();
+//	fixedPool->update();
+//	nativePool->update();
+//	minimumPool->update();
+//	manualPool->update();
+//
+//	dumpResources();
 }
 
 ResourceSpawn* ResourceSpawner::createRecycledResourceSpawn(const ResourceTreeEntry* entry) const {
@@ -619,7 +620,7 @@ int ResourceSpawner::randomizeValue(int min, int max) {
 //		}
 //	}
 	
-	int newranstat = System::random(750) + 250;
+	int newranstat = System::random(250) + 750;
 	
 	return newranstat; //randomStat;
 }
@@ -632,7 +633,7 @@ long ResourceSpawner::getRandomExpirationTime(const ResourceTreeEntry* resourceE
 //		return getRandomUnixTimestamp(13, 22);
 //
 //	else
-		return getRandomUnixTimestamp(72, 144);// this is the timer multiplier currently in HOURS, vanilla is days 6, 11//just so everything has the same rotate timer
+		return getRandomUnixTimestamp(24 * 365, 24 * 365);// this is the timer multiplier currently in HOURS, vanilla is days 6, 11//just so everything has the same rotate timer
 }
 
 long ResourceSpawner::getRandomUnixTimestamp(int min, int max) const {

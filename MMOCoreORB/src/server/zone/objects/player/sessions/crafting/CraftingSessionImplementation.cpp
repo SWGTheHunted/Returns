@@ -84,7 +84,7 @@ int CraftingSessionImplementation::startSession() {
 	/// DPlay9 ***********************************
 	PlayerObjectDeltaMessage9* dplay9 =
 			new PlayerObjectDeltaMessage9(crafterGhost);
-	dplay9->setExperimentationEnabled(craftingStation != nullptr);
+	dplay9->setExperimentationEnabled(craftingStation != nullptr);//setting this to 1 did not work
 	dplay9->setCraftingState(1);
 
 	if (craftingStation != nullptr)

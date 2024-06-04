@@ -67,7 +67,7 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	}
 
 	//CreatureObject *creoatt = defender->asCreatureObject();
-	ManagedReference<WeaponObject*> weapon = creo->getWeapon();
+//	ManagedReference<WeaponObject*> weapon = creo->getWeapon();
 
 //	if (weapon != nullptr && weapon->isJediWeapon()){
 //

@@ -112,7 +112,7 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 
 			if (player != nullptr && draftSchematic != nullptr) {
 				String assemblySkill = draftSchematic->getAssemblySkill();
-				skill = player->getSkillMod(assemblySkill) * 2.5; // 0 to 250 max
+				skill = player->getSkillMod(assemblySkill);// * 2.5; // 0 to 250 max
 				luck = System::random(player->getSkillMod("luck")
 						+ player->getSkillMod("force_luck"));
 			}
@@ -121,9 +121,9 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 
 	int random = (System::random(750)) - 250; // -250 to 500
 
-	float roll = System::random(skill + luck + random);
+	float roll = System::random(skill);// + luck + random);
 
-	int generatedCount = int(float(MAXSOCKETS * roll) / float(MAXSOCKETS * 100));
+	int generatedCount = roll / 10;//int(float(MAXSOCKETS * roll) / float(MAXSOCKETS * 100));
 
 	if (generatedCount > MAXSOCKETS)
 		generatedCount = MAXSOCKETS;
@@ -162,7 +162,7 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 			//removeSkillModsFrom(player);
 		}
 
-		if (wearableSkillMods.size() < 6) {
+		if (wearableSkillMods.size() < 12) {
 			HashTable<String, int>* mods = attachment->getSkillMods();
 			HashTableIterator<String, int> iterator = mods->iterator();
 
@@ -255,7 +255,7 @@ String WearableObjectImplementation::repairAttempt(int repairChance) {
 	String message = "@error_message:";
 
 	if(repairChance < 25) {
-		message += "sys_repair_failed";
+//		message += "sys_repair_failed";
 //		setMaxCondition(1, true);
 //		setConditionDamage(0, true);
 		message += "sys_repair_imperfect";
