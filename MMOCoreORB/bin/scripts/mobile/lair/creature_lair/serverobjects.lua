@@ -500,6 +500,7 @@ includeFile("lair/creature_lair/tatooine_eopie_eopie_neutral_medium_boss_01.lua"
 includeFile("lair/creature_lair/tatooine_eopie_lair_neutral_small.lua")
 includeFile("lair/creature_lair/tatooine_feral_bantha_lair_neutral_large.lua")
 includeFile("lair/creature_lair/tatooine_giant_canyon_krayt_dragon_lair_neutral_large.lua")
+includeFile("lair/creature_lair/tatooine_giant_canyon_krayt_dragon_lair_neutral_large2.lua")
 includeFile("lair/creature_lair/tatooine_giant_sand_beetle_click_neutral_large.lua")
 includeFile("lair/creature_lair/tatooine_giant_worrt_lair_neutral_medium.lua")
 includeFile("lair/creature_lair/tatooine_gorg_lair_neutral_small.lua")

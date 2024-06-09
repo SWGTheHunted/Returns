@@ -14,7 +14,8 @@ weapon_component_advanced = {
 		{itemTemplate = "projectile_rifle_barrel_advanced", weight = 1000000},
 		{itemTemplate = "projectile_pistol_barrel_advanced", weight = 1000000},
 		{itemTemplate = "reinforcement_core_advanced", weight = 1000000},
-		{itemTemplate = "sword_core_advanced", weight = 1000000}
+		{itemTemplate = "sword_core_advanced", weight = 1000000},
+		{itemTemplate = "vibro_unit_advanced", weight = 1000000}
 	},
 }
 

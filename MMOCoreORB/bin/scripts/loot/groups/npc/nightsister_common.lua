@@ -8,6 +8,7 @@ nightsister_common = {
 		{itemTemplate = "nightsister_controllerfp_lance", weight = 4500000},
 		{itemTemplate = "nightsister_layer", weight = 2475000},
 		{itemTemplate = "nightsister_shards", weight = 3025000},
+		{itemTemplate = "nightsister_vibro_unit", weight = 6000000}
 	}
 }
 

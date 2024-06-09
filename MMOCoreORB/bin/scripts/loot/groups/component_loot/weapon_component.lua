@@ -14,7 +14,8 @@ weapon_component = {
 		{itemTemplate = "projectile_pistol_barrel", weight = 1000000},
 		{itemTemplate = "projectile_rifle_barrel", weight = 1000000},
 		{itemTemplate = "reinforcement_core", weight = 1000000},
-		{itemTemplate = "sword_core", weight = 1000000}
+		{itemTemplate = "sword_core", weight = 1000000},
+		{itemTemplate = "vibro_unit", weight = 1000000}
 	},
 }
 

@@ -8,6 +8,7 @@ tatooine_giant_canyon_krayt_dragon_lair_neutral_large2 = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_bones_large_evil_fire_red.iff"},
 	buildingsHard = {"object/tangible/lair/base/poi_all_lair_bones_large_evil_fire_red.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_bones_large_evil_fire_red.iff"},
+		missionBuilding = "object/tangible/lair/base/poi_all_lair_bones_large_evil_fire_red.iff",
 }
 
 addLairTemplate("tatooine_giant_canyon_krayt_dragon_lair_neutral_large2", tatooine_giant_canyon_krayt_dragon_lair_neutral_large2)

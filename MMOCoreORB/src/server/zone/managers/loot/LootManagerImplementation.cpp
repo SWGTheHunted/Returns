@@ -1050,9 +1050,9 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 			else
 				str = strMax;
 
-			if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
-				str *= yellowModifier;
-			}
+//			if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
+//				str *= yellowModifier;
+//			}
 
 			if (dotType == 1)
 				str = str * 2;
@@ -1070,9 +1070,9 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 			else
 				dur = durMax;
 
-			if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
-				dur *= yellowModifier;
-			}
+//			if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
+//				dur *= yellowModifier;
+//			}
 
 			if (dotType == 2)
 				dur = dur * 5;
@@ -1090,11 +1090,11 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 			else
 				pot = potMax;
 
-			if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
-				pot *= yellowModifier;
-			}
+//			if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
+//				pot *= yellowModifier;
+//			}
 
-			weapon->addDotPotency(pot * excMod);
+			weapon->addDotPotency(pot);// * excMod);
 
 			int useMin = randomDotUses.elementAt(0);
 			int useMax = randomDotUses.elementAt(1);
@@ -1109,7 +1109,7 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 				use *= yellowModifier;
 			}
 
-			weapon->addDotUses(use * excMod);
+			weapon->addDotUses(use);// * excMod);
 		}
 
 		weapon->addMagicBit(false);

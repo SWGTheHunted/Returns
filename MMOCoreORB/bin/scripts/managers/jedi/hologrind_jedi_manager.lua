@@ -190,7 +190,20 @@ function HologrindJediManager:onPlayerLoggedIn(pCreatureObject)
 	self:checkIfProgressedToJedi(pCreatureObject)
 	self:registerObservers(pCreatureObject)
 	
-		if JediTrials:isOnKnightTrials(pCreatureObject) then	
+	PVPFactionIntro:startStepDelay(pCreatureObject, 3)--faction encoutners
+	
+	if CreatureObject(pCreatureObject):hasSkill("force_title_jedi_rank_02") then	
+		PVPBHIntro:startStepDelay(pCreatureObject, 3)
+	end
+		--	if CreatureObject(pCreatureObject):hasSkill("force_title_jedi_rank_01") then	
+--		PlayerObject(pCreatureObject):findmytrainer()
+--	end
+	
+	if CreatureObject(pCreatureObject):hasSkill("force_title_jedi_rank_03") then	
+		PVPFRSIntro:startStepDelay(pCreatureObject, 3)
+	end
+	
+	if JediTrials:isOnKnightTrials(pCreatureObject) then	
 		--KnightTrials:showCurrentTrial(pCreatureObject) --DOES NOT FIX
 		
 		KnightTrials:startNextKnightTrial(pCreatureObject)--this FIXES KNIGHT TRIAL!!!! well sort of its a workaround that resets current trial every logout or server rest.
@@ -204,6 +217,8 @@ function HologrindJediManager:onPlayerLoggedIn(pCreatureObject)
 --			end
 		
 	end
+	
+	
 	
 --		suiManager:sendMessageBox(pCreatureObject, pCreatureObject, "WARNING", "all SLICED lightsabers will be destroyed if used in combat! you can still remove the crystals. This will be your only warning.", "@ok", "HologrindJediManager", "notifyOkPressed")
 --	didnt work
@@ -259,6 +274,13 @@ function HologrindJediManager:useItem(pSceneObject, itemType, pCreatureObject)
 	if (pCreatureObject == nil or pSceneObject == nil) then
 		return
 	end
+	
+	if CreatureObject(pCreatureObject):hasSkill("force_title_jedi_rank_02") then
+			--ForceShrineMenuComponent:doMeditate(pSceneObject, pCreatureObject)
+		VillageJediManagerHolocron.useHolocron(pSceneObject, pCreatureObject)
+		return
+	end
+	
 
 	if itemType == ITEMHOLOCRON then
 		local isSilent = self:sendHolocronMessage(pCreatureObject)

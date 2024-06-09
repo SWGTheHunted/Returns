@@ -29,7 +29,7 @@ light_jedi_sentinel = Creature:new {
 
 	templates = { "light_jedi" },
 	lootGroups = {},
-	weapons = {"light_jedi_weapons"},
+	weapons = {"dark_jedi_weapons_gen2"},
 	conversationTemplate = "lightfrsTrainerConvoTemplate",
 	attacks = merge(lightsabermaster,forcepowermaster)
 }
