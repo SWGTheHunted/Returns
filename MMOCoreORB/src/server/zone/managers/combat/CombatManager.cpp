@@ -1848,7 +1848,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 //	}
 
 	ManagedReference<WeaponObject*> defweapon = defender->getWeapon();
-	int DefAvgDmg = (defweapon->getMinDamage() + defweapon->getMaxDamage()) / 2;
+	//int DefAvgDmg = (defweapon->getMinDamage() + defweapon->getMaxDamage()) / 2;
 
 	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature() && !data.isForceAttack())
@@ -1860,7 +1860,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	//EvP dmg
 	if (!attacker->isPlayerCreature() && defender->isPlayerCreature())	{
-		damage += DefAvgDmg;//this adds player avg dmg to npc attack
+		//damage += DefAvgDmg;//this adds player avg dmg to npc attack
 
 		damage *= 0.3;
 
