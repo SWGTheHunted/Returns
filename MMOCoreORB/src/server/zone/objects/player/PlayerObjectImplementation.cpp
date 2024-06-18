@@ -1864,9 +1864,9 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 
 	checkForNewSpawns();
 
-	checkForNewSpawns();
+//	checkForNewSpawns();
 
-	checkForNewSpawns();
+//	checkForNewSpawns();
 
 
 	creature->activateHAMRegeneration(latency);
@@ -1890,9 +1890,9 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 
 	checkForNewSpawns();
 
-	checkForNewSpawns();
+//	checkForNewSpawns();
 
-	checkForNewSpawns();
+//	checkForNewSpawns();
 
 	if (isOnline()) {
 		const CommandQueueActionVector* commandQueue = creature->getCommandQueue();
@@ -1941,9 +1941,9 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 
 	checkForNewSpawns();
 
-	checkForNewSpawns();
+//	checkForNewSpawns();
 
-	checkForNewSpawns();
+//	checkForNewSpawns();
 
 
 	activateRecovery();

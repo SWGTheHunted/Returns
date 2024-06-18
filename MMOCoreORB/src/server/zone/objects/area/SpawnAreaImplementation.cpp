@@ -103,7 +103,7 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 			thisZone->transferObject(area, -1, true);
 
 			Reference<Task*> task = new RemoveNoSpawnAreaTask(area);
-			task->schedule(1000 * 60 * 15);//300000
+			task->schedule(1000 * 60 * 5);//300000
 		}
 	}
 
@@ -166,7 +166,7 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	//	return;
 
 	// Check the spot to see if spawning is allowed
-	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 32)) {	//finalSpawn->getSize() + 64.f
+	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 64)) {	//finalSpawn->getSize() + 64.f
 		return;
 	}
 

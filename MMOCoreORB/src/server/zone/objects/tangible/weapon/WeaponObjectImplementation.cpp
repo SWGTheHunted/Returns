@@ -458,14 +458,14 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	if (sliced == 1)
 		alm->insertAttribute("wpn_attr", "@obj_attr_n:hacked1");
 
-	if (sliced == 1 && isJediWeapon()){
-		setMinDamage(1);//these work but introduce new problems
-		setMaxDamage(1);
-		inflictDamage(_this.getReferenceUnsafeStaticCast(), 0, getMaxCondition(), true, true);
+	if (isJediWeapon()) { //sliced == 1 &&
+		if (minDamage > 3000 ||	minDamage < 1 || maxDamage > 6000 || maxDamage < 1)	{
+			setMinDamage(1);//these work but introduce new problems
+			setMaxDamage(1);
+			inflictDamage(_this.getReferenceUnsafeStaticCast(), 0, getMaxCondition(), true, true);
+		}
 
 	}
-//	minDamage > 2000 ||	minDamage < 1 ||
-//		maxDamage > 4000 || maxDamage < 1)
 
 
 }
@@ -715,8 +715,12 @@ String WeaponObjectImplementation::repairAttempt(int repairChance) {
 	String message = "@error_message:";
 
 	if(repairChance < 25) {
-		message += "sys_repair_failed";
-		setMaxCondition(1, true);
+//		message += "sys_repair_failed";
+//		setMaxCondition(1, true);
+//		setConditionDamage(0, true);
+
+		message += "sys_repair_imperfect";
+		setMaxCondition(getMaxCondition() * .65f, true);
 		setConditionDamage(0, true);
 	} else if(repairChance < 50) {
 		message += "sys_repair_imperfect";
