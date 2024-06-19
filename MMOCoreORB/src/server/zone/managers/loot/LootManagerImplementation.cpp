@@ -329,7 +329,7 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 	int newyellowChance = 1;
 
 
-	if (prototype->isComponent() || prototype->isWeaponObject() || prototype->isArmorObject()) {
+	if (prototype->isComponent() || prototype->isWeaponObject() || prototype->isArmorObject()) {//&&!issaber?
 
 		if (System::random(newlegendaryChance) >= newlegendaryChance) { // - adjustment) { //legendaryChance
 			UnicodeString newName = prototype->getDisplayedName() + " (Legendary)";
