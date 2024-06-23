@@ -195,12 +195,12 @@ class InstallationObject extends StructureObject {
 
 	@read
 	public float getExtractionRate() {
-		return extractionRate * 50;
+		return extractionRate;// * 50;
 	}
 
 	@read
 	public float getHopperSizeMax() {
-		return hopperSizeMax * 100;
+		return hopperSizeMax;// * 100;
 	}
 
 	@preLocked

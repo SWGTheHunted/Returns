@@ -536,14 +536,21 @@ void SlicingSessionImplementation::handleWeaponSlice() {
 
 	percentage *= 2;
 
-	switch(System::random(1)) {
-	case 0:
+	if (System::random(99) > 49) {
 		handleSliceDamage(percentage);
-		break;
-	case 1:
+	} else {
 		handleSliceSpeed(percentage);
-		break;
 	}
+
+
+//	switch(System::random(1)) {
+//	case 0:
+//		handleSliceDamage(percentage);
+//		break;
+//	case 1:
+//		handleSliceSpeed(percentage);
+//		break;
+//	}
 }
 
 void SlicingSessionImplementation::detachPowerUp(CreatureObject* player, WeaponObject* weap) {
@@ -644,14 +651,20 @@ void SlicingSessionImplementation::handleArmorSlice() {
 
 	percent *= 2;
 
-	switch (sliceType) {
-	case 0:
+	if (System::random(99) > 49) {
 		handleSliceEffectiveness(percent);
-		break;
-	case 1:
+	} else {
 		handleSliceEncumbrance(percent);
-		break;
 	}
+
+//	switch (sliceType) {
+//	case 0:
+//		handleSliceEffectiveness(percent);
+//		break;
+//	case 1:
+//		handleSliceEncumbrance(percent);
+//		break;
+//	}
 }
 
 void SlicingSessionImplementation::handleSliceEncumbrance(uint8 percent) {

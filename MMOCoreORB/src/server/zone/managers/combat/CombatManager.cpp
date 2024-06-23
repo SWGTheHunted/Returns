@@ -809,7 +809,7 @@ int CombatManager::calculateTargetPostureModifier(WeaponObject* weapon, Creature
 int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon) const {
 	if (attacker->isAiAgent()) {
 //		attacker->getLevel()
-		return cast<AiAgent*>(attacker)->getLevel();//cast<AiAgent*>(attacker)->getChanceHit() * 100;
+		return cast<AiAgent*>(attacker)->getLevel() + System::random(150);// + (cast<AiAgent*>(attacker)->getChanceHit() * 100);//cast<AiAgent*>(attacker)->getChanceHit() * 100;
 	} else if (attacker->isInstallationObject()) {
 		return 500;//cast<InstallationObject*>(attacker)->getHitChance() * 100;
 	}
@@ -844,6 +844,7 @@ int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, Creatur
 
 	if (weapon->isJediWeapon())
 		attackerAccuracy += System::random(50);
+
 
 	attackerAccuracy += creoAttacker->getSkillMod("attack_accuracy") + creoAttacker->getSkillMod("dead_eye");
 
@@ -1771,7 +1772,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 //		if (weapon->isJediPolearmWeapon())
 //		damage *= .9;//1.009;//0.89f;
 		if (weapon->isJediWeapon())
-		damage *= 4.62;//
+		damage *= 1.0;//4.62
 	}
 
 	if (attacker->isPlayerCreature() && data.isForceAttack()) //force powers damage bonus cuz it sucks
@@ -1865,13 +1866,13 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	//PvE dmg
 	if (attacker->isPlayerCreature() && !defender->isPlayerCreature())
-		damage *= .5;
+		damage *= .25;
 
 	//EvP dmg
 	if (!attacker->isPlayerCreature() && defender->isPlayerCreature())	{
 		//damage += DefAvgDmg;//this adds player avg dmg to npc attack
 
-		damage *= 0.3;
+		damage *= 0.5;
 
 	}
 
@@ -1939,7 +1940,10 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 
 	debug() << "Attacker weapon accuracy is " << weaponAccuracy;
 
-	int attackerAccuracy = getAttackerAccuracyModifier(attacker, targetCreature, weapon);
+	if (weaponAccuracy > 50) weaponAccuracy = 50;
+	if (weaponAccuracy < -25) weaponAccuracy = -25;
+
+	int attackerAccuracy = System::random(getAttackerAccuracyModifier(attacker, targetCreature, weapon));
 	debug() << "Base attacker accuracy is " << attackerAccuracy;
 
 	// need to also add in general attack accuracy (mostly gotten from posture and states)
@@ -1962,7 +1966,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 
 	debug() << "Attacker posture accuracy is " << postureAccuracy;
 
-	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon, attacker);
+	int targetDefense = System::random(getDefenderDefenseModifier(targetCreature, weapon, attacker));
 	debug() << "Defender defense is " << targetDefense;
 
 	int postureDefense = calculateTargetPostureModifier(weapon, targetCreature);

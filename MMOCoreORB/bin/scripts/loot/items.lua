@@ -209,6 +209,8 @@ includeFile("items/component_loot/armorcomponent13.lua")
 includeFile("items/component_loot/armorcomponent14.lua")
 includeFile("items/component_loot/armorcomponent15.lua")
 
+--includeFile("items/component_loot/saber_rcp.lua")
+
 includeFile("items/component_loot/biologic_effect_controller_advanced.lua")
 includeFile("items/component_loot/biologic_effect_controller.lua")
 includeFile("items/component_loot/blaster_pistol_barrel_advanced.lua")

@@ -318,13 +318,13 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 
 	setCustomObjectName(prototype, templateObject);
 
-	float excMod = 1.0;
+	float excMod = 1.0 + (System::random(15) / 10);
 
 	//float adjustment = floor((float)(((level > 50) ? level : 50) - 50) / 10.f + 0.5);
 
 	bool yellow = false;
 
-	int newlegendaryChance = 9;
+	int newlegendaryChance = 19;//was 9
 	int newexceptionalChance = 4;
 	int newyellowChance = 1;
 
@@ -345,32 +345,34 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 			prototype->addMagicBit(false);
 
 			legendaryLooted.increment();
-		} else if (System::random(newexceptionalChance) >= newexceptionalChance) { // - adjustment) { //exceptionalChance
-			UnicodeString newName = prototype->getDisplayedName() + " (Exceptional)";
-			prototype->setCustomObjectName(newName, false);
-
-			excMod = exceptionalModifier;
-
-			level += System::random(350);
-
-			if(level > 350)	//vanilla 300
-				level = 350;
-
-			prototype->addMagicBit(false);
-
-			exceptionalLooted.increment();
-		} else if (System::random(newyellowChance) >= newyellowChance) {
-				excMod = yellowModifier;
-
-				prototype->addMagicBit(false);
-
-				level += System::random(350);
-
-				if(level > 350)	//vanilla 300
-					level = 350;
-
-				yellowLooted.increment();
 		}
+
+//		else if (System::random(newexceptionalChance) >= newexceptionalChance) { // - adjustment) { //exceptionalChance
+//			UnicodeString newName = prototype->getDisplayedName() + " (Exceptional)";
+//			prototype->setCustomObjectName(newName, false);
+//
+//			excMod = exceptionalModifier;
+//
+//			level += System::random(350);
+//
+//			if(level > 350)	//vanilla 300
+//				level = 350;
+//
+//			prototype->addMagicBit(false);
+//
+//			exceptionalLooted.increment();
+//		} else if (System::random(newyellowChance) >= newyellowChance) {
+//				excMod = yellowModifier;
+//
+//				prototype->addMagicBit(false);
+//
+//				level += System::random(350);
+//
+//				if(level > 350)	//vanilla 300
+//					level = 350;
+//
+//				yellowLooted.increment();
+//		}
 
 	}
 
@@ -794,8 +796,8 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 //		if (roll > lootChance)
 //			continue;
 
-		if (System::random(1) == 0)//50% no loot and improve stats
-			continue;
+//		if (System::random(1) == 0)//50% no loot and improve stats
+//			continue;
 
 		//random holocron creation (only drops on mobs that have loot lists)
 		int holochance = 999;
@@ -809,21 +811,21 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 		const LootGroups* lootGroups = entry->getLootGroups();
 
 		//Now we do the second roll to determine loot group.
-		roll = System::random(lootGroups->count());//10000000);
+		roll = System::random(10000000);
 
 		//Select the loot group to use.
 		for (int i = 0; i < lootGroups->count(); ++i) {
 			const LootGroupEntry* entry = lootGroups->get(i);
 
-//			tempChance += 1;//entry->getLootChance();
+			tempChance += entry->getLootChance();
 
 			//Is this entry lower than the roll? If yes, then we want to try the next entry.
-//			if (tempChance < roll)
-//				continue;
+			if (tempChance < roll)
+				continue;
 
 			createLoot(trx, container, entry->getLootGroupName(), level);
 
-			//break;
+			break;
 		}
 	}
 
