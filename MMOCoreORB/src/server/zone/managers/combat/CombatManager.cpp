@@ -1753,6 +1753,18 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	if (diff > 0)
 		damage += System::random(diff);
 
+	ZoneServer* server = attacker->getZoneServer();
+
+//	int attackerLvl = 0;
+//	int defenderLvl = 0;
+//
+//	if (attacker->isPlayerCreature()){
+//		PlayerManager* pManagera = server->getPlayerManager();
+//		attackerLvl = pManagera->calculatePlayerLevel(attacker) * 4 / 100;//25x4=100
+//	} else {
+//		attackerLvl = attacker->getLevel();
+//	}
+
 //// mySWG balancing the profs based on highest dmg weapon and special for that class
 	if (attacker->isPlayerCreature() && !data.isForceAttack()) {
 		if (weapon->isPistolWeapon())
@@ -1797,7 +1809,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 //		if (weapon->isJediPolearmWeapon())
 //		damage *= .9;//1.009;//0.89f;
 		if (weapon->isJediWeapon())
-		damage *= 1.0;//4.62
+		damage *= 2.31;//4.62
 	}
 
 	if (attacker->isPlayerCreature() && data.isForceAttack()) //force powers damage bonus cuz it sucks
@@ -1891,13 +1903,13 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	//PvE dmg
 	if (attacker->isPlayerCreature() && !defender->isPlayerCreature())
-		damage *= .25;
+		damage *= .35;
 
 	//EvP dmg
 	if (!attacker->isPlayerCreature() && defender->isPlayerCreature())	{
 		//damage += DefAvgDmg;//this adds player avg dmg to npc attack
 
-		damage *= 0.5;
+		damage *= 0.35;
 
 	}
 

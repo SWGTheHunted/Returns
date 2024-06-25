@@ -324,7 +324,7 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 
 	bool yellow = false;
 
-	int newlegendaryChance = 9;//was 9
+	int newlegendaryChance = 4;//was 9
 	int newexceptionalChance = 4;
 	int newyellowChance = 1;
 

@@ -536,11 +536,13 @@ void SlicingSessionImplementation::handleWeaponSlice() {
 
 	percentage *= 2;
 
-	if (System::random(99) > 49) {
-		handleSliceDamage(percentage);
-	} else {
-		handleSliceSpeed(percentage);
-	}
+	handleSliceDamage(percentage);
+
+//	if (System::random(99) > 49) {
+//		handleSliceDamage(percentage);
+//	} else {
+//		handleSliceSpeed(percentage);
+//	}
 
 
 //	switch(System::random(1)) {
@@ -651,11 +653,13 @@ void SlicingSessionImplementation::handleArmorSlice() {
 
 	percent *= 2;
 
-	if (System::random(99) > 49) {
-		handleSliceEffectiveness(percent);
-	} else {
-		handleSliceEncumbrance(percent);
-	}
+	handleSliceEffectiveness(percent);
+
+//	if (System::random(99) > 49) {
+//		handleSliceEffectiveness(percent);
+//	} else {
+//		handleSliceEncumbrance(percent);
+//	}
 
 //	switch (sliceType) {
 //	case 0:
