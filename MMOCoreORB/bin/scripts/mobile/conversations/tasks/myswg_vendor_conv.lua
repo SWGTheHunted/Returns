@@ -175,8 +175,7 @@ doc1 = ConvoScreen:new {
     customDialogText = "medical supplies, need anything?",
     stopConversation = "false",
     options = { 
-        --{"Doc/Ent Buffs - 10k", "buff1"},
---        {"1500 Health/Action Buffs - 10k", "buff2"},--not working
+
         {"StimPack A - 500", "option50"},
         {"StimPack B - 1k", "option51"},
         {"StimPack C - 2k", "option52"},
@@ -193,11 +192,7 @@ droid1 = ConvoScreen:new {
     customDialogText = "droid stuff, need anything?",
     stopConversation = "false",
     options = { 
-        --{"Doc/Ent Buffs - 10k", "buff1"},
---        {"1500 Health/Action Buffs - 10k", "buff2"},--not working
---        {"StimPack A - 500", "option50"},
---        {"StimPack B - 1k", "option51"},
---        {"StimPack C - 2k", "option52"},
+
         {"Seeker Droid - 5k", "option64"},
         {"Probe Droid - 10k", "option65"},
       	{"Main menu.", "first_screen"},
@@ -226,13 +221,14 @@ newbuff1 = ConvoScreen:new {
     customDialogText = "I sell buffs!",
     stopConversation = "false",
     options = { 
-         --remove all buffs
-    
-        {"1500 doctor buffs 8hr - free", "buff1"},
+      -- 	{"Remove all buffs - FREE", "buff7"},--not working yet
+        {"Heal all wounds - 5k", "buff6"},
+
+        {"1500 doctor buffs 8hr - FREE", "buff1"},
         {"2500 Doctor Buffs 8hr - 25k", "buff2"},
         {"3500 Doctor Buffs 8hr - 50k", "buff3"},
         
-        {"125% Entertainer Buffs 8hr - free", "buff4"},
+        {"125% Entertainer Buffs 8hr - FREE", "buff4"},
         {"250% Entertainer Buffs 8hr - 20k", "buff5"},
  
       	{"Main menu.", "first_screen"},
@@ -249,6 +245,41 @@ myswg_vendor_accept_quest = ConvoScreen:new {
 }
 myswg_vendor_accept_quest = ConvoScreen:new {    
     id = "buff2",
+    leftDialog = "",
+    customDialogText = "Enjoy!",
+    stopConversation = "true",
+    options = { }
+}
+myswg_vendor_accept_quest = ConvoScreen:new {    
+    id = "buff3",
+    leftDialog = "",
+    customDialogText = "Enjoy!",
+    stopConversation = "true",
+    options = { }
+}
+myswg_vendor_accept_quest = ConvoScreen:new {    
+    id = "buff4",
+    leftDialog = "",
+    customDialogText = "Enjoy!",
+    stopConversation = "true",
+    options = { }
+}
+myswg_vendor_accept_quest = ConvoScreen:new {    
+    id = "buff5",
+    leftDialog = "",
+    customDialogText = "Enjoy!",
+    stopConversation = "true",
+    options = { }
+}
+myswg_vendor_accept_quest = ConvoScreen:new {    
+    id = "buff6",
+    leftDialog = "",
+    customDialogText = "Enjoy!",
+    stopConversation = "true",
+    options = { }
+}
+myswg_vendor_accept_quest = ConvoScreen:new {    
+    id = "buff7",
     leftDialog = "",
     customDialogText = "Enjoy!",
     stopConversation = "true",

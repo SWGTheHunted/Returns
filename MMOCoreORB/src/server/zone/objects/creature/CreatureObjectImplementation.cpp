@@ -611,8 +611,8 @@ void CreatureObjectImplementation::addShockWounds(int shockToAdd, bool notifyCli
 
 	if (newShockWounds < 0) {
 		newShockWounds = 0;
-	} else if (newShockWounds > 1000) {
-		newShockWounds = 1000;
+	} else if (newShockWounds > 500) {
+		newShockWounds = 500;
 	}
 
 	if (sendSpam && shockToAdd > 0 && asCreatureObject()->isPlayerCreature())
@@ -2808,39 +2808,40 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 	int healthRegen = getSkillMod("private_med_wound_health");
 
 	if(healthRegen > 0) {
-		healthWoundHeal += (int)(healthRegen * 0.2);
-		if(healthWoundHeal >= 100) {
-			healWound(asCreatureObject(), CreatureAttribute::HEALTH, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::STRENGTH, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::CONSTITUTION, 1, true, false);
-			healthWoundHeal -= 100;
-		}
+		healthWoundHeal = 5;//+= (int)(healthRegen * 0.1);
+	//	if(healthWoundHeal >= 100) {
+			healWound(asCreatureObject(), CreatureAttribute::HEALTH, healthWoundHeal, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::STRENGTH, healthWoundHeal, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::CONSTITUTION, healthWoundHeal, true, false);
+			//healthWoundHeal -= 100;
+//		}
 	}
 
 	/// Action wound regen
 	int actionRegen = getSkillMod("private_med_wound_action");
 
 	if(actionRegen > 0) {
-		actionWoundHeal += (int)(actionRegen * 0.2);
-		if(actionWoundHeal >= 100) {
-			healWound(asCreatureObject(), CreatureAttribute::ACTION, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::QUICKNESS, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::STAMINA, 1, true, false);
-			actionWoundHeal -= 100;
-		}
+		actionWoundHeal = 5;//+= (int)(actionRegen * 0.1);
+		//if(actionWoundHeal >= 100) {
+			healWound(asCreatureObject(), CreatureAttribute::ACTION, actionWoundHeal, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::QUICKNESS, actionWoundHeal, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::STAMINA, actionWoundHeal, true, false);
+			//actionWoundHeal -= 100;
+		//}
 	}
 
 	/// Mind wound regen
 	int mindRegen = getSkillMod("private_med_wound_mind");
 
 	if(mindRegen > 0) {
-		mindWoundHeal += (int)(mindRegen * 0.2);
-		if(mindWoundHeal >= 100) {
-			healWound(asCreatureObject(), CreatureAttribute::MIND, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::FOCUS, 1, true, false);
-			healWound(asCreatureObject(), CreatureAttribute::WILLPOWER, 1, true, false);
-			mindWoundHeal -= 100;
-		}
+		mindWoundHeal = 5;//+= (int)(mindRegen * 0.1);
+		//if(mindWoundHeal >= 100) {
+			healWound(asCreatureObject(), CreatureAttribute::MIND, mindWoundHeal, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::FOCUS, mindWoundHeal, true, false);
+			healWound(asCreatureObject(), CreatureAttribute::WILLPOWER, mindWoundHeal, true, false);
+			addShockWounds(-10, true, false);
+			//mindWoundHeal -= 100;
+		//}
 	}
 }
 

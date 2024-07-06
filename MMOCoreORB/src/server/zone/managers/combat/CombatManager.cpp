@@ -624,7 +624,7 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 		float damMod = 1.0;//attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
 		uint32 dotstr = effect.getDotStrength();
 
-		if (defender->isPlayerCreature() && attacker->isPlayerCreature()) {
+		//if (defender->isPlayerCreature() && attacker->isPlayerCreature()) {
 
 //			attacker->setDefender(defender);
 //			defender->setDefender(attacker);
@@ -633,12 +633,16 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 //
 //			defender->inflictDamage(attacker, CreatureAttribute::HEALTH, 1, true, "medical", true, true);
 
-			if (dotstr > 125)
-				dotstr = ((dotstr - 125) / 2) + 125;
+//			if (dotstr > 125)
+//				dotstr = ((dotstr - 125) / 2) + 125;
 			if (dotstr > 250)
-				dotstr = ((dotstr - 250) / 5) + 250;
-			if (dotstr > 350)
-				dotstr = ((dotstr - 350) / 10) + 350;
+				dotstr = ((dotstr - 250) / 2) + 250;
+			if (dotstr > 450)
+				dotstr = ((dotstr - 450) / 5) + 450;
+		//}
+
+		if (!defender->isPlayerCreature()) {
+			dotstr *= 5;
 		}
 
 		//CreatureObject *dtano = defenderObject->asCreatureObject();
@@ -845,8 +849,8 @@ int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, Creatur
 	//if (attackerAccuracy == 0) attackerAccuracy = -15; // unskilled penalty, TODO: this might be -50 or -125, do research
 
 	if (attacker->isPlayerCreature()) {//boost player accuracy
-		//attackerAccuracy += System::random(50);
-		attackerAccuracy *= 1.5;
+		attackerAccuracy *= 2.0;
+		attackerAccuracy += 50;
 	}
 
 	if (weapon->isJediWeapon())
@@ -878,8 +882,8 @@ int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, Creatur
 //		}
 //	}
 
-	if (attackerAccuracy > 150)
-		attackerAccuracy = System::random(attackerAccuracy - 150) + 150;
+	if (attackerAccuracy > 250)
+		attackerAccuracy = System::random(attackerAccuracy - 250) + 250;
 
 	return attackerAccuracy;
 }
@@ -1755,45 +1759,49 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	ZoneServer* server = attacker->getZoneServer();
 
-//	int attackerLvl = 0;
-//	int defenderLvl = 0;
-//
-//	if (attacker->isPlayerCreature()){
-//		PlayerManager* pManagera = server->getPlayerManager();
-//		attackerLvl = pManagera->calculatePlayerLevel(attacker) * 4 / 100;//25x4=100
-//	} else {
-//		attackerLvl = attacker->getLevel();
-//	}
+	float attackerLvl = 0;
+	//float defenderLvl = 0;
 
-//// mySWG balancing the profs based on highest dmg weapon and special for that class
+	if (attacker->isPlayerCreature()){
+		PlayerManager* pManagera = server->getPlayerManager();
+		attackerLvl = pManagera->calculatePlayerLevel(attacker) * 4;//25x4=100
+	} else {
+		attackerLvl = attacker->getLevel();
+	}
+
+	if (attackerLvl > 100) attackerLvl = 100;
+
+	attackerLvl /= 100;//now its 1.0
+
+		// mySWG balancing the profs based on highest dmg weapon and special for that class
 	if (attacker->isPlayerCreature() && !data.isForceAttack()) {
 		if (weapon->isPistolWeapon())
-		damage *= 6.94;//4.040;//1.82f;//half correct/fullcorrect/old correct
+		damage *= 1.0 + (5.3 * attackerLvl);
 		if (weapon->isCarbineWeapon())
-		damage *= 5.74;//2.925;//1.24f;
+		damage *= 1.0 + (1.6 * attackerLvl);
 		if (weapon->isRifleWeapon())
-		damage *= 7.75;//1.594;//0.6f;
+		damage *= 1.0 + (.8 * attackerLvl);
 //			if (weapon->isRangedWeapon())
 //			damage *= 1.03f;
 		if (weapon->isUnarmedWeapon()){//unarmed is fukt b.c of 10k dmg crafted vk
 			//float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
-			damage *= 5.88;//1.536;//1.51f;
+			damage *= 1.0 + (6.0 * attackerLvl);
 			//if (maxDamage > 2000)
 		}
 		if (weapon->isOneHandMeleeWeapon() && !weapon->isJediWeapon())
-		damage *= 2.7;//2.112;//1.26f;
+		damage *= 1.0 + (2.3 * attackerLvl);
 		if (weapon->isTwoHandMeleeWeapon() && !weapon->isJediWeapon())
-		damage *= 2.0;//1.721;//0.73f;
+		damage *= 1.0 + (1.0 * attackerLvl);
 		if (weapon->isPolearmWeaponObject() && !weapon->isJediWeapon())
-		damage *= 2.73;//1.771;//0.83f;
+		damage *= 1.0 + (1.4 * attackerLvl);
 //			if (weapon->isMeleeWeapon())
 //			damage *= 0.96f;
 		if (weapon->isLightningRifle())
-		damage *= .61;//.706 * 2;//1.38f;
+		damage *= .9;//.706 * 2;//1.38f;
 		if (weapon->isFlameThrower())
-		damage *= .51;//.392 * 4;//0.8f;
+		damage *= .6;//.392 * 4;//0.8f;
 		if (weapon->isHeavyAcidRifle())
-		damage *= .69;//.458 * 4;//0.96f;
+		damage *= .8;//.458 * 4;//0.96f;
 //			if (weapon->isHeavyWeapon())
 //			damage *= 1.0f;
 //			if (weapon->isThrownWeapon())
@@ -1809,7 +1817,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 //		if (weapon->isJediPolearmWeapon())
 //		damage *= .9;//1.009;//0.89f;
 		if (weapon->isJediWeapon())
-		damage *= 2.31;//4.62
+		damage *= 1.0 + (.8 * attackerLvl);
 	}
 
 	if (attacker->isPlayerCreature() && data.isForceAttack()) //force powers damage bonus cuz it sucks
@@ -2522,14 +2530,17 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	int damage = calculateDamage(attacker, weapon, defender, data);
 
 	float damageMultiplier = data.getDamageMultiplier();
-
-
-
+//specialmult here
 	if (damageMultiplier != 0) {
-		if (damageMultiplier < 1.0) damageMultiplier = 1.0;
+//		if (damageMultiplier < 1.0) damageMultiplier = 1.0;
+//
+//		damageMultiplier *= .5;
+//		damageMultiplier += .5;
 
-		damageMultiplier *= .5;
-		damageMultiplier += .5;
+		if (damageMultiplier > 2.0)
+			damageMultiplier = ((damageMultiplier - 2.0) / 2) + 2.0;
+		if (damageMultiplier > 3.0)
+			damageMultiplier = ((damageMultiplier - 3.0) / 5) + 3.0;
 
 		damage *= damageMultiplier;
 	}

@@ -462,10 +462,11 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 		if (minDamage > 3000 ||	minDamage < 1 || maxDamage > 6000 || maxDamage < 1)	{
 			setMinDamage(1);//these work but introduce new problems
 			setMaxDamage(1);
-			inflictDamage(_this.getReferenceUnsafeStaticCast(), 0, getMaxCondition(), true, true);
+			inflictDamage(_this.getReferenceUnsafeStaticCast(), 0, 1000000, true, true);
 		}
 
 	}
+
 
 
 }

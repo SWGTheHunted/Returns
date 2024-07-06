@@ -1085,7 +1085,42 @@ function myswg_vendor_convo_handler:getNextConversationScreen(conversationTempla
 	                  creature:subtractCashCredits(20000)
 
 										CreatureObject(conversingPlayer):enhanceCharacterEntBuffTWO()
+										
+                elseif (optionLink == "buff6" and credits < 5000) then
+                    -- Bail if the player doesn’t have enough cash on hand.  
+                    -- Plays a chat box message from the NPC as well as a system message.
+                      nextConversationScreen = conversation:getScreen("insufficient_funds")
+                      creature:sendSystemMessage("You have insufficient funds") 
+                elseif (optionLink == "buff6" and credits >= 5000) then
+                    -- Take 10,000 credits from the player’s cash on hand and give player a speederbike.
+                    
+	                  creature:subtractCashCredits(5000)
+	                  
+									for i = 0, 8 do
+										CreatureObject(conversingPlayer):setWounds(i, 0)
+									end
+									
+									CreatureObject(conversingPlayer):setShockWounds(0)
 
+									--	CreatureObject(conversingPlayer):enhanceCharacterEntBuffTWO()
+										
+								elseif (optionLink == "buff7" and credits < -1) then
+                    -- Bail if the player doesn’t have enough cash on hand.  
+                    -- Plays a chat box message from the NPC as well as a system message.
+                      nextConversationScreen = conversation:getScreen("insufficient_funds")
+                      creature:sendSystemMessage("You have insufficient funds") 
+                elseif (optionLink == "buff7" and credits >= -1) then
+                    -- Take 10,000 credits from the player’s cash on hand and give player a speederbike.
+                    
+	                  --creature:subtractCashCredits(20000)
+	                  
+	                  --neither working yet
+	                --  creature:clearBuffs(true, false)
+	                 -- CreatureObject(conversingPlayer):clearBuffs(true, false)
+	                  
+	                  creature:sendSystemMessage("Your buffs have been reset.") 
+
+				--	player->clearBuffs(true, false);
 
                 elseif (optionLink == "option50" and credits < 500) then
                     -- Bail if the player doesn’t have enough cash on hand.  
