@@ -885,6 +885,10 @@ int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, Creatur
 	if (attackerAccuracy > 250)
 		attackerAccuracy = System::random(attackerAccuracy - 250) + 250;
 
+	if (creoAttacker->isPlayerCreature() && defender->isPlayerCreature()) {
+		attackerAccuracy *= 1.5;//pvp
+	}
+
 	return attackerAccuracy;
 }
 
@@ -1991,9 +1995,9 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	int attackerAccuracy = getAttackerAccuracyModifier(attacker, targetCreature, weapon);
 	debug() << "Base attacker accuracy is " << attackerAccuracy;
 
-	if (creoAttacker->isPlayerCreature() && targetCreature->isPlayerCreature()) {
-		attackerAccuracy *= 1.5;//pvp
-	}
+//	if (creoAttacker->isPlayerCreature() && targetCreature->isPlayerCreature()) {
+//		attackerAccuracy *= 1.5;//pvp
+//	}
 
 	// need to also add in general attack accuracy (mostly gotten from posture and states)
 
@@ -2018,9 +2022,9 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	int targetDefense = System::random(getDefenderDefenseModifier(targetCreature, weapon, attacker));
 	debug() << "Defender defense is " << targetDefense;
 
-	if (creoAttacker->isPlayerCreature() && targetCreature->isPlayerCreature()) {
-		targetDefense *= .5;//pvp
-	}
+//	if (creoAttacker->isPlayerCreature() && targetCreature->isPlayerCreature()) {
+//		targetDefense *= .5;//pvp
+//	}
 
 	int postureDefense = calculateTargetPostureModifier(weapon, targetCreature);
 

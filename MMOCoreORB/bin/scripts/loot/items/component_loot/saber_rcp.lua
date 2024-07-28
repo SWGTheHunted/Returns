@@ -7,15 +7,15 @@ saber_rcp = {
 --	customObjectName = "A Focusing Crystal",
 	directObjectTemplate = "object/tangible/component/weapon/lightsaber/lightsaber_refined_crystal_pack.iff",
 	craftingValues = {
-		{"mindamage", 5,50,0},
-		{"maxdamage", 5,50,0},
+		{"mindamage", 1,19,0},
+		{"maxdamage", 5,38,0},
 		{"attackspeed",-0.1,-0.3,1},
 		{"woundchance",2,10,1},
---		{"forcecost",-0.1,-9.0,0},
+		{"forcecost",-0.1,-2.5,1},
 --		{"color",1,30,0},
 --		{"attackactioncost",0,-1,0},
 --		{"attackmindcost",0,-1,0},
-		{"useCount",1,4,0}
+		{"useCount",2,4,0}
 	},
 	customizationStringName = {},
 	customizationValues = {}
