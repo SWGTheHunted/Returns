@@ -60,8 +60,9 @@ public:
 			return;
 		}
 		int mindCost = player->calculateCostAdjustment(CreatureAttribute::FOCUS, 200);
-		int skillMod = player->getSkillMod("dna_harvesting");
+		int skillMod = player->getSkillMod("dna_harvesting") * 2;
 		int cl = creature->getLevel();
+		if (cl > 100) cl = 100;
 		switch(currentPhase) {
 		case BEGIN:
 			// We should be good to go now and try the sample
@@ -171,7 +172,7 @@ public:
 				default:
 					break;
 			}
-			if (success && cl <= 75) {
+			if (success) { // && cl <= 75
 				player->sendSystemMessage("@bio_engineer:harvest_dna_succeed");
 				creature->incDnaSampleCount();
 				award(cl,rollMod,skillMod);
