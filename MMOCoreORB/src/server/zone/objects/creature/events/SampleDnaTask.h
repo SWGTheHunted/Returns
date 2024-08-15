@@ -128,10 +128,10 @@ public:
 					result = 5;
 				}
 			}
-			else if (sampleRoll < 5) {
+			else if (sampleRoll < 2) {
 				// Critical failure, this can always occur
 				result = 1;
-			} else if ( (35 + rollMod) < sampleRoll) { // failure your roll < 50%
+			} else if ( (10 + rollMod) < sampleRoll) { // failure your roll < 50%
 				result = 2;
 			} else { // success
 				int maxSamples = (int)(ceil((double)skillMod / (double)25));
@@ -143,7 +143,7 @@ public:
 					// did we aggro?
 					int aggroChance = System::random(100);
 					int aggroMod = (creature->getDnaSampleCount() * 5);
-					if ( (aggroChance+aggroMod) > (sampleRoll+rollMod) || aggroChance <= 5)  // aggro
+					if (aggroChance > System::random(skillMod))  // aggro
 						result = 3;
 					else { // it didnt care and we didnt kill it
 						result = 5;
