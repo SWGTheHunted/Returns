@@ -292,7 +292,7 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 	if (petTemplate != nullptr) {
 		// get min CL from the template
 		int skinFactor = petTemplate->getLevel();
-		if (level > 75) {
+		if (level > 75) {//max pet lvl
 			level = 75;
 		}
 		if (level < skinFactor) {
@@ -387,7 +387,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		int spawnedLevel = 0;
 		int cLevel = level;
 		int maxPets = player->getSkillMod("keep_creature");
-		int maxLevelofPets = player->getSkillMod("tame_level");
+		int maxLevelofPets = player->getSkillMod("tame_level") * 5;
 
 		for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
 			ManagedReference<AiAgent*> object = ghost->getActivePet(i);
