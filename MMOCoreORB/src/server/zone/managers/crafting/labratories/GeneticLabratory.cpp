@@ -354,23 +354,23 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		if (subtitlesTitle == title) {
 			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
 			if (experimentationResult == CraftingManager::AMAZINGSUCCESS)
-				modifier = 0.15f * (float)pointsAttempted; //
+				modifier = 0.2f * (float)pointsAttempted; //
 			if (experimentationResult == CraftingManager::GREATSUCCESS)
-				modifier = 0.10 * (float)pointsAttempted; //
+				modifier = 0.15 * (float)pointsAttempted; //
 			if (experimentationResult == CraftingManager::GOODSUCCESS)
-				modifier = 0.05 * (float)pointsAttempted;
+				modifier = 0.1 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::MODERATESUCCESS)
-				modifier = 0.025 * (float)pointsAttempted;
+				modifier = 0.07 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::SUCCESS)
-				modifier = 0.015 * (float)pointsAttempted;
+				modifier = 0.05 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::MARGINALSUCCESS)
-				modifier = 0.0;
+				modifier = 0.03;
 			if (experimentationResult == CraftingManager::OK)
-				modifier = -0.05 * (float)pointsAttempted;
+				modifier = 0.02 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::BARELYSUCCESSFUL)
-				modifier = -0.1 * (float)pointsAttempted;
+				modifier = 0.01 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::CRITICALFAILURE) {
-				modifier = -0.1 * (float)pointsAttempted;
+				modifier = -0.08 * (float)pointsAttempted;
 				// pick a random attribute
 				int which = System::random(10);
 				while(which != i) {

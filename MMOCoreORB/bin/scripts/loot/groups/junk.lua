@@ -7,7 +7,7 @@ junk = {
 	lootItems = {
 		{groupTemplate = "oldjunk", weight = 500000},
 		{groupTemplate = "wearables_all", weight = 1000000},
-		{groupTemplate = "tailor_components", weight = 1000000},
+		{groupTemplate = "tailor_components", weight = 500000},
 		{groupTemplate = "chemistry_component", weight = 1000000},	
 		{groupTemplate = "rcp", weight = 1000000},	
 		{groupTemplate = "weapon_component", weight = 1000000},
@@ -20,6 +20,7 @@ junk = {
 		{groupTemplate = "armor_all", weight = 1000000},
 		{groupTemplate = "weapons_all", weight = 1000000},
 		--{itemTemplate = "saber_rcp", weight = 100000}
+		{itemTemplate = "resourcedeed", weight = 500000},	
 	}
 }
 

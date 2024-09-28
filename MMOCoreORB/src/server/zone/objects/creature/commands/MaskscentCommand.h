@@ -37,8 +37,8 @@ public:
 
 
 		int maskScentMod = creature->getSkillMod("mask_scent");
-		int cdReduction = ((float)(maskScentMod / 100.0f)) * 45;
-		int duration = 60 + (((float)(maskScentMod / 100.0f)) * 200);
+		int cdReduction = maskScentMod * 30;
+		int duration = 60 + maskScentMod * 60;
 
 		ManagedReference<Buff*> buff = new Buff(creature, crc, duration, BuffType::SKILL);
 
