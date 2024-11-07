@@ -354,15 +354,15 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		if (subtitlesTitle == title) {
 			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
 			if (experimentationResult == CraftingManager::AMAZINGSUCCESS)
-				modifier = 0.2f * (float)pointsAttempted; //
+				modifier = 0.30f * (float)pointsAttempted; //
 			if (experimentationResult == CraftingManager::GREATSUCCESS)
-				modifier = 0.15 * (float)pointsAttempted; //
+				modifier = 0.20 * (float)pointsAttempted; //
 			if (experimentationResult == CraftingManager::GOODSUCCESS)
-				modifier = 0.1 * (float)pointsAttempted;
+				modifier = 0.10 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::MODERATESUCCESS)
-				modifier = 0.07 * (float)pointsAttempted;
-			if (experimentationResult == CraftingManager::SUCCESS)
 				modifier = 0.05 * (float)pointsAttempted;
+			if (experimentationResult == CraftingManager::SUCCESS)
+				modifier = 0.03 * (float)pointsAttempted;
 			if (experimentationResult == CraftingManager::MARGINALSUCCESS)
 				modifier = 0.03;
 			if (experimentationResult == CraftingManager::OK)

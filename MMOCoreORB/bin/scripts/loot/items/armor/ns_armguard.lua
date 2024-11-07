@@ -17,11 +17,12 @@ ns_armguard = {
 		
 		{"armor_rating",1,1,0},
 		{"armor_special_type",16,16,0},--16 is saber
-		{"armor_special_effectiveness",1,20,10},
+		{"armor_special_effectiveness",1,40,10},
+		{"armor_effectiveness",10,50,10},
 		{"armor_integrity",20000,70000,0},
-		{"armor_health_encumbrance",25,15,0},
-		{"armor_action_encumbrance",22,13,0},
-		{"armor_mind_encumbrance",25,15,0},
+		{"armor_health_encumbrance",1,1,0},
+		{"armor_action_encumbrance",1,1,0},
+		{"armor_mind_encumbrance",1,1,0},
 		
 --		--{"armor_special_type",0,0,0},
 --		{"armor_effectiveness",3,7,10},
