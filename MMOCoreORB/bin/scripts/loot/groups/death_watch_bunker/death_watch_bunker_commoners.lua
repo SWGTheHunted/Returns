@@ -5,7 +5,6 @@ death_watch_bunker_commoners = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "alum_gel_packet", weight = 1000000},
 		{itemTemplate = "executioners_hack_schematic", weight = 500000},
 		{itemTemplate = "mandalorian_rebreather", weight = 1000000},
 		{itemTemplate = "pistol_de10_schematic", weight = 500000},
@@ -16,6 +15,7 @@ death_watch_bunker_commoners = {
 		{groupTemplate = "chemistry_component", weight = 1000000},			
 		{groupTemplate = "weapon_component", weight = 1000000},
 		{groupTemplate = "armor_component", weight = 1000000},
+				{itemTemplate = "jetpack_parts", weight = 1000000},
 		
 		
 	}
