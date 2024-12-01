@@ -64,6 +64,7 @@ includeFile("groups/component_loot/weapon_component_advanced.lua")
 includeFile("groups/component_loot/chemistry_component.lua")
 includeFile("groups/component_loot/weapon_component.lua")
 includeFile("groups/component_loot/rcp.lua")
+includeFile("groups/component_loot/rcp2.lua")
 includeFile("groups/component_loot/armor_component.lua")
 
 -- corellian_corvette sub-folder

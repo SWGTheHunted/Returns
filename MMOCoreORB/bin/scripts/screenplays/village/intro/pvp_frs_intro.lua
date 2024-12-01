@@ -97,6 +97,15 @@ function PVPFRSIntro:doDelayedStep(pPlayer)
 --	else if CreatureObject(pPlayer):hasSkill("force_rank_dark_novice") then
 --		encounterResult = PVPLJKEncounter:start(pPlayer)	
 --		return
+
+		if CreatureObject(pPlayer):hasSkill("force_rank_light_master") then
+			PVPDJKEncounter5:start(pPlayer)	
+			return
+		end
+		if CreatureObject(pPlayer):hasSkill("force_rank_dark_master") then
+			PVPLJKEncounter5:start(pPlayer)	
+			return
+		end
 		
 		
 		if CreatureObject(pPlayer):hasSkill("force_rank_light_rank_10") then
