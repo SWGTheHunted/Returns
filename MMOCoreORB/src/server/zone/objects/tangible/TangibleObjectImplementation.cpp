@@ -539,6 +539,10 @@ void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
 void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	SceneObjectImplementation::fillAttributeList(alm, object);
 
+	if (level > 1) {
+		alm->insertAttribute("challenge_level", level);
+	}
+
 	if (maxCondition > 0) {
 		StringBuffer cond;
 		cond << (maxCondition-(int)conditionDamage) << "/" << maxCondition;

@@ -148,9 +148,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	level = getTemplateLevel();
 	
-	if (level > 350) level = 350;
+	//if (level > 350) level = 350;
 	
-	if (System::random(25) == 25) {// and elite <= 1.0) {
+	if (System::random(25) == 25 && level < 500) {// and elite <= 1.0) {
 		legendarynpc = true;
 		level = 500;// + (System::random(25) * .01);//1.516 X lvl 330 = lvl 500
 	}
@@ -208,25 +208,44 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 			Locker locker(weao);
 			if (weao->isJediWeapon()) {
 
-				int finalColor = System::random(6);// red,green,blue
+				int finalColor = System::random(5);// red,green,blue
+
+				if (System::random(4) >= 4){
+					finalColor = System::random(6) + 5;// 1/10 color crystals will be yellow,purp,orange
+				}
+
+				if (System::random(9) >= 9){
+					finalColor = System::random(19) + 11;// 1/100 color crystals will be special named colors
+				}
 
 				String factionString = npcTemplate->getFaction();
 
-				if (System::random(9) <= 3 && factionString == "imperial") {//gives 1/3 imp jedi red
-					finalColor = System::random(2);
+				if (System::random(9) <= 6 && factionString == "imperial") {// imp jedi red
+					finalColor = System::random(1);
 				}
 
-				if (System::random(9) <= 3 && factionString == "rebel") {// 1/3 reb jedi blue/green
-					finalColor = System::random(4) + 2;
+				if (System::random(9) <= 6 && factionString == "rebel") {// reb jedi blue/green
+					finalColor = System::random(4) + 1;
 				}
 
 
-				if (System::random(5) >= 5){
-				finalColor = System::random(6) + 6;// 1/10 color crystals will be yellow,purp,orange
+
+
+//				if (level == 500 && legendarynpc == false) {
+//					if (factionString == "rebel") {
+//						finalColor = 0;
+//					}
+//					if (factionString == "imperial") {
+//						finalColor = 4;
+//					}
+//				}
+
+				if (npcTemplate->getTemplateName() == "luke_skywalker2") {
+					finalColor = 4;
 				}
 
-				if (System::random(20) >= 20){
-				finalColor = System::random(18) + 12;// 1/100 color crystals will be special named colors
+				if (npcTemplate->getTemplateName() == "darth_vader2") {
+					finalColor = 0;
 				}
 
 			//int color = System::random(11);

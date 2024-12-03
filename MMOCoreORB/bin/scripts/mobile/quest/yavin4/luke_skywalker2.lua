@@ -20,7 +20,7 @@ luke_skywalker2 = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD + KILLER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
@@ -32,11 +32,11 @@ luke_skywalker2 = Creature:new {
 		{
 			groups = {
 				{group = "color_crystals", chance = 1000000},
-				{group = "saber_rcp2", chance = 9000000},
+				{group = "rcp2", chance = 9000000},
 			}
 		},
 	},
-	weapons = {"dark_jedi_weapons_gen2"},
+	weapons = {"luke_skywalker_weapons"},
 	conversationTemplate = "",
 	attacks =	merge(lightsabermaster)
 }

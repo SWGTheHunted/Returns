@@ -1,5 +1,6 @@
 luke_skywalker_weapons = {
-	"object/weapon/melee/sword/sword_lightsaber_luke.iff"
+	"object/weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_s1_gen2.iff"
+	--"object/weapon/melee/sword/sword_lightsaber_luke.iff"
 }
 
 addWeapon("luke_skywalker_weapons", luke_skywalker_weapons)

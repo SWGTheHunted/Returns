@@ -39,7 +39,7 @@ void LightsaberCrystalComponentImplementation::notifyLoadFromDatabase() {
 		else if (quality == SELECT)
 			itemLevel = 140 + System::random(79); // 140-219
 		else if (quality == PREMIUM)
-			itemLevel = 220 + System::random(109); // 220-329
+			itemLevel = 330 + System::random(20);
 		else
 			itemLevel = 330 + System::random(20);
 
@@ -80,6 +80,11 @@ void LightsaberCrystalComponentImplementation::generateCrystalStats() {
 	if (color == 31) {
 		int minStat = crystalData->getMinDamage();
 		int maxStat = crystalData->getMaxDamage();
+
+//		if (quality == FLAWLESS) {
+//			minStat = crystalData->getMinDamage();
+//			maxStat = crystalData->getMaxDamage();
+//		}
 
 		damage = getRandomizedStat(minStat, maxStat, itemLevel);
 
@@ -192,7 +197,7 @@ int LightsaberCrystalComponentImplementation::getCrystalQuality() {
 		return QUALITY;
 	else if (itemLevel < 220)
 		return SELECT;
-	else if (itemLevel < 330)
+	else if (itemLevel < 450)
 		return PREMIUM;
 	else
 		return FLAWLESS;
@@ -277,6 +282,8 @@ float LightsaberCrystalComponentImplementation::getRandomizedStat(float min, flo
 void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
+	alm->insertAttribute("challenge_level", itemLevel);
+
 	PlayerObject* player = object->getPlayerObject();
 	if (object->hasSkill("force_title_jedi_rank_01") || player->isPrivileged()) {
 		if (ownerID == 0) {
@@ -306,7 +313,7 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 				if (player->isPrivileged()) {
 					StringBuffer str;
 					str << "@jedi_spam:crystal_quality_" << getQuality();
-					alm->insertAttribute("challenge_level", itemLevel);
+					//alm->insertAttribute("challenge_level", itemLevel);
 					alm->insertAttribute("crystal_quality", str);
 				}
 			} else {
@@ -462,12 +469,12 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 
 		int finalColor = System::random(6);// red,green,blue
 
-		if (System::random(9) >= 9){
-		finalColor = System::random(6) + 6;// 1/10 color crystals will be yellow,purp,orange
+		if (System::random(4) == 4){
+		finalColor = System::random(6) + 5;// 1/10 color crystals will be yellow,purp,orange
 		}
 
-		if (System::random(99) >= 99){
-		finalColor = System::random(18) + 12;// 1/100 color crystals will be special named colors
+		if (System::random(9) == 9){
+		finalColor = System::random(19) + 11;// 1/100 color crystals will be special named colors
 		}
 
 		setColor(finalColor);

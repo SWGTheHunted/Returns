@@ -257,13 +257,16 @@ int LootManagerImplementation::calculateLootCredits(int level) {
 }
 
 TangibleObject* LootManagerImplementation::createLootObject(const LootItemTemplate* templateObject, int level, bool maxCondition) {
-	int uncappedLevel = level;
+
+	//int uncappedLevel = level;
 
 //	if(level < 1)
 //		level = 1;
 //
 	if(level <= 350)	//vanilla 300
 		level = 350;
+
+
 
 	//level += System::random(350 - level);
 
@@ -380,7 +383,16 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 		LightsaberCrystalComponent* crystal = cast<LightsaberCrystalComponent*> (prototype.get());
 
 		if (crystal != nullptr)
-			crystal->setItemLevel(uncappedLevel);
+			crystal->setItemLevel(level);
+	}
+	else {
+		//craftingValues->setCurrentValue("challenge_level", level);
+
+//		ManagedReference<TangibleObject*> item = cast<TangibleObject*>(prototype);
+//
+//		item->setLevel;
+
+		prototype->setLevel(level, false);
 	}
 
 	String subtitle;

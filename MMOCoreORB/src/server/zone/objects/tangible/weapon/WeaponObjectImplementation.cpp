@@ -230,6 +230,8 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 	bool res = isCertifiedFor(object);
 
+	//alm->insertAttribute("challenge_level", itemLevel);
+
 	if (res) {
 		alm->insertAttribute("weapon_cert_status", "Yes");
 	} else {

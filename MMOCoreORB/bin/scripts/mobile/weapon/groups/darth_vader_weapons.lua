@@ -1,6 +1,8 @@
 darth_vader_weapons = {
-	"object/weapon/melee/sword/sword_lightsaber_vader.iff"
+	"object/weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_s13_gen2.iff"
+	--"object/weapon/melee/sword/sword_lightsaber_vader.iff"
 }
+
 
 addWeapon("darth_vader_weapons", darth_vader_weapons)
 --To facilitate the correctness to Weapons groups 
