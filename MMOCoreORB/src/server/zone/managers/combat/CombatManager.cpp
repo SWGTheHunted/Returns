@@ -1971,16 +1971,16 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		damage *= 0.5;
 
 	//PvE dmg
-	if (attacker->isPlayerCreature() && !defender->isPlayerCreature())
-		damage *= .35;
+//	if (attacker->isPlayerCreature() && !defender->isPlayerCreature())
+//		damage *= .5;//was .35
 
 	//EvP dmg
-	if (!attacker->isPlayerCreature() && defender->isPlayerCreature())	{
-		//damage += DefAvgDmg;//this adds player avg dmg to npc attack
-
-		damage *= 0.35;
-
-	}
+//	if (!attacker->isPlayerCreature() && defender->isPlayerCreature())	{
+//		//damage += DefAvgDmg;//this adds player avg dmg to npc attack
+//
+//		damage *= 0.75;//was .35
+//
+//	}
 
 //	if (damage < 25) damage = System::random(5) + 20;
 //
@@ -2506,11 +2506,11 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 
 //dmg balance
-	int pvpdmgtier1 = 250;
+	int pvpdmgtier1 = 200;
 
 	int pvpdmgtier2 = 300;
 
-	int pvpdmgtier3 = 400;
+	int pvpdmgtier3 = 500;
 
 	int pvedmgtier1 = 1000;
 
@@ -2522,7 +2522,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 	int mult2 = 2;
 
-	int mult3 = 2;
+	int mult3 = 4;
 
 	int evpdmgtier1 = 100;
 
@@ -2556,13 +2556,8 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 				healthDamage = ((healthDamage - pvpdmgtier3) / mult3) + pvpdmgtier3;
 			if (healthDamage > pvpdmgtier2)
 				healthDamage = ((healthDamage - pvpdmgtier2) / mult2) + pvpdmgtier2;
-//			if (healthDamage > pvpdmgtier1)
-//				healthDamage = ((healthDamage - pvpdmgtier1) / mult1) + pvpdmgtier1;
-
-//			if (healthDamage > 150)
-//				healthDamage = ((healthDamage - 150) / 100) + 150;
-
-			//healthDamage *= .5;
+			if (healthDamage > pvpdmgtier1)
+				healthDamage = ((healthDamage - pvpdmgtier1) / mult1) + pvpdmgtier1;
 
 			if (healthDamage < 50) healthDamage = 50 + System::random(5);
 
@@ -2573,8 +2568,8 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 				healthDamage = ((healthDamage - pvedmgtier3) / mult3) + pvedmgtier3;
 			if (healthDamage > pvedmgtier2)
 				healthDamage = ((healthDamage - pvedmgtier2) / mult2) + pvedmgtier2;
-//			if (healthDamage > pvedmgtier1)
-//				healthDamage = ((healthDamage - pvedmgtier1) / mult1) + pvedmgtier1;
+			if (healthDamage > pvedmgtier1)
+				healthDamage = ((healthDamage - pvedmgtier1) / mult1) + pvedmgtier1;
 
 
 		}
@@ -2584,8 +2579,8 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 				healthDamage = ((healthDamage - evpdmgtier3) / mult3) + evpdmgtier3;
 			if (healthDamage > evpdmgtier2)
 				healthDamage = ((healthDamage - evpdmgtier2) / mult2) + evpdmgtier2;
-//			if (healthDamage > evpdmgtier1)
-//				healthDamage = ((healthDamage - evpdmgtier1) / mult1) + evpdmgtier1;
+			if (healthDamage > evpdmgtier1)
+				healthDamage = ((healthDamage - evpdmgtier1) / mult1) + evpdmgtier1;
 
 		}
 
@@ -2623,13 +2618,9 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 				actionDamage = ((actionDamage - pvpdmgtier3) / mult3) + pvpdmgtier3;
 			if (actionDamage > pvpdmgtier2)
 				actionDamage = ((actionDamage - pvpdmgtier2) / mult2) + pvpdmgtier2;
-//			if (actionDamage > pvpdmgtier1)
-//				actionDamage = ((actionDamage - pvpdmgtier1) / mult1) + pvpdmgtier1;
+			if (actionDamage > pvpdmgtier1)
+				actionDamage = ((actionDamage - pvpdmgtier1) / mult1) + pvpdmgtier1;
 
-//			if (actionDamage > 150)
-//				actionDamage = ((actionDamage - 150) / 100) + 150;
-
-			//actionDamage *= .5;
 			if (actionDamage < 50) actionDamage = 50 + System::random(5);
 
 		}
@@ -2639,8 +2630,8 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 				actionDamage = ((actionDamage - pvedmgtier3) / mult3) + pvedmgtier3;
 			if (actionDamage > pvedmgtier2)
 				actionDamage = ((actionDamage - pvedmgtier2) / mult2) + pvedmgtier2;
-//			if (actionDamage > pvedmgtier1)
-//				actionDamage = ((actionDamage - pvedmgtier1) / mult1) + pvedmgtier1;
+			if (actionDamage > pvedmgtier1)
+				actionDamage = ((actionDamage - pvedmgtier1) / mult1) + pvedmgtier1;
 
 		}
 
@@ -2649,8 +2640,8 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 				actionDamage = ((actionDamage - evpdmgtier3) / mult3) + evpdmgtier3;
 			if (actionDamage > evpdmgtier2)
 				actionDamage = ((actionDamage - evpdmgtier2) / mult2) + evpdmgtier2;
-//			if (actionDamage > evpdmgtier1)
-//				actionDamage = ((actionDamage - evpdmgtier1) / mult1) + evpdmgtier1;
+			if (actionDamage > evpdmgtier1)
+				actionDamage = ((actionDamage - evpdmgtier1) / mult1) + evpdmgtier1;
 
 
 
@@ -2688,13 +2679,8 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 				mindDamage = ((mindDamage - pvpdmgtier3) / mult3) + pvpdmgtier3;
 			if (mindDamage > pvpdmgtier2)
 				mindDamage = ((mindDamage - pvpdmgtier2) / mult2) + pvpdmgtier2;
-//			if (mindDamage > pvpdmgtier1)
-//				mindDamage = ((mindDamage - pvpdmgtier1) / mult1) + pvpdmgtier1;
-
-//			if (mindDamage > 150)
-//				mindDamage = ((mindDamage - 150) / 100) + 150;
-
-			//mindDamage *= .5;
+			if (mindDamage > pvpdmgtier1)
+				mindDamage = ((mindDamage - pvpdmgtier1) / mult1) + pvpdmgtier1;
 
 			if (mindDamage < 50) mindDamage = 50 + System::random(5);
 
@@ -2705,8 +2691,8 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 				mindDamage = ((mindDamage - pvedmgtier3) / mult3) + pvedmgtier3;
 			if (mindDamage > pvedmgtier2)
 				mindDamage = ((mindDamage - pvedmgtier2) / mult2) + pvedmgtier2;
-//			if (mindDamage > pvedmgtier1)
-//				mindDamage = ((mindDamage - pvedmgtier1) / mult1) + pvedmgtier1;
+			if (mindDamage > pvedmgtier1)
+				mindDamage = ((mindDamage - pvedmgtier1) / mult1) + pvedmgtier1;
 		}
 
 		if (!attacker->isPlayerCreature() && defender->isPlayerCreature()) {
@@ -2714,8 +2700,8 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 				mindDamage = ((mindDamage - evpdmgtier3) / mult3) + evpdmgtier3;
 			if (mindDamage > evpdmgtier2)
 				mindDamage = ((mindDamage - evpdmgtier2) / mult2) + evpdmgtier2;
-//			if (mindDamage > evpdmgtier1)
-//				mindDamage = ((mindDamage - evpdmgtier1) / mult1) + evpdmgtier1;
+			if (mindDamage > evpdmgtier1)
+				mindDamage = ((mindDamage - evpdmgtier1) / mult1) + evpdmgtier1;
 		}
 
 		int spilledDamage = (int)(mindDamage*spillMultPerPool);
