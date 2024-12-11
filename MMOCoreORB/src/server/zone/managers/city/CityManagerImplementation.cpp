@@ -1104,6 +1104,9 @@ void CityManagerImplementation::sendMaintenanceDestroyEmail(CityRegion* city, Sc
 }
 
 void CityManagerImplementation::updateCityVoting(CityRegion* city, bool override) {
+	//disable voting?
+	return;
+
 	if (!city->isVotingPeriodOver() && !override)
 		return;
 
