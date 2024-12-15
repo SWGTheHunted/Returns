@@ -20,6 +20,8 @@
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sui/callbacks/wipeinventorySuiCallback.h"
 
 void WearableObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isTangibleObject())
