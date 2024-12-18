@@ -782,7 +782,7 @@ void LootManagerImplementation::setSockets(TangibleObject* object, CraftingValue
 //		if (object->isRobeObject())
 //			wearableObject->setMaxSockets(8);
 //		else
-		wearableObject->setMaxSockets(System::random(9) + 1);// craftingValues->getCurrentValue("sockets") + 0.5);
+		wearableObject->setMaxSockets(System::random(5) + 5);// craftingValues->getCurrentValue("sockets") + 0.5);
 	}
 }
 
@@ -798,46 +798,36 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, SceneObject* container, const LootGroupCollection* lootCollection, int level) {
 	for (int i = 0; i < lootCollection->count(); ++i) {
 		const LootGroupCollectionEntry* entry = lootCollection->get(i);
-		int lootChance = entry->getLootChance();
+		int lootChance = entry->getLootChance() * 2.0;
 
-		//if (lootChance <= 0)
-		//	continue;
+		if (lootChance <= 0)
+			continue;
 
 		int roll = System::random(10000000);
 
-//		if (roll > lootChance)
-//			continue;
-
-//		if (System::random(1) == 0)//50% no loot and improve stats
-//			continue;
-
-		//random holocron creation (only drops on mobs that have loot lists)
-		int holochance = 499;
-		if (System::random(holochance) >= holochance) {
-			createLoot(trx, container, "jedi_holocron_light", level);
-		}
-
+		if (roll > lootChance)
+			continue;
 
 		int tempChance = 0; //Start at 0.
 
 		const LootGroups* lootGroups = entry->getLootGroups();
 
 		//Now we do the second roll to determine loot group.
-		roll = System::random(lootGroups->count());//10000000);
+		roll = System::random(10000000);
 
 		//Select the loot group to use.
 		for (int i = 0; i < lootGroups->count(); ++i) {
 			const LootGroupEntry* entry = lootGroups->get(i);
 
-//			tempChance += 1;//entry->getLootChance();
+			tempChance += entry->getLootChance();
 
 			//Is this entry lower than the roll? If yes, then we want to try the next entry.
-//			if (tempChance < roll)
-//				continue;
+			if (tempChance < roll)
+				continue;
 
 			createLoot(trx, container, entry->getLootGroupName(), level);
 
-			//break;
+			break;
 		}
 	}
 
