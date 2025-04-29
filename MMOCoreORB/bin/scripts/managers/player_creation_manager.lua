@@ -1,10 +1,10 @@
 --Should all created players start with God Mode? 1 = yes, 0 = no
 freeGodMode = 0;
 --How many cash credits new characters start with after creating a character (changed during test phase, normal value is 100)
-startingCash = 2000
+startingCash = 100000
 --startingCash = 100000
 --How many bank credits new characters start with after creating a character (changed during test phase, normal value is 1000)
-startingBank = 15000
+startingBank = 100000
 --startingBank = 100000
 --How many skill points a new characters start with
 skillPoints = 250
@@ -43,8 +43,6 @@ chemicalTool = "object/tangible/survey_tool/survey_tool_liquid.iff"
 
 slitherhorn = "object/tangible/instrument/slitherhorn.iff"
 
-marojMelon = "object/tangible/food/foraged/foraged_fruit_s1.iff"
-
 x31Speeder = "object/tangible/deed/vehicle_deed/landspeeder_x31_deed.iff"
 
 
@@ -60,7 +58,7 @@ professionSpecificItems = {
 	social_entertainer = { slitherhorn }
 }
 
-commonStartingItems = { marojMelon, survivalKnife, brawlerTwoHander, brawlerPolearm, marksmanPistol, marksmanCarbine, marksmanRifle, genericTool, mineralTool, chemicalTool, foodTool, slitherhorn, Speeder }
+commonStartingItems = { survivalKnife, brawlerTwoHander, brawlerPolearm, marksmanPistol, marksmanCarbine, marksmanRifle, genericTool, mineralTool, chemicalTool, foodTool, slitherhorn, Speeder }
 
 
 
