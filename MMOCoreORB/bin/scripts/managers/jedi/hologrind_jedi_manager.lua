@@ -4,7 +4,7 @@ local PlayerManager = require("managers.player_manager")
 
 jediManagerName = "HologrindJediManager"
 
-NUMBEROFPROFESSIONSTOMASTER = 5 --vanilla 6
+NUMBEROFPROFESSIONSTOMASTER = 10 --vanilla 6
 MAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON = 2
 
 HologrindJediManager = JediManager:new {
