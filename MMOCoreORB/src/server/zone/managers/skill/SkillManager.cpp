@@ -251,7 +251,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	if (skill == nullptr)
 		return false;
 
-	if (
+	/*if (
 			//skill->getSkillName().contains("outdoors_creaturehandler")
 		//||  skill->getSkillName() == "outdoors_bio_engineer_novice"
 		//|| skill->getSkillName() == "crafting_merchant_novice"
@@ -260,9 +260,9 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		skill->getSkillName().contains("outdoors_squadleader")
 		|| skill->getSkillName().contains("crafting_shipwright") ) {
 
-		creature->sendSystemMessage("This profession is currently disabled in mySWG.");
+		creature->sendSystemMessage("This profession is currently disabled in The Hunted.");
 		return false;
-	}
+	}*/
 
 //	if (skill->getSkillName() == "jedi_padawan_novice" && !creature->hasSkill("jedi_padawan_novice")) {
 //		SkillManager::surrenderAllSkills(creature, true, false);
@@ -401,37 +401,37 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 			}
 		}
 
-//		if (skillName.contains("novice")) {
-//		const Badge* badge = BadgeList::instance()->get(skillName.replaceAll("_novice", "_master"));
-//
-//		const unsigned int badgeId = badge->getIndex();
-//
-//		if (ghost->hasBadge(badgeId)) {
-//			awardSkill(skillName.replaceAll("_novice", "_master"), creature, true, true, true);
-//		}
-//		}
+		if (skillName.contains("novice")) {
+		const Badge* badge = BadgeList::instance()->get(skillName.replaceAll("_novice", "_master"));
 
-//		const SkillList* list = creature->getSkillList();
-//
-//		int totalSkillPointsWasted = 250;
-//
-//		for (int i = 0; i < list->size(); ++i) {
-//			Skill* skill = list->get(i);
-//
-//			totalSkillPointsWasted -= skill->getSkillPointsRequired();
-//		}
-//
-//		if (ghost->getSkillPoints() != totalSkillPointsWasted) {
-//			creature->error("skill points mismatch calculated: " + String::valueOf(totalSkillPointsWasted) + " found: " + String::valueOf(ghost->getSkillPoints()));
-//			ghost->setSkillPoints(totalSkillPointsWasted);
-//			SkillManager::surrenderAllSkills(creature, true, false);
-//
-//			ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
-//			box->setPromptTitle("SKILLPOINT OVERLOAD");
-//			box->setPromptText("Skill points now cap at 250. All of your skills have been removed, skill points reset and exp returned.");
-//			ghost->addSuiBox(box);
-//			creature->sendMessage(box->generateMessage());
-//		}
+		const unsigned int badgeId = badge->getIndex();
+
+		if (ghost->hasBadge(badgeId)) {
+			awardSkill(skillName.replaceAll("_novice", "_master"), creature, true, true, true);
+		}
+		}
+
+		const SkillList* list = creature->getSkillList();
+
+		int totalSkillPointsWasted = 250;
+
+		for (int i = 0; i < list->size(); ++i) {
+			Skill* skill = list->get(i);
+
+			totalSkillPointsWasted -= skill->getSkillPointsRequired();
+		}
+
+		if (ghost->getSkillPoints() != totalSkillPointsWasted) {
+			creature->error("skill points mismatch calculated: " + String::valueOf(totalSkillPointsWasted) + " found: " + String::valueOf(ghost->getSkillPoints()));
+			ghost->setSkillPoints(totalSkillPointsWasted);
+			SkillManager::surrenderAllSkills(creature, true, false);
+
+			ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
+			box->setPromptTitle("SKILLPOINT OVERLOAD");
+			box->setPromptText("Skill points now cap at 250. All of your skills have been removed, skill points reset and exp returned.");
+			ghost->addSuiBox(box);
+			creature->sendMessage(box->generateMessage());
+		}
 
 		if (playerManager != nullptr) {
 			creature->setLevel(playerManager->calculatePlayerLevel(creature));
@@ -494,7 +494,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		ghost->addSuiBox(box);
 		creature->sendMessage(box->generateMessage());
 //just create a fkn waypoint for the player, theyre too fucking stupid to figure out what to do.
-		chatManager2->sendMail("mySWG", "JEDI UNLOCK", "Congratulations on unlocking Jedi on mySWG!\n\n     To begin training as a jedi you need to craft a lightsaber and find or craft a color crystal. To train skills you can use your jedi specific trainer, OR learn skills directly from a brawler trainer for convenience.\n\nVISIBILITY\n\n     Visibility is completely different here, certain actions cause a visibility check. equipping a saber, using a force power, entering combat with a saber, and random npc checks to see if players have a saber equipped. These checks will increase visibility if the jedi is within 32m of any npc or player and a notification of visibility increase will be sent to the player. NPC Bounty Hunters will start to come after you once you have enough visibility.\n\nLastly, a jedi will ONLY appear on the terminals if they are Special Forces/Overt declared Rebel/Imperial, this is one of the features that allows players not to engage in PVP on myswg if they so choose, all pvp combat is consensual, there are no Temporary Enemy Flags here.\n\nJEDI KNIGHT\n\n     When a jedi meets the minimum requirements for jedi knight they will receive a pop up after training a skill, this will let you pick a FRS side of light or dark, there is no Trial quest line here. Again, the player does not need to be part of a faction or overt to become a knight. FRS exp is earned the same as combat exp and also through FRS NPC jedi encoutners. The FRS encounters will ONLY spawn if the player is OVERT/SF declared Rebel/Imperial as these are to simulate pvp encounters and are thereby optional.", creature->getFirstName());
+		chatManager2->sendMail("The Hunted", "JEDI UNLOCK", "Congratulations on unlocking Jedi on The Hunted!\n\n     To begin training as a jedi you need to craft a lightsaber and find or craft a color crystal. To train skills you can use your jedi specific trainer, OR learn skills directly from a brawler trainer for convenience.\n\nVISIBILITY\n\n     Visibility is completely different here, certain actions cause a visibility check. equipping a saber, using a force power, entering combat with a saber, and random npc checks to see if players have a saber equipped. These checks will increase visibility if the jedi is within 32m of any npc or player and a notification of visibility increase will be sent to the player. NPC Bounty Hunters will start to come after you once you have enough visibility.\n\nLastly, a jedi will ONLY appear on the terminals if they are Special Forces/Overt declared Rebel/Imperial, this is one of the features that allows players not to engage in PVP on The Hunted if they so choose, all pvp combat is consensual, there are no Temporary Enemy Flags here.\n\nJEDI KNIGHT\n\n     When a jedi meets the minimum requirements for jedi knight they will receive a pop up after training a skill, this will let you pick a FRS side of light or dark, there is no Trial quest line here. Again, the player does not need to be part of a faction or overt to become a knight. FRS exp is earned the same as combat exp and also through FRS NPC jedi encoutners. The FRS encounters will ONLY spawn if the player is OVERT/SF declared Rebel/Imperial as these are to simulate pvp encounters and are thereby optional.", creature->getFirstName());
 
 		chatManager->broadcastGalaxy("IMPERIAL COMMUNICATION FROM THE REGIONAL GOVERNOR:\n\nLord Vader has detected a vergence in the Force.\n\n     Be on the lookout for any suspicious persons displaying unique or odd abilities. Lord Vader authorizes all citizens to use deadly force to eliminate this threat to the Empire.", "imperial");
 		}
@@ -513,7 +513,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 //			ghost->addSuiBox(box);
 //			creature->sendMessage(box->generateMessage());
 ////just create a fkn waypoint for the player, theyre too fucking stupid to figure out what to do.
-//			chatManager2->sendMail("mySWG", "JEDI UNLOCK", "Congratulations on unlocking Jedi on mySWG!\n\n     To begin training as a jedi you first need to meditate at any Jedi shrine. If you do not want this character to be a jedi, do not start the trials.\n\nLIGHTSABER TEF\n\n		Using a lightsaber will make you attackable to ANYONE. Jedi in this time period are rare and in hiding!\n\nBOUNTY HUNTERS\n\n     Visibility is slightly more forgiving here but mostly unchanged. Using a lightsaber or any force powers within 32m of any player or humanoid NPC will raise your visibility for the Bounty Hunter terminals. NPC Bounty Hunters will start to come after you once you have enough visibility. As a new Jedi you should just RUN.\n\nJEDI KNIGHT\n\n     Jedi Knight trials will start when you have learned enough skills.", creature->getFirstName());
+//			chatManager2->sendMail("The Hunted", "JEDI UNLOCK", "Congratulations on unlocking Jedi on The Hunted!\n\n     To begin training as a jedi you first need to meditate at any Jedi shrine. If you do not want this character to be a jedi, do not start the trials.\n\nLIGHTSABER TEF\n\n		Using a lightsaber will make you attackable to ANYONE. Jedi in this time period are rare and in hiding!\n\nBOUNTY HUNTERS\n\n     Visibility is slightly more forgiving here but mostly unchanged. Using a lightsaber or any force powers within 32m of any player or humanoid NPC will raise your visibility for the Bounty Hunter terminals. NPC Bounty Hunters will start to come after you once you have enough visibility. As a new Jedi you should just RUN.\n\nJEDI KNIGHT\n\n     Jedi Knight trials will start when you have learned enough skills.", creature->getFirstName());
 //
 //			//chatManager->broadcastGalaxy("IMPERIAL COMMUNICATION FROM THE REGIONAL GOVERNOR:\n\nLord Vader has detected a vergence in the Force.\n\n     Be on the lookout for any suspicious persons displaying unique or odd abilities. Lord Vader authorizes all citizens to use deadly force to eliminate this threat to the Empire.", "imperial");
 //		}
@@ -532,7 +532,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 //			ghost->addSuiBox(box);
 //			creature->sendMessage(box->generateMessage());
 ////just create a fkn waypoint for the player, theyre too fucking stupid to figure out what to do.
-//			//chatManager2->sendMail("mySWG", "Jedi Guide", "Congratulations on unlocking Jedi on mySWG!\n\n     The command /findmytrainer will create a waypoint to your jedi skill trainer.\n\nPERMADEATH\n\n     Jedi on mySWG is permadeath. You have 3 lives, after you have died 3 times you will be PERMANENTLY DEAD. Deaths do not count until you have the rank of padawan.\n\nBOUNTY HUNTERS\n\n     Visibility is slightly more forgiving here but mostly unchanged. Using a lightsaber or any force powers within 32m of any player or humanoid NPC will raise your visibility for the Bounty Hunter terminals. NPC Bounty Hunters will start to come after you once you have enough visibility. As a new Jedi you should just RUN.\n\nJEDI KNIGHT\n\n     Jedi Knight trials will start when you have learned enough skills.", creature->getFirstName());
+//			//chatManager2->sendMail("The Hunted", "Jedi Guide", "Congratulations on unlocking Jedi on The Hunted!\n\n     The command /findmytrainer will create a waypoint to your jedi skill trainer.\n\nPERMADEATH\n\n     Jedi on The Hunted is permadeath. You have 3 lives, after you have died 3 times you will be PERMANENTLY DEAD. Deaths do not count until you have the rank of padawan.\n\nBOUNTY HUNTERS\n\n     Visibility is slightly more forgiving here but mostly unchanged. Using a lightsaber or any force powers within 32m of any player or humanoid NPC will raise your visibility for the Bounty Hunter terminals. NPC Bounty Hunters will start to come after you once you have enough visibility. As a new Jedi you should just RUN.\n\nJEDI KNIGHT\n\n     Jedi Knight trials will start when you have learned enough skills.", creature->getFirstName());
 //
 //			chatManager->broadcastGalaxy("IMPERIAL COMMUNICATION FROM THE REGIONAL GOVERNOR:\n\nLord Vader has detected a vergence in the Force.\n\n     Be on the lookout for any suspicious persons displaying unique or odd abilities. Lord Vader authorizes all citizens to use deadly force to eliminate this threat to the Empire.", "imperial");
 //		}
