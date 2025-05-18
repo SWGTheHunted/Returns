@@ -2326,5 +2326,4 @@ bool MissionManagerImplementation::sendPlayerBountyDebug(CreatureObject* creatur
 	creature->sendMessage(box->generateMessage());
 
 	return true;
-
 }
