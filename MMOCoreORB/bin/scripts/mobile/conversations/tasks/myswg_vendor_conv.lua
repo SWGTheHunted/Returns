@@ -227,11 +227,11 @@ newbuff1 = ConvoScreen:new {
     stopConversation = "false",
     options = { 
 
-        {"100% Doctor Buffs 4hr - 10k", "buff1"},
-        {"200% Doctor Buffs 5hr - 20k", "buff2"},
-        {"300% Doctor Buffs 6hr - 30k", "buff3"},
-        {"200% Entertainer Buffs 4hr - 10k", "buff4"},
-        {"300% Entertainer Buffs 6hr - 20k", "buff5"},
+        {"2500 Buffs 2hr - 10k", "buff1"},
+    --    {"200% Doctor Buffs 5hr - 20k", "buff2"},
+    --    {"300% Doctor Buffs 6hr - 30k", "buff3"},
+    --    {"200% Entertainer Buffs 4hr - 10k", "buff4"},
+   --     {"300% Entertainer Buffs 6hr - 20k", "buff5"},
  
 --        {"125%/3hr Mind Buffs - 5k", "buff5"},
 --        {"StimPack A - 500", "option50"},
