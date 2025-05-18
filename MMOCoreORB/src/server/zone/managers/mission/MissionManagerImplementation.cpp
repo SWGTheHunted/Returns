@@ -257,7 +257,7 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 	}
 
 	//Limit to two missions (only one of them can be a bounty mission)
-	if (missionCount >= 5 || (hasBountyMission && mission->getTypeCRC() == MissionTypes::BOUNTY)) {
+	if (missionCount >= 6 || (hasBountyMission && mission->getTypeCRC() == MissionTypes::BOUNTY)) {
 		StringIdChatParameter stringId("mission/mission_generic", "too_many_missions");
 		player->sendSystemMessage(stringId);
 		return;
@@ -2055,9 +2055,9 @@ bool MissionManagerImplementation::isBountyValidForPlayer(CreatureObject* player
 	if (!bounty->isOnline())
 		return false;
 
-//removing this means infinite players can take jedi bounty
-//	if (bounty->numberOfActiveMissions() >= 5)
-//		return false;
+removing this means infinite players can take jedi bounty
+	if (bounty->numberOfActiveMissions() >= 5)
+		return false;
 
 	uint64 targetId = bounty->getTargetPlayerID();
 	uint64 playerId = player->getObjectID();
