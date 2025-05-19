@@ -12,11 +12,11 @@ force_color_crystal = {
 		{"attackspeed",0.0,-0.6,1},
 		{"woundchance",0,0,0},
 		{"forcecost",0,-10,0},
-		--{"hitpoints",20,100,0},forcecost
-		--{"midrangemod",4,20,0},
---		{"attackhealthcost",0,-9,0},
---		{"attackactioncost",0,-9,0},
---		{"attackmindcost",0,-9,0},
+		{"hitpoints",20,100,0},forcecost
+		{"midrangemod",4,20,0},
+		{"attackhealthcost",0,-9,0},
+		{"attackactioncost",0,-9,0},
+		{"attackmindcost",0,-9,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}
