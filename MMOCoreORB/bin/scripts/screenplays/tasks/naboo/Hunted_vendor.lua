@@ -1,6 +1,6 @@
 myswg_vendor = ScreenPlay:new {                
     numberOfActs = 1,                
-    questString = "myswg_vendor_task",                   
+    questString = "Hunted_vendor_task",                   
     states = {}, 
 }
 registerScreenPlay("Hunted_vendor", true)
