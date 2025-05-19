@@ -449,7 +449,7 @@ function myswg_vendor_convo_handler:getNextConversationScreen(conversationTempla
                     creature:subtractCashCredits(250000)
                     local pItem = 
 										--CreatureObject(conversingPlayer):enhanceCharacterDocBuff()
-                    giveItem(pInventory, "object/tangible/wearables/armor/composite/armor_composite_bracer_gloves.iff", -1)
+                    giveItem(pInventory, "object/tangible/wearables/armor/composite/armor_composite_gloves.iff", -1)
                     --createLoot(pInventory, "junk", 300, false)
                                        
 --ARTISAN
