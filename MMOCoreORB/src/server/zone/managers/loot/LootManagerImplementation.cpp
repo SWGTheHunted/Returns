@@ -428,7 +428,7 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 //	}
 
 	// Use percentages to recalculate the values
-	craftingValues->recalculateValues(false);
+	craftingValues->recalculateValues(false, true, level);
 
 	craftingValues->addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false, ValuesMap::LINEARCOMBINE);
 	//can i unhiude this? here or in object alm

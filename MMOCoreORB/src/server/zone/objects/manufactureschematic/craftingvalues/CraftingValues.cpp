@@ -73,7 +73,7 @@ CreatureObject* CraftingValues::getPlayer() {
 	return player.get();
 }
 
-void CraftingValues::recalculateValues(bool initial, bool looted) {
+void CraftingValues::recalculateValues(bool initial, bool looted, int level) {
 	String experimentalPropTitle, attributeName;
 	float percentage = 0.f, min = 0.f, max = 0.f, newValue = 0.f, oldValue = 0.f;
 	bool hidden = false;
