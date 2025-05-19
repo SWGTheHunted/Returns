@@ -58,15 +58,6 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 
 	glowyBadgeIds = {12, 14, 15, 16, 17, 19, 20, 21, 23, 30, 38, 39, 71, 105, 106, 107},
 
-	villageBranchUnlocks = {
-		"force_sensitive_combat_prowess_ranged_accuracy",
-		"force_sensitive_combat_prowess_ranged_speed",
-		"force_sensitive_combat_prowess_melee_accuracy",
-		"force_sensitive_combat_prowess_melee_speed",
-		"force_sensitive_enhanced_reflexes_ranged_defense",
-		"force_sensitive_enhanced_reflexes_melee_defense"
-	},
-
 	itemList = {
 		"Character Options",
 		{
@@ -1517,24 +1508,22 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Unlearn All Skills", "unlearn_all_skills",
 			"Cleanse Character", "cleanse_character",
 			"Enhance Character", "enhance_character",
-			"Jedi",
-			{
-				--"Unlock Jedi Initiate", "unlock_jedi_initiate",
-				"Unlock FRS Light Side", "frs_light_side",
-				"Unlock FRS Dark Side", "frs_dark_side"
-			},
+			"Enhance Character2", "enhance_character2",
+			"Enhance Character3", "enhance_character3",
+			"Enhance mind 1", "enhance_character4",
+			"Enhance mind 2", "enhance_character5",
 			"Fill Force Bar", "fill_force_bar",
 			"Reset Buffs", "reset_buffs",
-			"Learn Languages", "language",
-			"Credits", "credits",
+			--"Learn Languages", "language",
+			--"Credits", "credits",
 			"Apply ALL DoTs", "apply_all_dots",
 			"Apply Poison DOT", "apply_poison_dot",
 			"Apply Bleed DOT", "apply_bleed_dot",
 			"Apply Disease DOT", "apply_disease_dot",
 			"Apply Fire DOT", "apply_fire_dot",
 			"Clear DOTs", "clear_dots",
-			"Max XP", "max_xp",
-			"Become Glowy", "become_glowy",
+			--"Max XP", "max_xp",
+			--"Become Glowy", "become_glowy",
 			"Faction Points",
 			{
 				"Imperial", "faction_imperial",
@@ -2866,22 +2855,22 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				--		"A Blacksun Razor Knuckler", "object/weapon/melee/special/blacksun_razor.iff"
 				}
 			},
-			--"Holocrons",
+			"Holocrons",
 			{
-			--	"Dark Jedi Holocron", "object/tangible/jedi/jedi_holocron_dark.iff",
-			--	"Light Jedi Holocron", "object/tangible/jedi/jedi_holocron_light.iff",
-			--	"Dark Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_dark.iff",
-			--	"Light Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_light.iff"
+				"Dark Jedi Holocron", "object/tangible/jedi/jedi_holocron_dark.iff",
+				"Light Jedi Holocron", "object/tangible/jedi/jedi_holocron_light.iff",
+				"Dark Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_dark.iff",
+				"Light Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_light.iff"
 			},
-			--"Village Testing (Temporary)",
+			"Village Testing (Temporary)",
 			{
-			--	"Resources",
+				"Resources",
 				{
-			--		"Ardanium II", "object/tangible/loot/quest/ardanium_ii.iff",
-			--		"Endrine", "object/tangible/loot/quest/endrine.iff",
-			--		"Ostrine", "object/tangible/loot/quest/ostrine.iff",
-			--		"Rudic", "object/tangible/loot/quest/rudic.iff",
-			--		"Wind Crystal", "object/tangible/loot/quest/wind_crystal.iff",
+					"Ardanium II", "object/tangible/loot/quest/ardanium_ii.iff",
+					"Endrine", "object/tangible/loot/quest/endrine.iff",
+					"Ostrine", "object/tangible/loot/quest/ostrine.iff",
+					"Rudic", "object/tangible/loot/quest/rudic.iff",
+					"Wind Crystal", "object/tangible/loot/quest/wind_crystal.iff",
 				},
 				"Loot Kit Parts",
 				{
