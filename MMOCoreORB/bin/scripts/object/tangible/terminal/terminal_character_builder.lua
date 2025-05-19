@@ -1506,7 +1506,8 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				}
 			},
 			"Unlearn All Skills", "unlearn_all_skills",
-		}		
+		}
+	}		
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_character_builder, "object/tangible/terminal/terminal_character_builder.iff")
