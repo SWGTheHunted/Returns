@@ -506,24 +506,25 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 	setForceCost(forceCost);
 
 
-	color = color;
+	//color = color;
 
-	minimumDamage = mind;
+//	minimumDamage = mind;
+//
+	//maximumDamage = maxd;
+//
+	//sacHealth = sach;
+//
+	//sacAction = saca;
+//
+	//sacMind = sacm;
+//
+	//woundChance = wndc;
+//
+	//attackSpeed = atts;
 
-	maximumDamage = maxd;
 
-	sacHealth = sach;
+	if (color != 31) {
 
-	sacAction = saca;
-
-	sacMind = sacm;
-
-	woundChance = wndc;
-
-	attackSpeed = atts;
-
-
-	if (colorMax != 31) {
 
 		int finalColor = System::random(6);// red,green,blue
 
@@ -585,3 +586,5 @@ int LightsaberCrystalComponentImplementation::inflictDamage(TangibleObject* atta
 	return 0;
 }
 } // end of class implementation
+} // end of class implementation
+
