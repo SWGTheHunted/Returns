@@ -13,7 +13,7 @@ krayt_dragon_pearl = {
 		{"attackspeed",0.0,-0.6,1},
 		{"woundchance",0,0,0},
 		{"forcecost",-4,-10,0},
-		{"hitpoints",20,100,0},forcecost
+		{"hitpoints",20,100,0},--forcecost
 		{"midrangemod",4,20,0},
 		{"attackhealthcost",0,-9,0},
 		{"attackactioncost",0,-9,0},
