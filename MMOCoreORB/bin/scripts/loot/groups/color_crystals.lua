@@ -2,8 +2,8 @@
 
 color_crystals = {
 	description = "",
-	--minimumLevel = 0,
-	--maximumLevel = 0,
+	minimumLevel = 0,
+	maximumLevel = 0,
 	lootItems = {
 		{itemTemplate = "force_color_crystal", weight = 1000000}
 	}
