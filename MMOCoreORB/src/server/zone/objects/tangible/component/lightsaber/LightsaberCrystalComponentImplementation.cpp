@@ -25,7 +25,7 @@ void LightsaberCrystalComponentImplementation::initializeTransientMembers() {
 }
 
 void LightsaberCrystalComponentImplementation::notifyLoadFromDatabase() {
-	 Randomize item level and stats for existing crystals based on original quality value
+	 //Randomize item level and stats for existing crystals based on original quality value
 	 TODO: Remove this on a server wipe when old variables are removed
 	 (color == 31 && (minimumDamage != maximumDamage || itemLevel == 0)) {
 		if (quality == POOR)
