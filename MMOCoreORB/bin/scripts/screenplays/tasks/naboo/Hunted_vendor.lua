@@ -1,4 +1,4 @@
-myswg_vendor = ScreenPlay:new {                
+Hunted_vendor = ScreenPlay:new {                
     numberOfActs = 1,                
     questString = "Hunted_vendor_task",                   
     states = {}, 
@@ -1191,7 +1191,7 @@ function myswg_vendor_convo_handler:getNextConversationScreen(conversationTempla
         -- end of the conversation logic.
         return nextConversationScreen
     end
-    function myswg_vendor_convo_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+    function Hunted_vendor_convo_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
     -- Plays the screens of the conversation.
     return conversationScreen
 end
