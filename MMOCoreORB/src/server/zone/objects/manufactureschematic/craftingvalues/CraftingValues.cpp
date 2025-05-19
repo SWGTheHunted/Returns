@@ -110,7 +110,7 @@ void CraftingValues::recalculateValues(bool initial, bool looted) {
 		//The attributes below correspond the the special protection values
 		//armor effectivness holds the value for all non special protection values
 		if ((attributeName == "armor_effectiveness" || attributeName == "blasteffectiveness" || attributeName == "heateffectiveness" ||
-			attributeName == "kineticeffectiveness" || attributeName == "energyeffectiveness" || attattributeNameribute == "electricaleffectiveness" ||
+			attributeName == "kineticeffectiveness" || attributeName == "energyeffectiveness" || attributeName == "electricaleffectiveness" ||
 			attributeName == "coldeffectiveness" || attributeName == "acideffectiveness") && looted)
 		{
 			if (level >= 300)
