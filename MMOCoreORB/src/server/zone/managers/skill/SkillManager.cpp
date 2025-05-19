@@ -261,22 +261,6 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		return false;
 	}
 
-	//Check for precluded skills.
-	auto skillsPrecluded = skill->getSkillsPrecluded();
-	for (int i = 0; i < skillsPrecluded->size(); ++i) {
-		const String& precludedSkillName = skillsPrecluded->get(i);
-		Skill* precludedSkill = skillMap.get(precludedSkillName.hashCode());
-
-		if (precludedSkill == NULL) {
-			continue;
-		}
-
-		if (creature->hasSkill(precludedSkillName)) {
-			return false;
-		}
-	}
-
-
 	//If they already have the skill, then return true.
 	if (creature->hasSkill(skill->getSkillName()))
 		return true;
@@ -339,6 +323,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 				}
 
 				if (badge != nullptr) {
+					//prof badges here
 					playerManager->awardBadge(ghost, badge);
 				}
 			}
@@ -368,15 +353,11 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 
-		if (skill->getSkillName() == "combat_bountyhunter_investigation_03"){
-			if (missionManager != NULL)
-				missionManager->addPlayerToBountyList(creature->getObjectID(), ghost->calculateBhReward());
-		}
-
-		if (skill->getSkillName() == "force_title_jedi_rank_02") {
+		if
+ (skill->getSkillName() == "force_title_jedi_rank_02") {
 			if (missionManager != nullptr)
 				missionManager->addPlayerToBountyList(creature->getObjectID(), ghost->calculateBhReward());
-		} else if (skill->getSkillName().contains("jedi")) {
+		} else if (skill->getSkillName().contains("force_discipline")) {
 			if (missionManager != nullptr)
 				missionManager->updatePlayerBountyReward(creature->getObjectID(), ghost->calculateBhReward());
 		} else if (skill->getSkillName().contains("squadleader")) {
@@ -405,6 +386,11 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	creature->sendMessage(msg4);
 
 	SkillModManager::instance()->verifySkillBoxSkillMods(creature);
+
+	//works with frog not with trainer
+	if (skill->getSkillName() == "social_politician_novice") {
+		awardSkill("social_politician_master", creature, true, true, true);
+	}
 
 	return true;
 }
@@ -445,6 +431,10 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	if (skillName.beginsWith("force_") && !(JediManager::instance()->canSurrenderSkill(creature, skillName)))
 		return false;
 
+	if ((skill->getSkillName() == "force_title_jedi_rank_03") && (creature->hasSkill("force_rank_light_novice") || creature->hasSkill("force_rank_dark_novice"))){
+		return false;
+	}
+
 	removeSkillRelatedMissions(creature, skill);
 
 	creature->removeSkill(skill, notifyClient);
@@ -463,6 +453,12 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	if (ghost != nullptr) {
 		//Give the player the used skill points back.
 		ghost->addSkillPoints(skill->getSkillPointsRequired());
+
+		int xpcost = skill->getXpCost();
+
+		if (xpcost > 0) {
+			ghost->addExperience(skill->getXpType(), skill->getXpCost(), true);
+		}
 
 		//Remove abilities but only if the creature doesn't still have a skill that grants the
 		//ability.  Some abilities are granted by multiple skills. For example Dazzle for dancers
@@ -528,11 +524,6 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 		MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 
-		if (skill->getSkillName() == "combat_bountyhunter_investigation_03"){
-			if (missionManager != NULL)
-				missionManager->removePlayerFromBountyList(creature->getObjectID());
-		}
-
 		if (skill->getSkillName() == "force_title_jedi_rank_02") {
 			if (missionManager != nullptr)
 				missionManager->removePlayerFromBountyList(creature->getObjectID());
@@ -586,11 +577,8 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 	for (int i = 0; i < copyOfList.size(); i++) {
 		Skill* skill = copyOfList.get(i);
 
-		if (skill->getSkillPointsRequired() >= 0) {
-			if (!removeForceProgression and skill->getSkillName().contains("force_title_"))
-				continue;
-
-			if (skill->getSkillName().contains("admin_"))
+		if (skill->getSkillPointsRequired() > 0) {
+			if (!removeForceProgression and skill->getSkillName().contains("force_"))
 				continue;
 
 			removeSkillRelatedMissions(creature, skill);
@@ -664,8 +652,20 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 		return;
 	}
 
-	VectorMap<String, int>* xpTypeCapList = ghost->getXpTypeCapList();
-	xpTypeCapList->removeAll();
+	VectorMap<String,
+ int>* xpTypeCapList = ghost->getXpTypeCapList();
+
+	//Clear all xp limits to the default limits.
+	for (int i = 0; i < defaultXpLimits.size(); ++i) {
+		String xpType = defaultXpLimits.elementAt(i).getKey();
+		int xpLimit = defaultXpLimits.elementAt(i).getValue();
+
+		if (xpTypeCapList->contains(xpType)) {
+			xpTypeCapList->get(xpType) = xpLimit;
+		} else {
+			xpTypeCapList->put(xpType, xpLimit);
+		}
+	}
 
 	//Iterate over the player skills and update xp limits accordingly.
 	ManagedReference<CreatureObject*> player = ghost->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
@@ -678,23 +678,12 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
 		Skill* skillBox = playerSkillBoxList->get(i);
 
-		if (skillBox == nullptr || skillBox->getXpCap() == 0)
+		if (skillBox == nullptr)
 			continue;
 
-		if (!xpTypeCapList->contains(skillBox->getXpType())) {
-			xpTypeCapList->put(skillBox->getXpType(), skillBox->getXpCap());
-		} else if (xpTypeCapList->get(skillBox->getXpType()) < skillBox->getXpCap()) {
-			xpTypeCapList->get(skillBox->getXpType()) = skillBox->getXpCap();
-		}
-	}
-
-	//Add defaults when no skill box caps exist
-	for (int i = 0; i < defaultXpLimits.size(); ++i) {
-		String xpType = defaultXpLimits.elementAt(i).getKey();
-		int xpLimit = defaultXpLimits.elementAt(i).getValue();
-
-		if (!xpTypeCapList->contains(xpType))
-			xpTypeCapList->put(xpType, xpLimit);
+//		if (xpTypeCapList->contains(skillBox->getXpType()) && (xpTypeCapList->get(skillBox->getXpType()) < skillBox->getXpCap())) {
+//			xpTypeCapList->get(skillBox->getXpType()) = skillBox->getXpCap();
+//		}
 	}
 
 	//Iterate over the player xp types and cap all xp types to the limits.
@@ -702,9 +691,9 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 
 	for (int i = 0; i < experienceList->size(); ++i) {
 		String xpType = experienceList->getKeyAt(i);
-		if (experienceList->get(xpType) > xpTypeCapList->get(xpType)) {
-			ghost->addExperience(xpType, xpTypeCapList->get(xpType) - experienceList->get(xpType), true);
-		}
+//		if (experienceList->get(xpType) > xpTypeCapList->get(xpType)) {
+//			ghost->addExperience(xpType, xpTypeCapList->get(xpType) - experienceList->get(xpType), true);
+//		}
 	}
 }
 
@@ -742,22 +731,6 @@ bool SkillManager::canLearnSkill(const String& skillName, CreatureObject* creatu
 		return false;
 	}
 
-	//Check for precluded skills.
-	auto skillsPrecluded = skill->getSkillsPrecluded();
-	for (int i = 0; i < skillsPrecluded->size(); ++i) {
-		const String& precludedSkillName = skillsPrecluded->get(i);
-		Skill* precludedSkill = skillMap.get(precludedSkillName.hashCode());
-
-		if (precludedSkill == NULL) {
-			continue;
-		}
-
-		if (creature->hasSkill(precludedSkillName)) {
-			return false;
-		}
-	}
-
-
 
 	return true;
 }
@@ -780,22 +753,6 @@ bool SkillManager::fulfillsSkillPrerequisitesAndXp(const String& skillName, Crea
 			return false;
 		}
 	}
-
-	//Check for precluded skills.
-	auto skillsPrecluded = skill->getSkillsPrecluded();
-	for (int i = 0; i < skillsPrecluded->size(); ++i) {
-		const String& precludedSkillName = skillsPrecluded->get(i);
-		Skill* precludedSkill = skillMap.get(precludedSkillName.hashCode());
-
-		if (precludedSkill == NULL) {
-			continue;
-		}
-
-		if (creature->hasSkill(precludedSkillName)) {
-			return false;
-		}
-	}
-
 
 	return true;
 }
@@ -840,22 +797,6 @@ bool SkillManager::fulfillsSkillPrerequisites(const String& skillName, CreatureO
 		}
 	}
 
-	//Check for precluded skills.
-	auto skillsPrecluded = skill->getSkillsPrecluded();
-	for (int i = 0; i < skillsPrecluded->size(); ++i) {
-		const String& precludedSkillName = skillsPrecluded->get(i);
-		Skill* precludedSkill = skillMap.get(precludedSkillName.hashCode());
-
-		if (precludedSkill == NULL) {
-			continue;
-		}
-
-		if (creature->hasSkill(precludedSkillName)) {
-			return false;
-		}
-	}
-
-
 	PlayerObject* ghost = creature->getPlayerObject();
 	if (ghost == nullptr || ghost->getJediState() < skill->getJediStateRequired()) {
 		return false;
@@ -888,18 +829,32 @@ int SkillManager::getForceSensitiveSkillCount(CreatureObject* creature, bool inc
 bool SkillManager::villageKnightPrereqsMet(CreatureObject* creature, const String& skillToDrop) {
 	const SkillList* skillList = creature->getSkillList();
 
+	int fullTrees = 0;
+	int totalJediPoints = 0;
 
 	for (int i = 0; i < skillList->size(); ++i) {
 		Skill* skill = skillList->get(i);
 
 		String skillName = skill->getSkillName();
-		if (skillName.contains("jedi_") &&
-			(skillName.contains("_master_master"))) {
-			return true;
+		if (skillName.contains("force_discipline_") &&
+			(skillName.indexOf("0") != -1 || skillName.contains("novice") || skillName.contains("master") )) {
+			totalJediPoints += skill->getSkillPointsRequired();
 
+			if (skillName.indexOf("4") != -1) {
+				fullTrees++;
+			}
 		}
 	}
 
+	if (!skillToDrop.isEmpty()) {
+		Skill* skillBeingDropped = skillMap.get(skillToDrop.hashCode());
 
-	return false;
+		if (skillToDrop.indexOf("4") != -1) {
+			fullTrees--;
+		}
+
+		totalJediPoints -= skillBeingDropped->getSkillPointsRequired();
+	}
+
+	return fullTrees >= 2 && totalJediPoints >= 206;
 }
