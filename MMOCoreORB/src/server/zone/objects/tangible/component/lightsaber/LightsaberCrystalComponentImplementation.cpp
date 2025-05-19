@@ -501,43 +501,42 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 	setForceCost(forceCost);
 
 
-//	color = color;
-//
-//	minimumDamage = mind;
-//
-//	maximumDamage = maxd;
-//
-//	sacHealth = sach;
-//
-//	sacAction = saca;
-//
-//	sacMind = sacm;
-//
-//	woundChance = wndc;
-//
-//	attackSpeed = atts;
+	color = color;
+
+	minimumDamage = mind;
+
+	maximumDamage = maxd;
+
+	sacHealth = sach;
+
+	sacAction = saca;
+
+	sacMind = sacm;
+
+	woundChance = wndc;
+
+	attackSpeed = atts;
 
 
-//	if (colorMax != 31) {
-//
-//		int finalColor = System::random(6);// red,green,blue
-//
-//		if (System::random(5) >= 5){
-//		finalColor = System::random(6) + 6;// 1/10 color crystals will be yellow,purp,orange
-//		}
-//
-//		if (System::random(50) >= 50){
-//		finalColor = System::random(18) + 12;// 1/100 color crystals will be special named colors
-//		}
-//
-//		setColor(finalColor);
-//		updateCrystal(finalColor);
-//	} else {
-//		setColor(31);
-//		updateCrystal(31);
-//	}
+	if (colorMax != 31) {
 
-//	generateCrystalStats();
+		int finalColor = System::random(6);// red,green,blue
+
+		if (System::random(5) >= 5){
+		finalColor = System::random(6) + 6;// 1/10 color crystals will be yellow,purp,orange
+		}
+
+		if (System::random(50) >= 50){
+		finalColor = System::random(18) + 12;// 1/100 color crystals will be special named colors
+		}
+
+		setColor(finalColor);
+		updateCrystal(finalColor);
+	} else {
+		setColor(31);
+		updateCrystal(31);
+	}
+	generateCrystalStats();
 
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 }
