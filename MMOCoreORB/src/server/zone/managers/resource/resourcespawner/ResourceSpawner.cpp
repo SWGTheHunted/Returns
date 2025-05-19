@@ -19,7 +19,6 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sessions/survey/SurveySession.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
-#include "engine/log/Logger.h"
 
 ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer*> serv,
 		ZoneProcessServer* impl) {
@@ -40,7 +39,7 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer*> serv,
 
 	nameManager = processor->getNameManager();
 	objectManager = server->getObjectManager();
-	samplingMultiplier = 1; //should be 1 for normal use
+	samplingMultiplier = 8; //should be 1 for normal use
 
 	minimumPool = new MinimumPool(this);
 	fixedPool = new FixedPool(this);
@@ -365,126 +364,6 @@ bool ResourceSpawner::writeAllSpawnsToScript() {
 	return true;
 }
 
-bool ResourceSpawner::ghDumpAll() {
-	/* This is custom code written to export resources in a way that an additional script can easily push them to Galaxy Harvester -c0pp3r */
-	if(!scriptLoading)
-		return false;
-	planets =  new Vector<String> ();
-	planets->add("corellia");
-	planets->add("dantooine");
-	planets->add("dathomir");
-	planets->add("endor");
-	planets->add("lok");
-	planets->add("naboo");
-	planets->add("rori");
-	planets->add("talus");
-	planets->add("tatooine");
-	planets->add("yavin4");
-	//String planets = "corellia";
-
-	try {
-		File* ghfile = new File("scripts/managers/ghoutput.xml");
-
-		FileWriter* ghwriter = new FileWriter(ghfile);
-		ghwriter->writeLine("<SpawnOutput>");
-		int last = 0;
-
-		for(int i = 0; i < resourceMap->size(); ++i) {
-
-			ManagedReference<ResourceSpawn*> spawn = resourceMap->get(i);
-
-			uint64 despawned = spawn->getDespawned();
-			uint64 currTime = System::getTime();
-
-			int diff = 0;
-			int inPhase = 0;
-			if(despawned > currTime) {
-				diff = despawned - currTime;
-			} else {
-				diff = currTime - despawned;
-			}
-			if(despawned > currTime) {
-				inPhase = 1;
-			}
-			if(String::valueOf(inPhase) == "1") {
-				for(int j = 0; j < planets->size(); ++j){
-					ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(planets->get(j));
-					ManagedReference<ResourceSpawn*> resourceSpawn;
-					
-					for (int b = 0; b< zoneMap->size(); ++b) {
-						resourceSpawn = zoneMap->get(b);
-						if (spawn->getName() == resourceSpawn->getName()){
-							ghwriter->writeLine("<resource>");
-							
-							ghwriter->write("<SpawnName>");
-							ghwriter->write(spawn->getName());
-							ghwriter->writeLine("</SpawnName>");
-							ghwriter->write("<resType>");
-							for(int i = 0; i < 8; ++i) {
-								String spawnClass = spawn->getClass(i);
-								if(spawnClass != "") {
-									last = i;
-									String spawnClass2 = spawn->getStfClass(i);
-								}
-							}
-							ghwriter->write(spawn->getStfClass(last));
-							ghwriter->writeLine("</resType>");
-							//ghwriter->writeLine("<attributes>");
-							for(int i = 0; i < 12; ++i) {
-								String attribute = "";
-								int value = spawn->getAttributeAndValue(attribute, i);
-								if(attribute != "") {
-									ghwriter->writeLine("<attribute name=\"" + attribute + "\">" + String::valueOf(value) + "</attribute>");
-								}
-							}
-							//ghwriter->writeLine("</attributes>");
-							ghwriter->write("<planet>");
-							ghwriter->write(planets->get(j));
-							ghwriter->writeLine("</planet>");
-							ghwriter->writeLine("</resource>");
-							ghwriter->writeLine("");
-						}
-					}
-				}
-				/*ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(planets);
-				ManagedReference<ResourceSpawn*> resourceSpawn;
-				for (int i = 0; i < zoneMap->size(); ++i) {
-					resourceSpawn = zoneMap->get(i);
-					if (spawn->getName() == resourceSpawn->getName())
-						ghwriter->write(planets + ",");
-				}
-				for(int i = 0; i < 8; ++i) {
-				String spawnClass = spawn->getClass(i);
-				if(spawnClass != "") {
-					last = i;
-				}
-			}
-				
-				ghwriter->write(spawn->getClass(last));
-				for(int i = 0; i < 12; ++i) {
-					String attribute = "";
-					int value = spawn->getAttributeAndValue(attribute, i);
-					if(attribute != "") {
-						ghwriter->write("," + attribute + ":" + String::valueOf(value));
-					}
-				}*/
-				
-			}
-			
-		}
-		ghwriter->writeLine("</SpawnOutput>");
-		ghwriter->close();
-
-		delete ghwriter;
-
-		return true;
-	} catch (Exception& e) {
-		error("Error dumping resources");
-		return false;
-	}
-	return true;
-}
-
 void ResourceSpawner::shiftResources() {
 	randomPool->update();
 	fixedPool->update();
@@ -493,7 +372,6 @@ void ResourceSpawner::shiftResources() {
 	manualPool->update();
 
 	dumpResources();
-	ghDumpAll();
 }
 
 ResourceSpawn* ResourceSpawner::createRecycledResourceSpawn(const ResourceTreeEntry* entry) const {
@@ -741,6 +619,18 @@ int ResourceSpawner::randomizeValue(int min, int max) {
 		}
 	}
 
+	randomStat = System::random(max) + System::random(1000);
+
+	if (randomStat > 1000) {
+		randomStat = 1000;
+	}
+
+	if (randomStat < 500) {
+		randomStat = 500;
+	}
+
+//	randomStat = 1000;
+	
 	return randomStat;
 }
 
@@ -930,7 +820,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	//Adjust cost based upon player's focus
 	int mindCost = 100 - (int)(player->getHAM(CreatureAttribute::FOCUS)/15.f);
 
-	player->inflictDamage(player, CreatureAttribute::MIND, mindCost, false, true);
+	player->inflictDamage(player, CreatureAttribute::MIND, 1, false, true);
 
 	ManagedReference<SurveySession*> session = player->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 	if(session == nullptr) {
@@ -974,6 +864,12 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 				maxX = posX;
 				maxY = posY;
 			}
+
+//			if (density < maxDensity) {
+//				maxDensity = maxDensity / 2;
+//				maxX = posX;
+//				maxY = posY;
+//			}
 
 			surveyMessage->add(posX, posY, density);
 
@@ -1036,7 +932,7 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 	//Adjust cost based upon player's quickness
 	int actionCost = 124 - (int)(player->getHAM(CreatureAttribute::QUICKNESS)/12.5f);
 
-	player->inflictDamage(player, CreatureAttribute::ACTION, actionCost, false, true);
+	player->inflictDamage(player, CreatureAttribute::ACTION, 1, false, true);
 
 	PlayClientEffectLoc* effect = new PlayClientEffectLoc(sampleAnimation,
 			player->getZone()->getZoneName(), player->getPositionX(),
@@ -1078,24 +974,24 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 	String zoneName = zne->getZoneName();
 
 	// If density is too low, we can't obtain a sample
-	if (density < .10f) {
-		StringIdChatParameter message("survey", "efficiency_too_low");
-		message.setTO(resname);
-		player->sendSystemMessage(message);
-		player->setPosture(CreaturePosture::UPRIGHT, true);
-		return;
-	}
+//	if (density < .10f) {
+//		StringIdChatParameter message("survey", "efficiency_too_low");
+//		message.setTO(resname);
+//		player->sendSystemMessage(message);
+//		player->setPosture(CreaturePosture::UPRIGHT, true);
+//		return;
+//	}
 
 	// Lower skill levels mean you can't sample lower concetrations
 	int surveySkill = player->getSkillMod("surveying");
 
-	if ((density * 100) < (32 - ((surveySkill / 20) * 6)) || density < .10) {
-		StringIdChatParameter message("survey", "density_below_threshold");
-		message.setTO(resname);
-		player->sendSystemMessage(message);
-		player->setPosture(CreaturePosture::UPRIGHT, true);
-		return;
-	}
+//	if ((density * 100) < (32 - ((surveySkill / 20) * 6)) || density < .10) {
+//		StringIdChatParameter message("survey", "density_below_threshold");
+//		message.setTO(resname);
+//		player->sendSystemMessage(message);
+//		player->setPosture(CreaturePosture::UPRIGHT, true);
+//		return;
+//	}
 
 	Coordinate* richSampleLocation = session->getRichSampleLocation();
 
@@ -1115,6 +1011,7 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 	float cityMultiplier = 1.f + player->getSkillMod("private_spec_samplesize") / 100.f;
 
 	int unitsExtracted = maxUnitsExtracted * (float(surveySkill) / 100.0f) * samplingMultiplier * cityMultiplier;
+//	unitsExtracted *= 5;
 	int xpcap = 40;
 
 	if (session->tryGamble()) {
@@ -1144,19 +1041,16 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 		xpcap = 50;
 	}
 
-	if (unitsExtracted < 2) {
+	if (unitsExtracted < 5) {
 
 		// Send message to player about trace amounts
-		StringIdChatParameter message("survey", "trace_amount");
-		message.setTO(resname);
-		message.setDI(unitsExtracted);
-		player->sendSystemMessage(message);
+//		StringIdChatParameter message("survey", "trace_amount");
+//		message.setTO(resname);
+//		message.setDI(unitsExtracted);
+//		player->sendSystemMessage(message);
 
-		return;
+		unitsExtracted = 5;
 	}
-
-	// half units extracted
-	unitsExtracted = unitsExtracted / 2;
 
 	// Send message to player about unit extraction
 	StringIdChatParameter message("survey", "sample_located");
@@ -1181,15 +1075,15 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 	addResourceToPlayerInventory(trx, player, resourceSpawn, unitsExtracted);
 	player->notifyObservers(ObserverEventType::SAMPLE, resourceSpawn, density * 100);
 
-	if (resourceSpawn->isType("radioactive")) {
-		int wound = int((sampleRate / 30) - System::random(7));
-
-		if (wound > 0) {
-			player->addWounds(CreatureAttribute::HEALTH, wound, true);
-			player->addWounds(CreatureAttribute::ACTION, wound, true);
-			player->addWounds(CreatureAttribute::MIND, wound, true);
-		}
-	}
+//	if (resourceSpawn->isType("radioactive")) {
+//		int wound = int((sampleRate / 30) - System::random(7));
+//
+//		if (wound > 0) {
+//			player->addWounds(CreatureAttribute::HEALTH, wound, true);
+//			player->addWounds(CreatureAttribute::ACTION, wound, true);
+//			player->addWounds(CreatureAttribute::MIND, wound, true);
+//		}
+//	}
 }
 
 bool ResourceSpawner::addResourceToPlayerInventory(TransactionLog& trx, CreatureObject* player, ResourceSpawn* resourceSpawn, int unitsExtracted) const {
