@@ -2055,7 +2055,7 @@ bool MissionManagerImplementation::isBountyValidForPlayer(CreatureObject* player
 	if (!bounty->isOnline())
 		return false;
 
-removing this means infinite players can take jedi bounty
+//removing this means infinite players can take jedi bounty
 	if (bounty->numberOfActiveMissions() >= 5)
 		return false;
 
