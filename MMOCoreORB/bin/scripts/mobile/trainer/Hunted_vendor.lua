@@ -1,4 +1,4 @@
-myswg_vendor = Creature:new {
+Hunted_vendor = Creature:new {
 --	objectName = "@mob/creature_names:trainer_weaponsmith",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
@@ -45,7 +45,7 @@ myswg_vendor = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "myswg_vendor_conv",
+	conversationTemplate = "Hunted_vendor_conv",
 	attacks = {}
 }
-CreatureTemplates:addCreatureTemplate(myswg_vendor,"myswg_vendor")
+CreatureTemplates:addCreatureTemplate(Hunted_vendor,"Hunted_vendor")
