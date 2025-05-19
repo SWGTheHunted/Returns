@@ -43,7 +43,6 @@
 
 SampleCommand = {
         name = "sample",
-}
 
 AddCommand(SampleCommand)
 

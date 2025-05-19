@@ -353,7 +353,8 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 
-		if (skill->getSkillName() == "force_title_jedi_rank_02") {
+		if
+ (skill->getSkillName() == "force_title_jedi_rank_02") {
 			if (missionManager != nullptr)
 				missionManager->addPlayerToBountyList(creature->getObjectID(), ghost->calculateBhReward());
 		} else if (skill->getSkillName().contains("force_discipline")) {
@@ -651,7 +652,8 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 		return;
 	}
 
-	VectorMap<String, int>* xpTypeCapList = ghost->getXpTypeCapList();
+	VectorMap<String,
+ int>* xpTypeCapList = ghost->getXpTypeCapList();
 
 	//Clear all xp limits to the default limits.
 	for (int i = 0; i < defaultXpLimits.size(); ++i) {
