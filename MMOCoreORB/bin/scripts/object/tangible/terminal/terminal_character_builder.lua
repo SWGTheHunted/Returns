@@ -2866,22 +2866,22 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				--		"A Blacksun Razor Knuckler", "object/weapon/melee/special/blacksun_razor.iff"
 				}
 			},
-			"Holocrons",
+			--"Holocrons",
 			{
-				"Dark Jedi Holocron", "object/tangible/jedi/jedi_holocron_dark.iff",
-				"Light Jedi Holocron", "object/tangible/jedi/jedi_holocron_light.iff",
-				"Dark Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_dark.iff",
-				"Light Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_light.iff"
+			--	"Dark Jedi Holocron", "object/tangible/jedi/jedi_holocron_dark.iff",
+			--	"Light Jedi Holocron", "object/tangible/jedi/jedi_holocron_light.iff",
+			--	"Dark Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_dark.iff",
+			--	"Light Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_light.iff"
 			},
-			"Village Testing (Temporary)",
+			--"Village Testing (Temporary)",
 			{
-				"Resources",
+			--	"Resources",
 				{
-					"Ardanium II", "object/tangible/loot/quest/ardanium_ii.iff",
-					"Endrine", "object/tangible/loot/quest/endrine.iff",
-					"Ostrine", "object/tangible/loot/quest/ostrine.iff",
-					"Rudic", "object/tangible/loot/quest/rudic.iff",
-					"Wind Crystal", "object/tangible/loot/quest/wind_crystal.iff",
+			--		"Ardanium II", "object/tangible/loot/quest/ardanium_ii.iff",
+			--		"Endrine", "object/tangible/loot/quest/endrine.iff",
+			--		"Ostrine", "object/tangible/loot/quest/ostrine.iff",
+			--		"Rudic", "object/tangible/loot/quest/rudic.iff",
+			--		"Wind Crystal", "object/tangible/loot/quest/wind_crystal.iff",
 				},
 				"Loot Kit Parts",
 				{
