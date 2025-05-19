@@ -43,18 +43,6 @@
 
 SampleCommand = {
         name = "sample",
-}
--- fallback sample.lua
-function sample(pPlayer)
-    local player = LuaCreatureObject(pPlayer)
-    local inventory = SceneObject(player:getSlottedObject("inventory"))
 
-    -- Simulated resource (customize this)
-    local resourceType = "your_resource_object"
-    local amount = 100 * 8.0 -- your multiplier here
-
-    giveResource(pPlayer, resourceType, amount)
-    player:sendSystemMessage("Sampled " .. amount .. " units of resource.")
-end
 AddCommand(SampleCommand)
 
