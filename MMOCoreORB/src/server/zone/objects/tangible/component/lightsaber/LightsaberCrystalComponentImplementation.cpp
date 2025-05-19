@@ -61,6 +61,9 @@ void LightsaberCrystalComponentImplementation::notifyLoadFromDatabase() {
 }
 
 void LightsaberCrystalComponentImplementation::generateCrystalStats() {
+    ...
+    quality = getCrystalQuality();
+
 	ManagedReference<LootManager*> lootManager = getZoneServer()->getLootManager();
 
 	if (lootManager == nullptr)
@@ -122,8 +125,10 @@ void LightsaberCrystalComponentImplementation::generateCrystalStats() {
 
 	quality = getCrystalQuality();
 
+}
 
-void LightsaberCrystalComponentImplementation::validateCrystalStats() {//this one happens when tuning only
+void LightsaberCrystalComponentImplementation::validateCrystalStats() {
+//this one happens when tuning only
 	ManagedReference<LootManager*> lootManager = getZoneServer()->getLootManager();
 
 	if (lootManager == nullptr)
@@ -578,3 +583,4 @@ int LightsaberCrystalComponentImplementation::inflictDamage(TangibleObject* atta
 
 	return 0;
 }
+} // end of class implementation
