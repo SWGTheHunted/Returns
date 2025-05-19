@@ -3,7 +3,7 @@
 color_crystals = {
 	description = "",
 	minimumLevel = 0,
-	maximumLevel = 0,
+	maximumLevel = -1,
 	lootItems = {
 		--{groupTemplate = "junk", weight = 9000000},
 --		{itemTemplate = "saber_rcp", weight = 50000},
