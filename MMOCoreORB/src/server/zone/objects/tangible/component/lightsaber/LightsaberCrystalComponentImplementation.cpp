@@ -61,7 +61,7 @@ void LightsaberCrystalComponentImplementation::notifyLoadFromDatabase() {
 }
 
 void LightsaberCrystalComponentImplementation::generateCrystalStats() {
-    ...
+    
     quality = getCrystalQuality();
 
 	ManagedReference<LootManager*> lootManager = getZoneServer()->getLootManager();
@@ -348,6 +348,7 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 		}
 
 	}
+}
 void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (ownerID == 0 && player->hasSkill("force_title_jedi_rank_02") && hasPlayerAsParent(player)) {
 		String text = "@jedi_spam:tune_crystal";
