@@ -631,6 +631,9 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 		const LootGroupCollectionEntry* entry = lootCollection->get(i);
 		int lootChance = (entry->getLootChance() * 2.2);
 
+		//NOTES The-Hunted
+		//Info here
+		info(true)<< " Loot Chance createLootFromCollection " << lootChance;
 		int hroll = System::random(5000);
 
 		if (hroll == 10000)
@@ -657,26 +660,9 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 
 			tempChance += entry->getLootChance();
 
-			//Is this entry lower than the roll? If yes, then we want to try the next entry.
-			if (tempChance < roll)
-				continue;
-
-			createLoot(trx, container, entry->getLootGroupName(), level);
-
-			break;
-		}
-
-		//Now we do the second roll to determine loot group.
-		roll = System::random(10000000);
-
-		if (roll > lootChance)
-			continue;
-
-		//Select the loot group to use.
-		for (int i = 0; i < lootGroups->count(); ++i) {
-			const LootGroupEntry* entry = lootGroups->get(i);
-
-			tempChance += entry->getLootChance();
+			// NOTES The-Hunted
+			// Info log here
+			info(true)<< " LootGroup: " << entry->getLootGroupName() << " Chance: " << tempChance << " Roll against: " << roll;
 
 			//Is this entry lower than the roll? If yes, then we want to try the next entry.
 			if (tempChance < roll)
@@ -698,6 +684,35 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 			const LootGroupEntry* entry = lootGroups->get(i);
 
 			tempChance += entry->getLootChance();
+
+			// NOTES The-Hunted
+			// Info log here
+			info(true)<< " LootGroup: " << entry->getLootGroupName() << " Chance: " << tempChance << " Roll against: " << roll;
+
+			//Is this entry lower than the roll? If yes, then we want to try the next entry.
+			if (tempChance < roll)
+				continue;
+
+			createLoot(trx, container, entry->getLootGroupName(), level);
+
+			break;
+		}
+
+		//Now we do the second roll to determine loot group.
+		roll = System::random(10000000);
+
+		if (roll > lootChance)
+			continue;
+
+		//Select the loot group to use.
+		for (int i = 0; i < lootGroups->count(); ++i) {
+			const LootGroupEntry* entry = lootGroups->get(i);
+
+			tempChance += entry->getLootChance();
+
+			// NOTES The-Hunted
+			// Info log here
+			info(true)<< " LootGroup: " << entry->getLootGroupName() << " Chance: " << tempChance << " Roll against: " << roll;
 
 			//Is this entry lower than the roll? If yes, then we want to try the next entry.
 			if (tempChance < roll)
