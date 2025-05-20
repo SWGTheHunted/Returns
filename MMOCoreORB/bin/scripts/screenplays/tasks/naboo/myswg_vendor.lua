@@ -457,7 +457,7 @@ function myswg_vendor_convo_handler:getNextConversationScreen(conversationTempla
                     -- Plays a chat box message from the NPC as well as a system message.
                       nextConversationScreen = conversation:getScreen("insufficient_funds")
                       creature:sendSystemMessage("You have insufficient funds") 
-                elseif (optionLink == "option23" and credits >= 250000) then
+                elseif (optionLink == "option24" and credits >= 250000) then
                     -- Take 10,000 credits from the player’s cash on hand and give player a speederbike.
                     creature:subtractCashCredits(250000)
                     local pItem = 
