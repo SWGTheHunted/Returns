@@ -61,6 +61,13 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 			//leader->sendSystemMessage("@group:must_be_leader");
 			//return;
 		}
+                  // No range restriction — allow galaxy-wide group invites
+                  // Optionally, if you *want* to keep some limit, set a huge one:
+                if (!target->isInRange(leader, 100000.0f)) {
+                    leader->sendSystemMessage("Target is too far away to invite.");
+                    return;
+       }
+
 
 		// can't invite if the group is full
 		if (group->getGroupSize() >= 50) {
