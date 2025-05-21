@@ -172,7 +172,6 @@ bool LootManagerImplementation::loadConfigData() {
 	crystalTable.pop();
 	luaObject.pop();
 
-
 	delete lua;
 
 	return true;
