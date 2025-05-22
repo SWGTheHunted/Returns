@@ -1662,6 +1662,30 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 						"Kashyyykian Hunting Leggings", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_leggings.iff"
 					}
 				},
+				--	"Chitin Armor",
+				--	{
+				--		"Chitin Left Bicep", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bicep_l.iff",
+				--		"Chitin Right Bicep", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bicep_r.iff",
+				--		"Chitin Boots", "object/tangible/wearables/armor/chitin/armor_chitin_s01_boots.iff",
+				--		"Chitin Left Bracer", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bracer_l.iff",
+				--		"Chitin Right Bracer", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bracer_r.iff",
+				--		"Chitin Chest Plate", "object/tangible/wearables/armor/chitin/armor_chitin_s01_chest_plate.iff",
+				--		"Chitin Gloves", "object/tangible/wearables/armor/chitin/armor_chitin_s01_gloves.iff",
+				--		"Chitin Helmet", "object/tangible/wearables/armor/chitin/armor_chitin_s01_helmet.iff",
+				--		"Chitin Leggings", "object/tangible/wearables/armor/chitin/armor_chitin_s01_leggings.iff"
+				--	},
+				"Composite Armor",
+				{
+					"Composite Left Bicep", "object/tangible/wearables/armor/composite/armor_composite_bicep_l.iff",
+					"Composite Right Bicep", "object/tangible/wearables/armor/composite/armor_composite_bicep_r.iff",
+					"Composite Boots", "object/tangible/wearables/armor/composite/armor_composite_boots.iff",
+					"Composite Left Bracer", "object/tangible/wearables/armor/composite/armor_composite_bracer_l.iff",
+					"Composite Right Bracer", "object/tangible/wearables/armor/composite/armor_composite_bracer_r.iff",
+					"Composite Chest Plate", "object/tangible/wearables/armor/composite/armor_composite_chest_plate.iff",
+					"Composite Gloves", "object/tangible/wearables/armor/composite/armor_composite_gloves.iff",
+					"Composite Helmet", "object/tangible/wearables/armor/composite/armor_composite_helmet.iff",
+					"Composite Leggings", "object/tangible/wearables/armor/composite/armor_composite_leggings.iff"
+				},
 			--	"Singing Mountain Clan Armor",
 			--	{
 			--		"Singing Mountain Clan Bicep", "object/tangible/wearables/armor/bone/armor_smc_s01_bicep_l.iff"
@@ -1699,6 +1723,10 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			{
 				"Desserts",
 				{
+			--"Consumables",
+			--{
+			--	"Desserts",
+			--	{
 			--"Air Cake", "object/tangible/food/crafted/dessert_air_cake.iff",
 			--"Almond Kwevvu Crisp Munchies", "object/tangible/food/crafted/dessert_almond_kwevvu_crisp_munchies.iff",
 			--"Bantha Butter", "object/tangible/food/crafted/dessert_bantha_butter.iff",
@@ -1708,6 +1736,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--"Cavaellin Creams", "object/tangible/food/crafted/dessert_cavaellin_creams.iff",
 			--"Chandad", "object/tangible/food/crafted/dessert_chandad.iff",
 			"Citros Snow Cake", "object/tangible/food/crafted/dessert_citros_snow_cake.iff",
+			--"Citros Snow Cake", "object/tangible/food/crafted/dessert_citros_snow_cake.iff",
 			--"Corellian Fried Icecream", "object/tangible/food/crafted/dessert_corellian_fried_icecream.iff",
 			--"Deneelian Fizz Pudding", "object/tangible/food/crafted/dessert_deneelian_fizz_pudding.iff",
 			--"Dweezel", "object/tangible/food/crafted/dessert_dweezel.iff",
@@ -1720,6 +1749,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--"Parwan Nutricake", "object/tangible/food/crafted/dessert_parwan_nutricake.iff",
 			--"Pastebread", "object/tangible/food/crafted/dessert_pastebread.iff",
 			"Pikatta Pie", "object/tangible/food/crafted/dessert_pikatta_pie.iff",
+			--"Pikatta Pie", "object/tangible/food/crafted/dessert_pikatta_pie.iff",
 			--"Pkneb", "object/tangible/food/crafted/dessert_pkneb.iff",
 			--"Puffcake", "object/tangible/food/crafted/dessert_puffcake.iff",
 			--"Pyollian Cake", "object/tangible/food/crafted/dessert_pyollian_cake.iff",
@@ -1734,6 +1764,12 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			},
 			"Dishes",
 			{
+			--"Vagnerian Canape", "object/tangible/food/crafted/dessert_vagnerian_canape.iff",
+			--"Wedding Cake", "object/tangible/food/crafted/dessert_wedding_cake.iff",
+			--"Won Won", "object/tangible/food/crafted/dessert_won_won.iff",
+			--},
+			--"Dishes",
+			--{
 			--"Ahrisa", "object/tangible/food/crafted/dish_ahrisa.iff",
 			--"Bivoli Tempari", "object/tangible/food/crafted/dish_bivoli_tempari.iff",
 			--"Blood Chowder", "object/tangible/food/crafted/dish_blood_chowder.iff",
@@ -1742,6 +1778,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--"Crispic", "object/tangible/food/crafted/dish_crispic.iff",
 			--"Dustcrepe", "object/tangible/food/crafted/dish_dustcrepe.iff",
 			"Exo Protein Wafers", "object/tangible/food/crafted/dish_exo_protein_wafers.iff",
+			--"Exo Protein Wafers", "object/tangible/food/crafted/dish_exo_protein_wafers.iff",
 			--"Fire Stew", "object/tangible/food/crafted/dish_fire_stew.iff",
 			--"Fried Endwa", "object/tangible/food/crafted/dish_fried_endwa.iff",
 			--"Gruuvan Shaal", "object/tangible/food/crafted/dish_gruuvan_shaal.iff",
@@ -1763,6 +1800,10 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--"Teltier Noodles", "object/tangible/food/crafted/dish_teltier_noodles.iff",
 			--"Terratta", "object/tangible/food/crafted/dish_terratta.iff",
 			"Thakitillo", "object/tangible/food/crafted/dish_thakitillo.iff",
+			--"Synthsteak", "object/tangible/food/crafted/dish_synthsteak.iff",
+			--"Teltier Noodles", "object/tangible/food/crafted/dish_teltier_noodles.iff",
+			--"Terratta", "object/tangible/food/crafted/dish_terratta.iff",
+			--"Thakitillo", "object/tangible/food/crafted/dish_thakitillo.iff",
 			--"Travel Biscuits", "object/tangible/food/crafted/dish_travel_biscuits.iff",
 			--"Trimpian", "object/tangible/food/crafted/dish_trimpian.iff",
 			--"Vegeparsine", "object/tangible/food/crafted/dish_vegeparsine.iff",
@@ -1773,6 +1814,9 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			},
 			"Drinks",
 			{
+			--},
+			--"Drinks",
+			--{
 			--"Accarragm", "object/tangible/food/crafted/drink_accarragm.iff",
 			--"Aitha", "object/tangible/food/crafted/drink_aitha.iff",
 			--"Alcohol", "object/tangible/food/crafted/drink_alcohol.iff",
@@ -1782,6 +1826,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--"Bantha Blaster", "object/tangible/food/crafted/drink_bantha_blaster.iff",
 			--"Bespin Port", "object/tangible/food/crafted/drink_bespin_port.iff",
 			"Blue Milk", "object/tangible/food/crafted/drink_blue_milk.iff",
+			--"Blue Milk", "object/tangible/food/crafted/drink_blue_milk.iff",
 			--"Breath of Heaven", "object/tangible/food/crafted/drink_breath_of_heaven.iff",
 			--"Caf", "object/tangible/food/crafted/drink_caf.iff",
 			--"Charde", "object/tangible/food/crafted/drink_charde.iff",
@@ -1797,6 +1842,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--"Gralinyn Juice", "object/tangible/food/crafted/drink_gralinyn_juice.iff",
 			--"Ice Blaster", "object/tangible/food/crafted/drink_ice_blaster.iff",
 			"Ithorian Mist", "object/tangible/food/crafted/drink_ithorian_mist.iff",
+			--"Ithorian Mist", "object/tangible/food/crafted/drink_ithorian_mist.iff",
 			--"Jaar", "object/tangible/food/crafted/drink_jaar.iff",
 			--"Jawa Beer", "object/tangible/food/crafted/drink_jawa_beer.iff",
 			--"Kylessian Fruit Distillate", "object/tangible/food/crafted/drink_kylessian_fruit_distillate.iff",
@@ -1804,6 +1850,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--"Ruby Bliel", "object/tangible/food/crafted/drink_ruby_bliel.iff",
 			--"Skannbult Likker", "object/tangible/food/crafted/drink_skannbult_likker.iff",
 			"Spiced Tea", "object/tangible/food/crafted/drink_spiced_tea.iff",
+			--"Spiced Tea", "object/tangible/food/crafted/drink_spiced_tea.iff",
 			--"Starshine Surprise", "object/tangible/food/crafted/drink_starshine_surprise.iff",
 			--"Sullustan Gin", "object/tangible/food/crafted/drink_sullustan_gin.iff",
 			--"Tatooine Sunburn", "object/tangible/food/crafted/drink_tatooine_sunburn.iff",
@@ -1813,6 +1860,10 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--"Vayerbok", "object/tangible/food/crafted/drink_vayerbok.iff",
 			--"Veronian Berry Wine", "object/tangible/food/crafted/drink_veronian_berry_wine.iff"
 			},
+			--"Vasarian Brandy", "object/tangible/food/crafted/drink_vasarian_brandy.iff",
+			--"Vayerbok", "object/tangible/food/crafted/drink_vayerbok.iff",
+			--"Veronian Berry Wine", "object/tangible/food/crafted/drink_veronian_berry_wine.iff"
+			--},
 			--"Foraged Food",
 			--{
 			--"Jar of Berries", "object/tangible/food/foraged/edible_jar_berries.iff",
@@ -1859,6 +1910,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--"Yarrock", "object/tangible/food/spice/spice_yarrock.iff"
 			--}
 			},
+			--},
 			"Deeds",
 			{
 				"Resource Deed", "object/tangible/veteran_reward/resource.iff",
