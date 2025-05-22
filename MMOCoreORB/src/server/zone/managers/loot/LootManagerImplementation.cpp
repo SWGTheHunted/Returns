@@ -629,14 +629,14 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, SceneObject* container, const LootGroupCollection* lootCollection, int level) {
 	for (int i = 0; i < lootCollection->count(); ++i) {
 		const LootGroupCollectionEntry* entry = lootCollection->get(i);
-		int lootChance = (entry->getLootChance() * 2.2);
+		int lootChance = (entry->getLootChance());
 
 		//NOTES The-Hunted
 		//Info here
 		info(true)<< " Loot Chance createLootFromCollection " << lootChance;
 		int hroll = System::random(5000);
 
-		if (hroll == 10000)
+		if (hroll == 5000)
 			createLoot(trx, container, "holocron_nd", level);
 
 		if (lootChance <= 0)
@@ -662,7 +662,7 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 
 			// NOTES The-Hunted
 			// Info log here
-			info(true)<< " LootGroup: " << entry->getLootGroupName() << " Chance: " << tempChance << " Roll against: " << roll;
+			//info(true)<< " LootGroup: " << entry->getLootGroupName() << " Chance: " << tempChance << " Roll against: " << roll;
 
 			//Is this entry lower than the roll? If yes, then we want to try the next entry.
 			if (tempChance < roll)
@@ -687,7 +687,7 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 
 			// NOTES The-Hunted
 			// Info log here
-			info(true)<< " LootGroup: " << entry->getLootGroupName() << " Chance: " << tempChance << " Roll against: " << roll;
+			//info(true)<< " LootGroup: " << entry->getLootGroupName() << " Chance: " << tempChance << " Roll against: " << roll;
 
 			//Is this entry lower than the roll? If yes, then we want to try the next entry.
 			if (tempChance < roll)
@@ -712,7 +712,7 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 
 			// NOTES The-Hunted
 			// Info log here
-			info(true)<< " LootGroup: " << entry->getLootGroupName() << " Chance: " << tempChance << " Roll against: " << roll;
+			//info(true)<< " LootGroup: " << entry->getLootGroupName() << " Chance: " << tempChance << " Roll against: " << roll;
 
 			//Is this entry lower than the roll? If yes, then we want to try the next entry.
 			if (tempChance < roll)
