@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_component_weapon_lightsaber_lightsaber_refined_crystal_pack2 = object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack2:new {
+object_tangible_component_weapon_lightsaber_lightsaber_refined_crystal_pack2 = "object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack2.iff" :new {
 
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
