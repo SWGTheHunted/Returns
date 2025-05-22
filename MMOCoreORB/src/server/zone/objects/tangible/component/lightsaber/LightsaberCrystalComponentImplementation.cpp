@@ -198,6 +198,9 @@ void LightsaberCrystalComponentImplementation::validateCrystalStats() {
 }
 
 int LightsaberCrystalComponentImplementation::getCrystalQuality() {
+	//Notes The-Hunted
+	//Find out why the pearl is always set to poor
+	info(true) << " Crystal item level: " << itemLevel;
 	if (itemLevel < 40)
 		return POOR;
 	else if (itemLevel < 70)
