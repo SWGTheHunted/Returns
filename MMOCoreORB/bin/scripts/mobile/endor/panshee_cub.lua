@@ -34,7 +34,8 @@ panshee_cub = Creature:new {
 		{
 			groups = {
                 {group = "ewok", chance = 5000000}, -- 50.00%
-                {group = "wearables_all", chance = 5000000}, -- 50.00%			},
+                {group = "wearables_all", chance = 5000000}, -- 50.00%			
+			},
 		}
 	},
 	weapons = {"ewok_weapons"},

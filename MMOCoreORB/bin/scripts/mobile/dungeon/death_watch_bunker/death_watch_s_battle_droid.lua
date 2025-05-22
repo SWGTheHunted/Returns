@@ -42,7 +42,7 @@ death_watch_s_battle_droid = Creature:new {
                 {group = "armor_attachments", chance = 1500000}, -- 15.00%
 			},
 		},
-	}
+	},
 	conversationTemplate = "",
 	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",
 	defaultAttack = "attack"
