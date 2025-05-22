@@ -20,8 +20,6 @@ class CrystalData : public Object {
 	float maxForceCost;
 	int minWoundChance;
 	int maxWoundChance;
-	void clearColor() {
-	color = "";
 }
 
 
