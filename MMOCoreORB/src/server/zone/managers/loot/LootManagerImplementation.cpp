@@ -635,7 +635,7 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 
 		//NOTES The-Hunted
 		//Info here
-		info(true)<< " Loot Chance createLootFromCollection " << lootChance;
+		//info(true)<< " Loot Chance createLootFromCollection " << lootChance;
 		int hroll = System::random(5000);
 
 		if (hroll == 5000)
