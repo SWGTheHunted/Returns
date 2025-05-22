@@ -162,12 +162,14 @@ bool LootManagerImplementation::loadConfigData() {
 	LuaObject crystalTable = luaObject.getObjectField("lightsaber_module_force_crystal");
 	CrystalData* crystal = new CrystalData();
 	crystal->readObject(&crystalTable);
+	crystal->clearColor(); // ← forcibly remove any Lua-defined color for krayt pearls
 	crystalData.put("lightsaber_module_force_crystal", crystal);
 	crystalTable.pop();
 
 	crystalTable = luaObject.getObjectField("lightsaber_module_krayt_dragon_pearl");
 	crystal = new CrystalData();
 	crystal->readObject(&crystalTable);
+	crystal->clearColor(); // ← forcibly remove any Lua-defined color for krayt pearls
 	crystalData.put("lightsaber_module_krayt_dragon_pearl", crystal);
 	crystalTable.pop();
 	luaObject.pop();
