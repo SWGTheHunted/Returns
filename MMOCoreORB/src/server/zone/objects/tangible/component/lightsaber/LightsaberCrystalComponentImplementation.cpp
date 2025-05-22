@@ -155,7 +155,7 @@ void LightsaberCrystalComponentImplementation::validateCrystalStats() {
 
 		//Notes The-Hunted
 		//logs for getting min and max damage points
-		info(true) << " Min stat: " << minStat << " Max stat: " << maxStat; 
+		//info(true) << " Min stat: " << minStat << " Max stat: " << maxStat; 
 
 		if (damage > maxStat || damage < minStat){
 			damage = getRandomizedStat(minStat, maxStat, itemLevel);

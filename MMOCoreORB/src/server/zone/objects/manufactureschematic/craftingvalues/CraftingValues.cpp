@@ -105,6 +105,8 @@ void CraftingValues::recalculateValues(bool initial, bool looted, int level) {
 			newValue = max;
 		}
 
+		log(true) << " experimentalPropTitle: " << experimentalPropTitle << " attributeName: " << attributeName;
+
 		//NOTES The-Hunted
 		//SET THE PROTECTION FOR LOOTED ITEMS
 		//The attributes below correspond the the special protection values
