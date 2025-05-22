@@ -312,12 +312,14 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 
 	float adjustment = floor((float)(((level > 50) ? level : 50) - 50) / 10.f + 0.5);
 
-	if (prototype->isLightsaberCrystalObject()) {
-		LightsaberCrystalComponent* crystal = cast<LightsaberCrystalComponent*> (prototype.get());
+	//Notes The-Hunted
+	//find out if this is needed
+	// if (prototype->isLightsaberCrystalObject()) {
+	// 	LightsaberCrystalComponent* crystal = cast<LightsaberCrystalComponent*> (prototype.get());
 
-		if (crystal != nullptr)
-			crystal->setItemLevel(level);
-	}
+	// 	if (crystal != nullptr)
+	// 		crystal->setItemLevel(level);
+	// }
 
 	String subtitle;
 	bool yellow = false;
@@ -629,7 +631,7 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, SceneObject* container, const LootGroupCollection* lootCollection, int level) {
 	for (int i = 0; i < lootCollection->count(); ++i) {
 		const LootGroupCollectionEntry* entry = lootCollection->get(i);
-		int lootChance = (entry->getLootChance());
+		int lootChance = (entry->getLootChance() * 1.2);
 
 		//NOTES The-Hunted
 		//Info here
