@@ -39,7 +39,7 @@ force_trained_archaist = Creature:new {
                 {group = "melee_weapons", chance = 914583}, -- 9.15%
                 {group = "armor_attachments", chance = 831250}, -- 8.31%
                 {group = "clothing_attachments", chance = 831250}, -- 8.31%
-                {group = "wearables_all", chance = 914583}, -- 9.15%
+                {group = "wearables_common", chance = 914583}, -- 9.15%
                 {group = "wearables_uncommon", chance = 914583}, -- 9.15%
 			}
 		}
