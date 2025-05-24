@@ -523,7 +523,7 @@ reservedNames = {
 	{ "Quinlan Vos", DECLINED_FICT_RESERVED },
 	{ "Rappertunie", DECLINED_FICT_RESERVED },
 	{ "Ratts Tyerell", DECLINED_FICT_RESERVED },
-	{ "Red", DECLINED_FICT_RESERVED },
+	--{ "Red", DECLINED_FICT_RESERVED },
 	{ "Ree-Yees", DECLINED_FICT_RESERVED },
 	{ "Rekkon", DECLINED_FICT_RESERVED },
 	{ "Rep Been", DECLINED_FICT_RESERVED },
