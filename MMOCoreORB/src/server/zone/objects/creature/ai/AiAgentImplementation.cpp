@@ -1523,8 +1523,6 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 
 	float respawn = respawnTimer * 1000;
 
-	//NOTES The-Hunted
-	// find out if this is working
 	if (randomRespawn) {
 		respawn = System::random(respawn) + (respawn / 2.f);
 	}
