@@ -46,13 +46,13 @@ buildInitialResourcesFromScript = 1 -- Use a script to build resource database w
 --  These indicate zone names where resources spawn
 activeZones = "corellia,tatooine,lok,naboo,rori,endor,talus,yavin4,dathomir,dantooine"
 
-averageShiftTime = 3600000 -- In milliseconds
+averageShiftTime = 14400000 -- In milliseconds 4hrs
   --  This is the time between each time the Resource Manager schedules
   --  itself to run again.
   --  *** Default is 2 hours (7200000) ***
   --  *** Good testing time is (15000) ***
 
-aveduration = 43200 -- In seconds
+aveduration = 86400 -- In seconds 3972 = 6-24hrs, 14400 = 24hrs-88hrs or 3.67days @ *22
   -- This is the modifier for how long spawns are in shift
   -- Organics are in shift between (6 * aveduration) and  (22 * aveduration)
   -- Inorganics are in shift between (6 * aveduration) and (11 * aveduration)
@@ -83,23 +83,6 @@ maxSpawnQuantity = 0
   -- is disabled (0) by default as it is NOT standard behavior, 
   -- but it is an option for admins to have more control over resources.
   -- Set to 0 for standard SOE behavior
-
---A function used to insert the JTL resources into a lua table.
-function InsertJtlIntoTable(jtlString, tab)
-	local jtlTable = { {} }
-
-	for k in string.gmatch(jtlString, "[%a_]+") do
-		table.insert(jtlTable, k)
-	end
-
-	for i = 2, #jtlTable do
-		table.insert(tab, {jtlTable[i], 1})
-	end
-	return tab
-end
-
---  Resources included in the JTL update
-jtlresources = "steel_bicorbantium,steel_arveshian,aluminum_perovskitic,copper_borocarbitic,fiberplast_gravitonic,gas_reactive_organometallic,ore_siliclastic_fermionic,radioactive_polymetric"
 
   -- The minimum pool includes is a table of resources and occurrences. A resource will always be in spawn a number of times equal to it's occurrence.
   -- The minimum pool will never include the items in the excludes

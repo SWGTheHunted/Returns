@@ -29,16 +29,16 @@ dark_side_savage = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-                {group = "junk", chance = 3250001}, -- 32.50%
-                {group = "power_crystals", chance = 750000}, -- 7.50%
-                {group = "color_crystals", chance = 750000}, -- 7.50%
-                {group = "holocron_dark", chance = 625000}, -- 6.25%
-                {group = "holocron_light", chance = 625000}, -- 6.25%
-                {group = "melee_weapons", chance = 833333}, -- 8.33%
-                {group = "armor_attachments", chance = 750000}, -- 7.50%
-                {group = "clothing_attachments", chance = 750000}, -- 7.50%
-                {group = "wearables_common", chance = 833333}, -- 8.33%
-                {group = "wearables_uncommon", chance = 833333}, -- 8.33%
+                {group = "junk", chance = 3331251}, -- 33.31%
+                {group = "power_crystals", chance = 831250}, -- 8.31%
+                {group = "color_crystals", chance = 831250}, -- 8.31%
+                {group = "holocron_dark", chance = 300000}, -- 3.00%
+                {group = "holocron_light", chance = 300000}, -- 3.00%
+                {group = "melee_weapons", chance = 914583}, -- 9.15%
+                {group = "armor_attachments", chance = 831250}, -- 8.31%
+                {group = "clothing_attachments", chance = 831250}, -- 8.31%
+                {group = "wearables_common", chance = 914583}, -- 9.15%
+                {group = "wearables_uncommon", chance = 914583}, -- 9.15%
 			}
 		}
 	},
