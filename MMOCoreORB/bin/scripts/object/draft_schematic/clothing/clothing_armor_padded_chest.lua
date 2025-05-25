@@ -49,7 +49,8 @@ object_draft_schematic_clothing_clothing_armor_padded_chest = object_draft_schem
 
    craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 40, 
-   size = 4, 
+   size = 4,
+   factoryCrateSize = 1000, 
 
    xpType = "crafting_clothing_armor", 
    xp = 700, 
