@@ -49,7 +49,8 @@ object_draft_schematic_clothing_clothing_belt_formal_15 = object_draft_schematic
 
    craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
-   size = 3, 
+   size = 3,
+   factoryCrateSize = 1000, 
 
    xpType = "crafting_clothing_general", 
    xp = 80, 
