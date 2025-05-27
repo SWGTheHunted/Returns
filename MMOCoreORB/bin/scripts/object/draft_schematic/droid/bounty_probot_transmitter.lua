@@ -50,7 +50,7 @@ object_draft_schematic_droid_bounty_probot_transmitter = object_draft_schematic_
 	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 25,
 	size = 1,
-	factoryCrateSize = 1001 5,
+	factoryCrateSize = 5,
 
 	xpType = "crafting_droid_general",
 	xp = 340,
