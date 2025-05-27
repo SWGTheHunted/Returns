@@ -50,7 +50,7 @@ object_draft_schematic_droid_droid_treadwell = object_draft_schematic_droid_shar
 	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 16,
 	size = 1,
-	factoryCrateSize = 1001 5,
+	factoryCrateSize = 5,
 
 	xpType = "crafting_droid_general",
 	xp = 155,
