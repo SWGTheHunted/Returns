@@ -49,10 +49,10 @@ which carries forward this exception.
 	--------------------
 --]]
 --The amount of time in minutes before the city specialization may be changed again.
-CitySpecializationCooldown = 1
+CitySpecializationCooldown = 60
 
 --The amount of time in minutes before another withdrawal from the city treasury may be made.
-TreasuryWithdrawalCooldown = 1
+TreasuryWithdrawalCooldown = 1440
 
 --The number of city update cycles that must pass before mayoral voting process is complete.
 CityVotingCycles = 3
