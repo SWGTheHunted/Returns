@@ -50,7 +50,7 @@ object_draft_schematic_space_weapon_missile_countermeasure_microchaff_launcher =
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 15,
 	size = 1,
-	factoryCrateSize = 1001 0,
+	factoryCrateSize = 1000,
 
 	xpType = "shipwright",
 	xp = 250,

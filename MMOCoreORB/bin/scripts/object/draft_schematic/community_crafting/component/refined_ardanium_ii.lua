@@ -47,7 +47,7 @@ object_draft_schematic_community_crafting_component_refined_ardanium_ii = object
 	craftingToolTab = 2148007936, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 15,
 	size = 1,
-	factoryCrateSize = 1001 0,
+	factoryCrateSize = 1000,
 
 	xpType = "crafting_general",
 	xp = 0,
