@@ -50,7 +50,7 @@ object_draft_schematic_space_chassis_tieadvanced = object_draft_schematic_space_
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 39,
 	size = 1,
-	factoryCrateSize = 1001 0,
+	factoryCrateSize = 1000,
 
 	xpType = "shipwright",
 	xp = 20000,
