@@ -73,7 +73,7 @@ OldCityGracePeriod = 4320
 EnableCityWarn = false
 
 --The number of citizens required to achieve each city rank. (Outpost, Village, Township, City, Metropolis)
-CitizensPerRank = {1, 1, 1, 1, 1}
+CitizensPerRank = {2, 4, 6, 8, 10}
 --CitizensPerRank = {10, 20, 35, 55, 85}
 
 --The radius in meters of the city at each city rank. (Outpost, Village, Township, City, Metropolis)
@@ -85,7 +85,7 @@ TrainersPerRank = 10
 MissionTerminalsPerRank = 10
 
 -- Amount to discount city maintenance  float.  1 = 100%, .75 =75%, .5=50% etc
-maintenanceDiscount = 1
+maintenanceDiscount = .25
 
 --[[
 	CITIES ALLOWED PER PLANET
@@ -193,7 +193,7 @@ CitySpecializations = {
 			{"private_medical_rating", 10},
 			{"private_spec_cloning", 20},
 			{"private_spec_experimentation", 15},
-			{"private_spec_missions", 15},
+			{"private_spec_missions", 30},
 			{"private_spec_entertainer", 10},
 			{"private_defense", 90}
 		}
@@ -207,7 +207,7 @@ CitySpecializations = {
 			{"private_medical_rating", 10},
 			{"private_spec_cloning", 20},
 			{"private_spec_experimentation", 15},
-			{"private_spec_missions", 15},
+			{"private_spec_missions", 30},
 			{"private_spec_entertainer", 10},
 			{"private_defense", 90}
 		}
@@ -221,7 +221,7 @@ CitySpecializations = {
 			{"private_medical_rating", 10},
 			{"private_spec_cloning", 20},
 			{"private_spec_experimentation", 15},
-			{"private_spec_missions", 15},
+			{"private_spec_missions", 30},
 			{"private_spec_entertainer", 10},
 			{"private_defense", 90}
 		}
@@ -235,7 +235,7 @@ CitySpecializations = {
 			{"private_medical_rating", 10},
 			{"private_spec_cloning", 20},
 			{"private_spec_experimentation", 15},
-			{"private_spec_missions", 15},
+			{"private_spec_missions", 30},
 			{"private_spec_entertainer", 10},
 			{"private_defense", 90}
 		}
@@ -249,7 +249,7 @@ CitySpecializations = {
 			{"private_medical_rating", 10},
 			{"private_spec_cloning", 20},
 			{"private_spec_experimentation", 15},
-			{"private_spec_missions", 15},
+			{"private_spec_missions", 30},
 			{"private_spec_entertainer", 10},
 			{"private_defense", 90}
 		}
@@ -263,7 +263,7 @@ CitySpecializations = {
 			{"private_medical_rating", 10},
 			{"private_spec_cloning", 20},
 			{"private_spec_experimentation", 15},
-			{"private_spec_missions", 15},
+			{"private_spec_missions", 30},
 			{"private_spec_entertainer", 10},
 			{"private_defense", 90}
 		}
@@ -277,7 +277,7 @@ CitySpecializations = {
 			{"private_medical_rating", 10},
 			{"private_spec_cloning", 20},
 			{"private_spec_experimentation", 15},
-			{"private_spec_missions", 15},
+			{"private_spec_missions", 30},
 			{"private_spec_entertainer", 10},
 			{"private_defense", 90}
 		}
@@ -291,7 +291,7 @@ CitySpecializations = {
 			{"private_medical_rating", 10},
 			{"private_spec_cloning", 20},
 			{"private_spec_experimentation", 15},
-			{"private_spec_missions", 15},
+			{"private_spec_missions", 30},
 			{"private_spec_entertainer", 10},
 			{"private_defense", 90}
 		}
