@@ -44,10 +44,10 @@
 ForceThrow1Command = {
 	name = "forcethrow1",
 
-	minDamage = 150,
-	maxDamage = 300,
-	speed = 4.0,
-	forceCost = 28,
+	minDamage = 1500,
+	maxDamage = 2500,
+	speed = 1.0,
+	forceCost = 20,
 	visMod = 25,
 	accuracySkillMod = "forcethrow_accuracy",
 
@@ -57,9 +57,9 @@ ForceThrow1Command = {
 			{},
 			{},
 			{ "jedi_state_defense" },
-			65,
+			80,
 			0,
-			10
+			30
 		)
 	},
 
@@ -68,10 +68,10 @@ ForceThrow1Command = {
 
 	combatSpam = "forcethrow1",
 
-	poolsToDamage = RANDOM_ATTRIBUTE,
+	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE + MIND_ATTRIBUTE,
 
 	forceAttack = true,
-	damageType = KINETIC_DAMAGE,
+	damageType = LIGHTSABER_DAMAGE,
 
 	frsLightMinDamageModifier = 1,
 	frsLightMaxDamageModifier = 3,

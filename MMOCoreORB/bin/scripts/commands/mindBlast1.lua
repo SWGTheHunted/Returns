@@ -44,10 +44,10 @@
 MindBlast1Command = {
 	name = "mindblast1",
 
-	minDamage = 125,
-	maxDamage = 250,
-	speed = 4.0,
-	forceCost = 68,
+	minDamage = 1000,
+	maxDamage = 1500,
+	speed = 1.0,
+	forceCost = 10,
 	visMod = 25,
 	accuracySkillMod = "mindblast_accuracy";
 
@@ -57,7 +57,7 @@ MindBlast1Command = {
 			{},
 			{},
 			{ "jedi_state_defense" },
-			55,
+			80,
 			0,
 			10
 		),
@@ -67,17 +67,27 @@ MindBlast1Command = {
 			{},
 			{},
 			{ "jedi_state_defense" },
-			55,
+			80,
 			0,
 			10
 		),
 
+        StateEffect(
+            NEXTATTACKDELAY_EFFECT,
+            {"nextAttackDelayRecovery"},
+            {},
+            {},
+            80,
+            0,
+            10
+        ),
+		
 		StateEffect(
 			DIZZY_EFFECT,
 			{},
 			{},
 			{ "jedi_state_defense" },
-			55,
+			80,
 			0,
 			10
 		)
@@ -88,10 +98,10 @@ MindBlast1Command = {
 
 	combatSpam = "mindblast1",
 
-	poolsToDamage = RANDOM_ATTRIBUTE,
+	poolsToDamage = MIND_ATTRIBUTE,
 
 	forceAttack = true,
-	damageType = BLAST_DAMAGE,
+	damageType = LIGHTSABER_DAMAGE,
 
 	frsLightMinDamageModifier = 1,
 	frsLightMaxDamageModifier = 2,
