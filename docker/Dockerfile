@@ -139,8 +139,8 @@ ENV STATUSPORT=${PORT_GROUP}455 \
     DBUSER=swgemu \
     ADMIN_USER=admin \
     REPOS='The-Hunted' \
-    REPO_PUBLIC_URL=https://github.com/Crandles1202/ \
-    REPO_PUBLIC_BRANCH='armorFix'
+    REPO_PUBLIC_URL=https://github.com/misemerfg/ \
+    REPO_PUBLIC_BRANCH='pre9jediFrank'
 
 ENV PATH=${HOME_DIR}/bin:/usr/local/bin:${PATH}
 
