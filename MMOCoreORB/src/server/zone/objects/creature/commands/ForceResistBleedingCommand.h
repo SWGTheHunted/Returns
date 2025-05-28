@@ -13,8 +13,9 @@ public:
 
 		buffCRC = BuffCRC::JEDI_RESIST_BLEEDING;
 
-		skillMods.put("combat_bleeding_defense", 25);
-		skillMods.put("absorption_bleeding", 25);
+        skillMods.put("resistance_bleeding", 75);
+		skillMods.put("combat_bleeding_defense", 50);
+		skillMods.put("absorption_bleeding", 50);
 
 	}
 

@@ -13,8 +13,8 @@ public:
 
 		buffCRC = BuffCRC::JEDI_RESIST_POISON;
 
-		skillMods.put("resistance_poison", 25);
-		skillMods.put("absorption_poison", 25);
+		skillMods.put("resistance_poison", 75);
+		skillMods.put("absorption_poison", 50);
 
 	}
 

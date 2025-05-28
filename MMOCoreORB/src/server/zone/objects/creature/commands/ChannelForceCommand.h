@@ -31,9 +31,9 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		// Bonus is in between 250-350.
+		// buffed a bit
 		int forceRandom = System::random(100);
-		int forceBonus = 250 + (forceRandom);
+		int forceBonus = 500 + (forceRandom);
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 		if (playerObject == nullptr)
