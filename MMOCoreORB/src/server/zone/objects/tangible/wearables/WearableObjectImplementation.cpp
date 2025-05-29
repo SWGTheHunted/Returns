@@ -96,48 +96,70 @@ void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, 
 	}
 }
 
+//Max sockets always
 void WearableObjectImplementation::generateSockets(CraftingValues* craftingValues) {
 	if (socketsGenerated) {
 		return;
 	}
 
-	int skill = 0;
-	int luck = 0;
+	// Remove all skill/luck/random logic
+	// Simply assign 8 sockets every time
+	socketCount = 8;
 
-	if (craftingValues != nullptr) {
-		ManagedReference<ManufactureSchematic*> manuSchematic = craftingValues->getManufactureSchematic();
-		if(manuSchematic != nullptr) {
-			ManagedReference<DraftSchematic*> draftSchematic = manuSchematic->getDraftSchematic();
-			ManagedReference<CreatureObject*> player = manuSchematic->getCrafter().get();
-
-			if (player != nullptr && draftSchematic != nullptr) {
-				String assemblySkill = draftSchematic->getAssemblySkill();
-				skill = player->getSkillMod(assemblySkill) * 2.5; // 0 to 250 max
-				luck = System::random(player->getSkillMod("luck")
-						+ player->getSkillMod("force_luck"));
-			}
-		}
-	}
-
-	int random = (System::random(750)) - 250; // -250 to 500
-
-	float roll = System::random(skill + luck + random);
-
-	int generatedCount = System::random(8);
-//socket count
-	if (generatedCount > 8)
-		generatedCount = 8;
-	if (generatedCount < 4)
-		generatedCount = 4;
-
-	// TODO: remove this backwards compatibility fix at next wipe. Only usedSocketCount variable should be used.
+	// Legacy tracking - keep these
 	objectCreatedPreUsedSocketCountFix = false;
 	usedSocketCount = 0;
 
-	socketCount = generatedCount;
-
 	socketsGenerated = true;
 }
+// Old socket generation code, kept for reference
+/*
+ * This code was used to generate sockets based on skill, luck and random values.
+ * It has been replaced with a fixed 8 sockets for simplicity and consistency.
+ * Uncomment if you want to restore the old behavior.
+ */
+//void WearableObjectImplementation::generateSockets(CraftingValues* craftingValues) {
+//	if (socketsGenerated) {
+//		return;
+//	}
+//
+//	int skill = 0;
+//	int luck = 0;
+//
+//	if (craftingValues != nullptr) {
+//		ManagedReference<ManufactureSchematic*> manuSchematic = craftingValues->getManufactureSchematic();
+//		if(manuSchematic != nullptr) {
+//			ManagedReference<DraftSchematic*> draftSchematic = manuSchematic->getDraftSchematic();
+//			ManagedReference<CreatureObject*> player = manuSchematic->getCrafter().get();
+//
+//			if (player != nullptr && draftSchematic != nullptr) {
+//				String assemblySkill = draftSchematic->getAssemblySkill();
+//				skill = player->getSkillMod(assemblySkill) * 2.5; // 0 to 250 max
+//				luck = System::random(player->getSkillMod("luck")
+//						+ player->getSkillMod("force_luck"));
+//			}
+//		}
+//	}
+//
+//	int random = (System::random(750)) - 250; // -250 to 500
+//
+//	float roll = System::random(skill + luck + random);
+//
+//	int generatedCount = System::random(8);
+//socket count
+//	if (generatedCount > 8)
+//		generatedCount = 8;
+//	if (generatedCount < 4)
+//		generatedCount = 4;
+//
+//	// TODO: remove this backwards compatibility fix at next wipe. Only usedSocketCount variable should be used.
+//	objectCreatedPreUsedSocketCountFix = false;
+//	usedSocketCount = 0;
+//
+//	socketCount = generatedCount;
+//
+//	socketsGenerated = true;
+//}
 
 int WearableObjectImplementation::socketsUsed() const {
 	// TODO: remove this backwards compatibility fix at next wipe. Only usedSocketCount variable should be used.
@@ -272,4 +294,3 @@ String WearableObjectImplementation::repairAttempt(int repairChance) {
 
 	return message;
 }
-
