@@ -36,7 +36,9 @@ death_watch_black_sun_guard = Creature:new {
                 {group = "pistols", chance = 833333}, -- 8.33%
                 {group = "rifles", chance = 833333}, -- 8.33%
                 {group = "carbines", chance = 833333}, -- 8.33%
-                {group = "wearables_uncommon", chance = 6250001}, -- 62.50%			
+                {group = "wearables_uncommon", chance = 5250001}, -- 52.50%	
+				{group = "clothing_attachments", chance = 500000}, -- 5.00%
+				{group = "armor_attachments", chance = 500000}, -- 5.00%		
 			},
 		}
 	},
