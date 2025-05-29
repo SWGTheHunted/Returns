@@ -253,9 +253,9 @@ myswg_vendor_accept_quest = ConvoScreen:new {
     options = { }
 }
 myswg_vendor_accept_quest = ConvoScreen:new {    
-    id = "buff2",
+    id = "reset_buffs",
     leftDialog = "",
-    customDialogText = "Enjoy!",
+    customDialogText = "Your buffs have been reset!",
     stopConversation = "true",
     options = { }
 }
