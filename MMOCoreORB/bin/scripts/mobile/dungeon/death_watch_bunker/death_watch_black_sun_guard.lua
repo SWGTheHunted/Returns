@@ -4,13 +4,13 @@ death_watch_black_sun_guard = Creature:new {
 	randomNameTag = true,
 	socialGroup = "death_watch",
 	faction = "",
-	level = 96,
+	level = 166,
 	chanceHit = 0.95,
 	damageMin = 620,
 	damageMax = 950,
 	baseXp = 9057,
-	baseHAM = 22000,
-	baseHAMmax = 22000,
+	baseHAM = 37400,
+	baseHAMmax = 37400,
 	armor = 2,
 	resists = {40,40,60,35,55,70,35,40,-1},
 	meatType = "",
@@ -36,7 +36,9 @@ death_watch_black_sun_guard = Creature:new {
                 {group = "pistols", chance = 833333}, -- 8.33%
                 {group = "rifles", chance = 833333}, -- 8.33%
                 {group = "carbines", chance = 833333}, -- 8.33%
-                {group = "wearables_uncommon", chance = 6250001}, -- 62.50%			
+                {group = "wearables_uncommon", chance = 5250001}, -- 52.50%	
+				{group = "clothing_attachments", chance = 500000}, -- 5.00%
+				{group = "armor_attachments", chance = 500000}, -- 5.00%		
 			},
 		}
 	},
