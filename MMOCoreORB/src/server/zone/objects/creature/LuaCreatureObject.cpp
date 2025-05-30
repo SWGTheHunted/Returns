@@ -129,6 +129,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "healDamage", &LuaCreatureObject::healDamage },
 		{ "getGroupID", &LuaCreatureObject::getGroupID },
 		{ "enhanceCharacter", &LuaCreatureObject::enhanceCharacter },
+		{ "reset_buffs", &LuaCreatureObject::reset_buffs },
 		{ "setWounds", &LuaCreatureObject::setWounds },
 		{ "setShockWounds", &LuaCreatureObject::setShockWounds },
 		{ "getForceSensitiveSkillCount", &LuaCreatureObject::getForceSensitiveSkillCount },
@@ -143,7 +144,6 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getGender", &LuaCreatureObject::getGender },
 		{ "isRidingMount", &LuaCreatureObject::isRidingMount },
 		{ "dismount", &LuaCreatureObject::dismount },
-		
 		{ 0, 0 }
 };
 
@@ -1018,14 +1018,17 @@ int LuaCreatureObject::enhanceCharacter(lua_State* L) {
 
 	return 0;
 }
-int LuaCreatureObject::isOnLeave(lua_State* L) {
-    bool isOnLeave = realObject->isOnLeave();
 
-    lua_pushboolean(L, isOnLeave);
+int LuaCreatureObject::reset_buffs(lua_State* L) {
+	if (realObject-> isInCombat()){
+		realObject->sendSystemMessage("is in combat, cannot reset buffs.");
+		return 0;
+	}
+	realObject->sendSystemMessage("Your Buffs Have Been Reset.");
+	realObject->clearBuffs(true, false);
 
-    return 1;
+	return 0;
 }
-
 
 int LuaCreatureObject::setWounds(lua_State* L) {
 	int amount = lua_tointeger(L, -1);
