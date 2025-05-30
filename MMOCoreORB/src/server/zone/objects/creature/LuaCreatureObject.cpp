@@ -128,7 +128,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isInCombat", &LuaCreatureObject::isInCombat },
 		{ "healDamage", &LuaCreatureObject::healDamage },
 		{ "getGroupID", &LuaCreatureObject::getGroupID },
-		{ "enhanceCharacter", &LuaCreatureObject::enhanceCharacter },,
+		{ "enhanceCharacter", &LuaCreatureObject::enhanceCharacter },
 		{ "setWounds", &LuaCreatureObject::setWounds },
 		{ "setShockWounds", &LuaCreatureObject::setShockWounds },
 		{ "getForceSensitiveSkillCount", &LuaCreatureObject::getForceSensitiveSkillCount },
