@@ -1018,6 +1018,17 @@ int LuaCreatureObject::enhanceCharacter(lua_State* L) {
 	return 0;
 }
 
+int LuaCreatureObject::reset_buffs(lua_State* L) {
+	if (realObject-> isInCombat()){
+		realObject->sendSystemMessage("is in combat, cannot reset buffs.");
+		return 0;
+	}
+	realObject->sendSystemMessage("Your Buffs Have Been Reset.");
+	realObject->clearBuffs(true, false);
+
+	return 0;
+}
+
 int LuaCreatureObject::setWounds(lua_State* L) {
 	int amount = lua_tointeger(L, -1);
 	int pool = lua_tointeger(L, -2);
