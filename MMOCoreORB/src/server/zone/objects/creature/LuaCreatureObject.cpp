@@ -128,8 +128,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isInCombat", &LuaCreatureObject::isInCombat },
 		{ "healDamage", &LuaCreatureObject::healDamage },
 		{ "getGroupID", &LuaCreatureObject::getGroupID },
-		{ "enhanceCharacter", &LuaCreatureObject::enhanceCharacter },
-		{ "reset_buffs", &LuaCreatureObject::reset_buffs },
+		{ "enhanceCharacter", &LuaCreatureObject::enhanceCharacter },,
 		{ "setWounds", &LuaCreatureObject::setWounds },
 		{ "setShockWounds", &LuaCreatureObject::setShockWounds },
 		{ "getForceSensitiveSkillCount", &LuaCreatureObject::getForceSensitiveSkillCount },
@@ -1019,33 +1018,6 @@ int LuaCreatureObject::enhanceCharacter(lua_State* L) {
 
 	return 0;
 }
-
-int LuaCreatureObject::reset_buffs(lua_State* L) {
-    if (realObject->isInCombat()) {
-        realObject->sendSystemMessage("Cannot reset buffs while in combat.");
-        return 0;
-    }
-
-    Locker locker(realObject);
-
-    BuffList* buffList = realObject->getBuffList();
-    if (buffList != nullptr) {
-        buffList->clearBuffs(true, true);
-    }
-
-    realObject->sendSystemMessage("Your buffs have been reset. Enjoy!");
-
-    ManagedReference<PlayerObject*> ghost = realObject->getPlayerObject();
-	// If the player is a ghost, reset food and drink filling
-    if (ghost != nullptr) {
-        Locker locker(ghost, realObject);
-        ghost->setFoodFilling(0);
-        ghost->setDrinkFilling(0);
-    }
-
-    return 0;
-}
-
 int LuaCreatureObject::isOnLeave(lua_State* L) {
     bool isOnLeave = realObject->isOnLeave();
 
