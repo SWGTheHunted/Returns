@@ -1036,6 +1036,7 @@ int LuaCreatureObject::reset_buffs(lua_State* L) {
     realObject->sendSystemMessage("Your buffs have been reset. Enjoy!");
 
     ManagedReference<PlayerObject*> ghost = realObject->getPlayerObject();
+	// If the player is a ghost, reset food and drink filling
     if (ghost != nullptr) {
         Locker locker(ghost, realObject);
         ghost->setFoodFilling(0);
