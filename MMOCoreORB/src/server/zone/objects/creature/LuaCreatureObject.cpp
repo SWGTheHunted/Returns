@@ -129,6 +129,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "healDamage", &LuaCreatureObject::healDamage },
 		{ "getGroupID", &LuaCreatureObject::getGroupID },
 		{ "enhanceCharacter", &LuaCreatureObject::enhanceCharacter },
+		{ "reset_buffs", &LuaCreatureObject::reset_buffs },
 		{ "setWounds", &LuaCreatureObject::setWounds },
 		{ "setShockWounds", &LuaCreatureObject::setShockWounds },
 		{ "getForceSensitiveSkillCount", &LuaCreatureObject::getForceSensitiveSkillCount },
@@ -143,7 +144,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getGender", &LuaCreatureObject::getGender },
 		{ "isRidingMount", &LuaCreatureObject::isRidingMount },
 		{ "dismount", &LuaCreatureObject::dismount },
-		{ "reset_buffs", &LuaCreatureObject::reset_buffs },
+		
 		{ 0, 0 }
 };
 
@@ -1019,6 +1020,27 @@ int LuaCreatureObject::enhanceCharacter(lua_State* L) {
 	return 0;
 }
 
+int LuaCreatureObject::reset_buffs(lua_State* L) {
+	if (realObject == isInCombat()){
+		realObject->SendSystemMessage("is in combat, cannot reset buffs.");
+		return 0;
+	}
+	realObject->SendSystemMessage("Your Buffs Have Been Reset,"();
+	realObject->ClearBuffs(true, false);
+
+	ManageReference<PlayerObject*> ghost = realObject->getPlayerObject();
+	if (ghost != nullptr) {
+		ghost->_setFoodFilling(0);
+		ghost->setDrinkFIlling(0
+		}
+		return 0;
+	}
+
+	lua_pushboolean(L, isOnLeave);
+
+	return 1;
+}
+
 int LuaCreatureObject::setWounds(lua_State* L) {
 	int amount = lua_tointeger(L, -1);
 	int pool = lua_tointeger(L, -2);
@@ -1127,15 +1149,5 @@ int LuaCreatureObject::isRidingMount(lua_State* L) {
 
 int LuaCreatureObject::dismount(lua_State* L) {
 	realObject->dismount();
-	return 0;
-}
-
-int LuaCreatureObject::reset_buffs(lua_State* L) {
-	Locker locker(realObject);
-	// Clear buffs on the creature object
-	BuffList* buffList = realObject->getBuffList();
-	if (buffList != nullptr)
-		buffList->clearBuffs(true, true);
-
 	return 0;
 }
