@@ -1067,8 +1067,8 @@ function myswg_vendor_convo_handler:getNextConversationScreen(conversationTempla
                      --Take 2,000 credits from the player’s cash on hand and give player a speederbike.
                      creature:subtractCashCredits(2000)
 
-										CreatureObject(conversingPlayer):reset_buffs()
-
+										local creature = LuaCreatureObject(conversingPlayer)
+                    creature:reset_buffs()
                -- elseif (optionLink == "buff3" and credits < 30000) then
                     -- Bail if the player doesn’t have enough cash on hand.  
                     -- Plays a chat box message from the NPC as well as a system message.
