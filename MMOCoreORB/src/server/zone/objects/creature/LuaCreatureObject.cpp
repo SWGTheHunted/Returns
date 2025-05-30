@@ -1026,7 +1026,7 @@ int LuaCreatureObject::reset_buffs(lua_State* L) {
         return 0;
     }
     realObject->sendSystemMessage("Your Buffs Have Been Reset.");
-    realObject->clearBuffs(true, false);
+    realObject->clearBuffs(true, true);
 
     ManageReference<PlayerObject*> ghost = realObject->getPlayerObject();
     if (ghost != nullptr) {
