@@ -140,8 +140,7 @@ ENV STATUSPORT=${PORT_GROUP}455 \
     ADMIN_USER=admin \
     REPOS='The-Hunted' \
     REPO_PUBLIC_URL=https://github.com/bfitzgit23/ \
-
-    REPO_PUBLIC_BRANCH='MainAndPowerFixes'
+    REPO_PUBLIC_BRANCH='LootTableFixes'
 
 
 
