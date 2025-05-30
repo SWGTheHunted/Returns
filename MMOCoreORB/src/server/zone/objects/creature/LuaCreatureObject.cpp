@@ -1028,13 +1028,16 @@ int LuaCreatureObject::reset_buffs(lua_State* L) {
     realObject->sendSystemMessage("Your Buffs Have Been Reset.");
     realObject->clearBuffs(true, false);
 
-    ManageReference<PlayerObject*> ghost = realObject->getPlayerObject();
+    ManagedReference<PlayerObject*> ghost = realObject->getPlayerObject();
     if (ghost != nullptr) {
         ghost->setFoodFilling(0);
         ghost->setDrinkFilling(0);
     }
     return 0;
 }
+
+int LuaCreatureObject::isOnLeave(lua_State* L) {
+	bool isOnLeave = realObject->isOnLeave();
 
 	lua_pushboolean(L, isOnLeave);
 
