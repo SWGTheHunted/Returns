@@ -1132,7 +1132,8 @@ int LuaCreatureObject::dismount(lua_State* L) {
 
 int LuaCreatureObject::reset_buffs(lua_State* L) {
 	Locker locker(realObject);
-
+	player:reset_buffs()
+	// Clear buffs on the creature object
 	BuffList* buffList = realObject->getBuffList();
 	if (buffList != nullptr)
 		buffList->clearBuffs(true, true);
