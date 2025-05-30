@@ -3,44 +3,74 @@ armor_all = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		-- Common
-		{itemTemplate = "chitin_armor_boots", weight = 625000},
-		{itemTemplate = "chitin_armor_leggings", weight = 625000},
-		
+		-- Common 30%
+		{itemTemplate = "chitin_armor_boots", weight = 250000},
+		{itemTemplate = "chitin_armor_leggings", weight = 500000},
 		{itemTemplate = "chitin_armor_bracer_l", weight = 250000},
 		{itemTemplate = "chitin_armor_bracer_r", weight = 250000},
 		{itemTemplate = "chitin_armor_bicep_l", weight = 250000},
 		{itemTemplate = "chitin_armor_bicep_r", weight = 250000},
 		{itemTemplate = "chitin_armor_gloves", weight = 250000},
-		
-		{itemTemplate = "chitin_armor_chest_plate", weight = 1250000},
-
-		{itemTemplate = "chitin_armor_helmet", weight = 1250000},
-		-- Uncommon
-		{itemTemplate = "ubese_armor_pants", weight = 250000},
+		{itemTemplate = "chitin_armor_chest_plate", weight = 500000},
+		{itemTemplate = "chitin_armor_helmet", weight = 500000},
+		-- Uncommon 25%
+		{itemTemplate = "ubese_armor_pants", weight = 500000},
 		{itemTemplate = "ubese_armor_boots", weight = 250000},
-		{itemTemplate = "ubese_armor_gloves", weight = 250000},
-				
-		{itemTemplate = "ubese_armor_bracer_l", weight = 375000},
-		{itemTemplate = "ubese_armor_bracer_r", weight = 375000},
-
-		{itemTemplate = "ubese_armor_helmet", weight = 750000},
-		
-		{itemTemplate = "ubese_armor_jacket", weight = 750000},
-		-- Rare
-		{itemTemplate = "composite_armor_bicep_l", weight = 100000},
-		{itemTemplate = "composite_armor_bicep_r", weight = 100000},
-		{itemTemplate = "composite_armor_bracer_l", weight = 100000},
-		{itemTemplate = "composite_armor_bracer_r", weight = 100000},
-		{itemTemplate = "composite_armor_gloves", weight = 100000},
-				
-		{itemTemplate = "composite_armor_boots", weight = 250000},
-		{itemTemplate = "composite_armor_leggings", weight = 250000},
-		
-		{itemTemplate = "composite_armor_chest_plate", weight = 500000},
-
-		{itemTemplate = "composite_armor_helmet", weight = 500000},
-
+		{itemTemplate = "ubese_armor_gloves", weight = 250000},		
+		{itemTemplate = "ubese_armor_bracer_l", weight = 250000},
+		{itemTemplate = "ubese_armor_bracer_r", weight = 250000},
+		{itemTemplate = "ubese_armor_helmet", weight = 500000},
+		{itemTemplate = "ubese_armor_jacket", weight = 500000},
+		-- Rare 25.5%
+		{itemTemplate = "composite_armor_bicep_l", weight = 200000},
+		{itemTemplate = "composite_armor_bicep_r", weight = 200000},
+		{itemTemplate = "composite_armor_bracer_l", weight = 200000},
+		{itemTemplate = "composite_armor_bracer_r", weight = 200000},
+		{itemTemplate = "composite_armor_gloves", weight = 200000},	
+		{itemTemplate = "composite_armor_boots", weight = 200000},
+		{itemTemplate = "composite_armor_leggings", weight = 450000},
+		{itemTemplate = "composite_armor_chest_plate", weight = 450000},
+		{itemTemplate = "composite_armor_helmet", weight = 450000},
+		-- Even Rarer 19.5%
+		{itemTemplate = "kashyyykian_hunting_armor_bracer_l", weight = 50000},
+		{itemTemplate = "kashyyykian_hunting_armor_bracer_r", weight = 50000},
+		{itemTemplate = "kashyyykian_hunting_armor_chest_plate", weight = 50000},
+		{itemTemplate = "kashyyykian_hunting_armor_leggings", weight = 50000},
+		{itemTemplate = "kashyyykian_ceremonial_armor_bracer_l", weight = 50000},
+		{itemTemplate = "kashyyykian_ceremonial_armor_bracer_r", weight = 50000},
+		{itemTemplate = "kashyyykian_ceremonial_armor_chest_plate", weight = 50000},
+		{itemTemplate = "kashyyykian_ceremonial_armor_leggings", weight = 50000},
+		{itemTemplate = "kashyyykian_black_mtn_armor_bracer_l", weight = 50000},
+		{itemTemplate = "kashyyykian_black_mtn_armor_bracer_r", weight = 50000},
+		{itemTemplate = "kashyyykian_black_mtn_armor_chest_plate", weight = 50000},
+		{itemTemplate = "kashyyykian_black_mtn_armor_leggings", weight = 50000},
+		{itemTemplate = "ithorian_sentinel_armor_bicep_l", weight = 50000},
+		{itemTemplate = "ithorian_sentinel_armor_bicep_r", weight = 50000},
+		{itemTemplate = "ithorian_sentinel_armor_boots", weight = 50000},
+		{itemTemplate = "ithorian_sentinel_armor_bracer_l", weight = 50000},
+		{itemTemplate = "ithorian_sentinel_armor_bracer_r", weight = 50000},
+		{itemTemplate = "ithorian_sentinel_armor_chest_plate", weight = 50000},
+		{itemTemplate = "ithorian_sentinel_armor_gloves", weight = 50000},
+		{itemTemplate = "ithorian_sentinel_armor_helmet", weight = 50000},
+		{itemTemplate = "ithorian_sentinel_armor_leggings", weight = 50000},
+		{itemTemplate = "ithorian_guardian_armor_bicep_l", weight = 50000},
+		{itemTemplate = "ithorian_guardian_armor_bicep_r", weight = 50000},
+		{itemTemplate = "ithorian_guardian_armor_boots", weight = 50000},
+		{itemTemplate = "ithorian_guardian_armor_bracer_l", weight = 50000},
+		{itemTemplate = "ithorian_guardian_armor_bracer_r", weight = 50000},
+		{itemTemplate = "ithorian_guardian_armor_chest_plate", weight = 50000},
+		{itemTemplate = "ithorian_guardian_armor_gloves", weight = 50000},
+		{itemTemplate = "ithorian_guardian_armor_helmet", weight = 50000},
+		{itemTemplate = "ithorian_guardian_armor_leggings", weight = 50000},
+		{itemTemplate = "ithorian_defender_armor_bicep_l", weight = 50000},
+		{itemTemplate = "ithorian_defender_armor_bicep_r", weight = 50000},
+		{itemTemplate = "ithorian_defender_armor_boots", weight = 50000},
+		{itemTemplate = "ithorian_defender_armor_bracer_l", weight = 50000},
+		{itemTemplate = "ithorian_defender_armor_bracer_r", weight = 50000},
+		{itemTemplate = "ithorian_defender_armor_chest_plate", weight = 50000},
+		{itemTemplate = "ithorian_defender_armor_gloves", weight = 50000},
+		{itemTemplate = "ithorian_defender_armor_helmet", weight = 50000},
+		{itemTemplate = "ithorian_defender_armor_leggings", weight = 50000},
 	}
 }
 
