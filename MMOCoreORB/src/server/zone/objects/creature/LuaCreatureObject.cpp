@@ -1021,19 +1021,19 @@ int LuaCreatureObject::enhanceCharacter(lua_State* L) {
 }
 
 int LuaCreatureObject::reset_buffs(lua_State* L) {
-	if (realObject-> isInCombat()
-		realObject->sendSystemMessage("is in combat, cannot reset buffs.");
-		return 0;
-	}
-	realObject->sendSystemMessage("Your Buffs Have Been Reset."();
-	realObject->clearBuffs(true, false);
+    if (realObject->isInCombat()) {
+        realObject->sendSystemMessage("is in combat, cannot reset buffs.");
+        return 0;
+    }
+    realObject->sendSystemMessage("Your Buffs Have Been Reset.");
+    realObject->clearBuffs(true, false);
 
-	ManageReference<PlayerObject*> ghost = realObject->getPlayerObject();
-	if (ghost != nullptr) {
-		ghost->setFoodFilling(0);
-		ghost->setDrinkFilling(0);
-	}
-	return 0;
+    ManageReference<PlayerObject*> ghost = realObject->getPlayerObject();
+    if (ghost != nullptr) {
+        ghost->setFoodFilling(0);
+        ghost->setDrinkFilling(0);
+    }
+    return 0;
 }
 
 	lua_pushboolean(L, isOnLeave);
