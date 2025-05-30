@@ -139,7 +139,7 @@ ENV STATUSPORT=${PORT_GROUP}455 \
     DBUSER=swgemu \
     ADMIN_USER=admin \
     REPOS='The-Hunted' \
-    REPO_PUBLIC_URL=https://github.com/bfitzgit23/ \
+    REPO_PUBLIC_URL=https://github.com/SWGTheHunted/The-Hunted.git \
     REPO_PUBLIC_BRANCH='MySWGVendor'
 
 ENV PATH=${HOME_DIR}/bin:/usr/local/bin:${PATH}
