@@ -4,13 +4,13 @@ death_watch_black_sun_assassin = Creature:new {
 	randomNameTag = true,
 	socialGroup = "death_watch",
 	faction = "",
-	level = 107,
+	level = 177,
 	chanceHit = 1.75,
 	damageMin = 670,
 	damageMax = 1050,
 	baseXp = 10081,
-	baseHAM = 40000,
-	baseHAMmax = 40000,
+	baseHAM = 68000,
+	baseHAMmax = 68000,
 	armor = 2,
 	resists = {55,55,70,45,75,80,55,45,-1},
 	meatType = "",
@@ -36,7 +36,9 @@ death_watch_black_sun_assassin = Creature:new {
                 {group = "pistols", chance = 833333}, -- 8.33%
                 {group = "rifles", chance = 833333}, -- 8.33%
                 {group = "carbines", chance = 833333}, -- 8.33%
-                {group = "wearables_uncommon", chance = 6250001}, -- 62.50%			
+                {group = "wearables_uncommon", chance = 5250001}, -- 52.50%	
+				{group = "clothing_attachments", chance = 500000}, -- 5.00%
+				{group = "armor_attachments", chance = 500000}, -- 5.00%		
 			},
 		}
 	},
