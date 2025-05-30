@@ -1033,7 +1033,7 @@ int LuaCreatureObject::reset_buffs(lua_State* L) {
 		buffList->clearBuffs(true, true);
 	}
 
-	realObject->sendSystemMessage("Your buffs have been reset.");
+	realObject->sendSystemMessage("Your buffs have been reset.Enjoy!
 
 	ManagedReference<PlayerObject*> ghost = realObject->getPlayerObject();
 	if (ghost != nullptr) {
