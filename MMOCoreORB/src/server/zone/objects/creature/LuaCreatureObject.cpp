@@ -1028,14 +1028,7 @@ int LuaCreatureObject::reset_buffs(lua_State* L) {
 	realObject->sendSystemMessage("Your Buffs Have Been Reset.");
 	realObject->clearBuffs(true, false);
 
-	// ManageReference<PlayerObject*> ghost = realObject->getPlayerObject();
-	// if (ghost != nullptr) {
-	// 	ghost->setFoodFilling(0);
-	// 	ghost->setDrinkFilling(0);
-	// }
-	lua_pushboolean(L, isOnLeave);
-
-	return 1;
+	return 0;
 }
 
 int LuaCreatureObject::setWounds(lua_State* L) {
