@@ -435,7 +435,7 @@ public:
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
-		int durationextra = (enhancePack->getDuration() * 4);
+		int durationextra = (enhancePack->getDuration() * 1.5);
 
 		uint32 amountEnhanced = playerManager->healEnhance(enhancer, patient, attribute, buffPower, durationextra, enhancePack->getAbsorption());
 
