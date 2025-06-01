@@ -72,7 +72,7 @@ object_weapon_ranged_pistol_pistol_de_10 = object_weapon_ranged_pistol_shared_pi
 	damageType = ENERGY,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
-	armorPiercing = LIGHT,
+	armorPiercing = MEDIUM, --Pistoleer's endgame weapon, buffed to be better at high end content.
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
@@ -127,7 +127,7 @@ object_weapon_ranged_pistol_pistol_de_10 = object_weapon_ranged_pistol_shared_pi
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
 	experimentalMin = {0, 0, 45, 116, 6.2, 10, 750, -5, -80, 20, -2, 36, 68, 36},
-	experimentalMax = {0, 0, 148, 236, 3.8, 20, 1500, 10, -80, 20, 18, 18, 42, 18},
+	experimentalMax = {0, 0, 177, 283, 3.8, 20, 1500, 10, -80, 20, 18, 18, 42, 18}, --20% base damage buff
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
