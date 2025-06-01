@@ -41,42 +41,13 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_wearables_robe_robe_jedi_padawan = object_tangible_wearables_robe_shared_robe_jedi_padawan:new {
-	playerRaces = { "object/creature/player/bothan_male.iff",
-				"object/creature/player/bothan_female.iff",
-				"object/creature/player/human_male.iff",
-				"object/creature/player/human_female.iff",
-				"object/creature/player/ithorian_male.iff",
-				"object/creature/player/ithorian_female.iff",
-				"object/creature/player/moncal_male.iff",
-				"object/creature/player/moncal_female.iff",
-				"object/creature/player/rodian_male.iff",
-				"object/creature/player/rodian_female.iff",
-				"object/creature/player/sullustan_male.iff",
-				"object/creature/player/sullustan_female.iff",
-				"object/creature/player/trandoshan_male.iff",
-				"object/creature/player/trandoshan_female.iff",
-				"object/creature/player/twilek_male.iff",
-				"object/creature/player/twilek_female.iff",
-				"object/creature/player/wookiee_male.iff",
-				"object/creature/player/wookiee_female.iff",
-				"object/creature/player/zabrak_male.iff",
-				"object/creature/player/zabrak_female.iff" },
-				
-	maxCondition = 100,
-	volume = 1,
-	jediRobe = true,
-
-	skillMods = {
-		{"jedi_force_power_max", 250},
-		{"jedi_force_power_regen", 10}
-	},
-
-	noTrade = 1,
-
-	objectMenuComponent = "RobeObjectMenuComponent",
-	certificationsRequired = {"force_title_jedi_rank_02"},
-	attributeListComponent = "JediRobeAttributeListComponent",
+object_tangible_loot_loot_schematic_robe_jedi_padawan_schematic = object_tangible_loot_loot_schematic_shared_robe_jedi_padawan_schematic:new {
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = "LootSchematicMenuComponent",
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_tailor_master",
+	targetDraftSchematic = "object/draft_schematic/clothing/clothing_robe_jedi_padawan.iff",
+	targetUseCount = 3,
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_robe_jedi_padawan, "object/tangible/wearables/robe/robe_jedi_padawan.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_robe_jedi_padawan_schematic, "object/tangible/loot/loot_schematic/robe_jedi_padawan_schematic.iff")

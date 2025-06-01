@@ -41,42 +41,39 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_wearables_robe_robe_jedi_padawan = object_tangible_wearables_robe_shared_robe_jedi_padawan:new {
-	playerRaces = { "object/creature/player/bothan_male.iff",
-				"object/creature/player/bothan_female.iff",
-				"object/creature/player/human_male.iff",
-				"object/creature/player/human_female.iff",
-				"object/creature/player/ithorian_male.iff",
-				"object/creature/player/ithorian_female.iff",
-				"object/creature/player/moncal_male.iff",
-				"object/creature/player/moncal_female.iff",
-				"object/creature/player/rodian_male.iff",
-				"object/creature/player/rodian_female.iff",
-				"object/creature/player/sullustan_male.iff",
-				"object/creature/player/sullustan_female.iff",
-				"object/creature/player/trandoshan_male.iff",
-				"object/creature/player/trandoshan_female.iff",
-				"object/creature/player/twilek_male.iff",
-				"object/creature/player/twilek_female.iff",
-				"object/creature/player/wookiee_male.iff",
-				"object/creature/player/wookiee_female.iff",
-				"object/creature/player/zabrak_male.iff",
-				"object/creature/player/zabrak_female.iff" },
-				
-	maxCondition = 100,
-	volume = 1,
-	jediRobe = true,
+object_draft_schematic_clothing_clothing_robe_jedi_padawan = object_draft_schematic_clothing_shared_clothing_robe_jedi_padawan:new {
 
-	skillMods = {
-		{"jedi_force_power_max", 250},
-		{"jedi_force_power_regen", 10}
-	},
+   templateType = DRAFTSCHEMATIC,
 
-	noTrade = 1,
+   customObjectName = "Jedi Padawan Robe",
 
-	objectMenuComponent = "RobeObjectMenuComponent",
-	certificationsRequired = {"force_title_jedi_rank_02"},
-	attributeListComponent = "JediRobeAttributeListComponent",
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
+   complexity = 23, 
+   size = 4, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 220, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"trim_and_binding", "extra_trim", "force_power", "binding", "force_regen", "outer_gown"},
+   ingredientSlotType = {1, 1, 1, 0, 1, 0},
+   resourceTypes = {"object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_trim.iff", "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff", "chemical", "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff", "hide"},
+   resourceQuantities = {4, 4, 2, 160, 2, 120},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/wearables/robe/robe_jedi_padawan.iff",
+
+   additionalTemplates = {
+             }
+
 }
-
-ObjectTemplates:addTemplate(object_tangible_wearables_robe_robe_jedi_padawan, "object/tangible/wearables/robe/robe_jedi_padawan.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_robe_jedi_padawan, "object/draft_schematic/clothing/clothing_robe_jedi_padawan.iff")
