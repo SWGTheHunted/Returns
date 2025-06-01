@@ -72,7 +72,7 @@ object_weapon_melee_sword_sword_02 = object_weapon_melee_sword_shared_sword_02:n
 	damageType = KINETIC,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
-	armorPiercing = NONE,
+	armorPiercing = MEDIUM,  --pve alternative to gaderiffi batton, also takes good components.
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
@@ -127,7 +127,7 @@ object_weapon_melee_sword_sword_02 = object_weapon_melee_sword_shared_sword_02:n
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
 	experimentalMin = {0, 0, 18, 70, 4, 12, 750, -2, -2, 3, -2, 4, 23, 52, 33},
-	experimentalMax = {0, 0, 33, 130, 2.8, 24, 1500, 8, 8, 3, 8, 4, 13, 28, 18},
+	experimentalMax = {0, 0, 66, 180, 2.8, 24, 1500, 8, 8, 3, 8, 4, 13, 28, 18},  --Needs a buff to base damage to make it viable as well.
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
