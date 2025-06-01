@@ -653,8 +653,8 @@ void EntertainingSessionImplementation::addEntertainerBuffStrength(CreatureObjec
 		maxBuffStrength = (float) entertainer->getSkillMod("healing_music_mind");
 	}
 
-	if(maxBuffStrength > 150.0f)
-		maxBuffStrength = 150.0f;	//cap at 150% power
+	if(maxBuffStrength > 250.0f)
+		maxBuffStrength = 250.0f;	//cap at 150% power
 
 	float factionPerkStrength = entertainer->getSkillMod("private_faction_buff_mind");
 
@@ -678,8 +678,8 @@ void EntertainingSessionImplementation::addEntertainerBuffStrength(CreatureObjec
 		newBuffStrength = maxBuffStrength;
 	}
 
-	if(newBuffStrength < 100.0f)
-		newBuffStrength = 100.0f;
+	if(newBuffStrength < 200.0f)
+		newBuffStrength = 200.0f;
 
 	//newBuffStrength = newBuffStrength;
 
