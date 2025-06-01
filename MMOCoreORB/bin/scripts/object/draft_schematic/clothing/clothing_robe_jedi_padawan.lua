@@ -40,7 +40,9 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
-object_draft_schematic_clothing_shared_clothing_robe_jedi_padawan = SharedDraftSchematicObjectTemplate:new {}
+object_draft_schematic_clothing_shared_clothing_robe_jedi_padawan = SharedDraftSchematicObjectTemplate:new {
+    clientTemplateFileName = "object/tangible/wearables/robe/robe_jedi_padawan.iff
+}
 
 object_draft_schematic_clothing_clothing_robe_jedi_padawan = object_draft_schematic_clothing_shared_clothing_robe_jedi_padawan:new {
 
