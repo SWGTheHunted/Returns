@@ -44,6 +44,8 @@ object_draft_schematic_clothing_shared_clothing_robe_jedi_padawan = SharedDraftS
     clientTemplateFileName = "object/tangible/wearables/robe/robe_jedi_padawan.iff"
 }
 
+print("✅ Loaded shared_clothing_robe_jedi_padawan template successfully")
+
 object_draft_schematic_clothing_clothing_robe_jedi_padawan = object_draft_schematic_clothing_shared_clothing_robe_jedi_padawan:new {
 
    templateType = DRAFTSCHEMATIC,
