@@ -44,7 +44,7 @@
 Melee1hSpinAttack2Command = {
         name = "melee1hspinattack2",
 
-	damageMultiplier = 3.0,
+	damageMultiplier = 3.5, -- Slight damage adjustment for main AOE.
 	speedMultiplier = 2.5,
 	healthCostMultiplier = 1.25,
 	actionCostMultiplier = 1.25,
@@ -64,7 +64,7 @@ Melee1hSpinAttack2Command = {
 		{}, 
 		{ "blind_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		40, 
+		80,  -- Specialized in blinding enemies.
 		0, 
 		30 
 	  )

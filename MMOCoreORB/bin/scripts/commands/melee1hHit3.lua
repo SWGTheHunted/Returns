@@ -44,7 +44,7 @@
 Melee1hHit3Command = {
         name = "melee1hhit3",
 
-	damageMultiplier = 5.0,
+	damageMultiplier = 5.5,  -- Better soloability for fencers, can focus on one HAM. Better damage since their weapons aren't as strong as two-handers, etc
 	speedMultiplier = 2.25,
 	healthCostMultiplier = 1.0,
 	actionCostMultiplier = 1.0,
@@ -60,7 +60,7 @@ Melee1hHit3Command = {
 		{}, 
 		{ "blind_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		40, 
+		80,    -- Fencers main debuff state, blind. Increased chance.
 		0, 
 		30 
 	  )
