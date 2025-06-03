@@ -140,7 +140,7 @@ ENV STATUSPORT=${PORT_GROUP}455 \
     ADMIN_USER=admin \
     REPOS='The-Hunted' \
     REPO_PUBLIC_URL=https://github.com/bfitzgit23/ \
-    REPO_PUBLIC_BRANCH='LootTableFixes'
+    REPO_PUBLIC_BRANCH='JediRobeStatAdditions'
 
 ENV PATH=${HOME_DIR}/bin:/usr/local/bin:${PATH}
 
