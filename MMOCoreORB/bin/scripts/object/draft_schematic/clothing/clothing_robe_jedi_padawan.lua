@@ -40,6 +40,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
+includeFile("object/draft_schematic/base/base_draft_schematic.lua")
 
 object_draft_schematic_clothing_clothing_robe_jedi_padawan = DraftSchematicObject:new {
 
