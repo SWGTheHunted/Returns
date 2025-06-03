@@ -63,11 +63,16 @@ object_tangible_wearables_robe_robe_jedi_dark_s03 = object_tangible_wearables_ro
 				"object/creature/player/zabrak_male.iff",
 				"object/creature/player/zabrak_female.iff" },
 
-				skillMods = {
+	maxCondition = 100,
+	volume = 1,
+	jediRobe = true,
 
-				},
+	skillMods = {
+		{"jedi_force_power_max", 1000},
+		{"jedi_force_power_regen", 40}
+	},
 
-				noTrade = 1,
+	noTrade = 1,
 
 				objectMenuComponent = "RobeObjectMenuComponent",
 				certificationsRequired = {"force_rank_dark_rank_05"},
