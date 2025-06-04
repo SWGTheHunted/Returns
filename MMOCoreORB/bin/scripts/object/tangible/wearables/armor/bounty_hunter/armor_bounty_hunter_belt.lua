@@ -42,7 +42,10 @@
 
 
 object_tangible_wearables_armor_bounty_hunter_armor_bounty_hunter_belt = object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt:new {
-	templateType = CLOTHINGOBJECT,
+
+	templateType = ARMOROBJECT,
+
+	objectMenuComponent = "ArmorObjectMenuComponent",
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
@@ -94,7 +97,41 @@ object_tangible_wearables_armor_bounty_hunter_armor_bounty_hunter_belt = object_
 				"object/mobile/vendor/wookiee_male.iff",
 				"object/mobile/vendor/zabrak_female.iff",
 				"object/mobile/vendor/zabrak_male.iff" },
+
+	-- The damage types in WeaponObject
+	vulnerability = STUN + LIGHTSABER,
+
+	specialResists = ENERGY + KINETIC,
+
+	-- These are default Blue Frog stats
+	healthEncumbrance = 1,
+	actionEncumbrance = 1,
+	mindEncumbrance = 1,
+
+	maxCondition = 45000,	
+
+	-- LIGHT, MEDIUM, HEAVY
+	rating = LIGHT,
+
+	kinetic = 80,
+	energy = 80,
+	electricity = 65,
+	stun = 25,
+	blast = 65,
+	heat = 65,
+	cold = 65,
+	acid = 65,
+	lightSaber = 25,			
 	
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "UT"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_durability"},
+	experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
+	experimentalMin = {0, 0, 0, 1000},
+	experimentalMax = {0, 0, 0, 1000},
+	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 4},
 
 }
 
