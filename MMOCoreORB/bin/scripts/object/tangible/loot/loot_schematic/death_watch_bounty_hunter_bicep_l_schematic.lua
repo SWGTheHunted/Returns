@@ -48,6 +48,7 @@ object_tangible_loot_loot_schematic_death_watch_bounty_hunter_bicep_l_schematic 
 	requiredSkill = "crafting_armorsmith_master",
 	targetDraftSchematic = "object/draft_schematic/clothing/clothing_armor_bounty_hunter_bicep_l.iff",
 	targetUseCount = 1
+	customName = "Bounty Hunter Left Bicep Schematic (1-Use)"
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_death_watch_bounty_hunter_bicep_l_schematic, "object/tangible/loot/loot_schematic/death_watch_bounty_hunter_bicep_l_schematic.iff")

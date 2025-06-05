@@ -48,6 +48,7 @@ object_tangible_loot_loot_schematic_death_watch_bounty_hunter_boots_schematic = 
 	requiredSkill = "crafting_armorsmith_master",
 	targetDraftSchematic = "object/draft_schematic/clothing/clothing_armor_bounty_hunter_boots.iff",
 	targetUseCount = 1
+	customName = "Bounty Hunter Boots Schematic (1-Use)"
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_death_watch_bounty_hunter_boots_schematic, "object/tangible/loot/loot_schematic/death_watch_bounty_hunter_boots_schematic.iff")
