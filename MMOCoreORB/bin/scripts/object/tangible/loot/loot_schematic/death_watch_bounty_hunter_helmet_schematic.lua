@@ -47,7 +47,7 @@ object_tangible_loot_loot_schematic_death_watch_bounty_hunter_helmet_schematic =
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_armorsmith_master",
 	targetDraftSchematic = "object/draft_schematic/clothing/clothing_armor_bounty_hunter_helmet.iff",
-	targetUseCount = 1
+	targetUseCount = 1,
 	customName = "Bounty Hunter Helmet Schematic (1-Use)"
 }
 
