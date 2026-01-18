@@ -55,10 +55,10 @@ medicalDuration = 432000 -- in seconds
 performanceDuration = 432000 -- in seconds
 
 --Sets the experience multiplier while grouped
-groupExpMultiplier = 1.5
+groupExpMultiplier = 12
 
 --Sets a global experience multiplier
-globalExpMultiplier = 10
+globalExpMultiplier = 20
 
 --sets Jedi Exp
 --JediExpMultiplier = 0.75
