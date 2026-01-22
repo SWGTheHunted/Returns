@@ -138,9 +138,9 @@ ENV STATUSPORT=${PORT_GROUP}455 \
     SSHPORT=2222 \
     DBUSER=swgemu \
     ADMIN_USER=admin \
-    REPOS='The-Hunted' \
+    REPOS='Returns' \
     REPO_PUBLIC_URL=https://github.com/bfitzgit23/ \
-    REPO_PUBLIC_BRANCH='LootTableFixes'
+    REPO_PUBLIC_BRANCH='pre9jedi'
 
 ENV PATH=${HOME_DIR}/bin:/usr/local/bin:${PATH}
 
