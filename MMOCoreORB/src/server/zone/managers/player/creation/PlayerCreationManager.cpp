@@ -237,7 +237,7 @@ void PlayerCreationManager::loadHairStyleInfo() {
 
 	int totalHairStyles = 0;
 
-	for (int i = 0; i < versionChunk->getChunksSize(); ++i) {
+	/*for (int i = 0; i < versionChunk->getChunksSize(); ++i) {
 		Reference<HairStyleInfo*> hsi = new HairStyleInfo();
 		hsi->readObject(iffStream);
 
@@ -246,14 +246,14 @@ void PlayerCreationManager::loadHairStyleInfo() {
 		totalHairStyles += hsi->getTotalStyles();
 
 		debug() << "Loaded " << hsi->getTotalStyles() << " hair styles for template " << hsi->getPlayerTemplate();
-	}
+	}*/
 
 	iffStream->closeForm(version);
 	iffStream->closeForm('HAIR');
 
 	delete iffStream;
 
-	info() << "Loaded " << totalHairStyles << " total creation hair styles.";
+	//info() << "Loaded " << totalHairStyles << " total creation hair styles.";
 }
 
 void PlayerCreationManager::loadLuaConfig() {
@@ -574,8 +574,6 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	//Join auction chat room
 	ghost->addChatRoom(chatManager->getAuctionRoom()->getRoomID());
 
-	//Join Galaxychat
-	ghost->addChatRoom(chatManager->getGeneralRoom()->getRoomID());
 	
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(playerCreature, SuiWindowType::NONE);
 	box->setPromptTitle("WELCOME");
